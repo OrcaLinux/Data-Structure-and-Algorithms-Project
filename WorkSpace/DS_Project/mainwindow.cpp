@@ -23,13 +23,8 @@ void MainWindow::createNewTab()
     // Create a new QTextEdit for the tab content
     QTextEdit *textEdit = new QTextEdit;
 
-    // // Create a close button for the tab
-    // QPushButton *closeButton = new QPushButton("x");
-    // closeButton->setFixedSize(20, 20); // Set a fixed size for the close button
-
     // Set the close button within the tab's title area
     int tabIndex = ui->tabWidget->addTab(textEdit, "new " + QString::number(tabCounter++));
-    //ui->tabWidget->tabBar()->setTabButton(tabIndex, QTabBar::RightSide, closeButton);
     ui->tabWidget->setCurrentIndex(tabIndex); // Set the current tab to the newly created one
 
     // // Connect the close button's clicked signal to a slot that closes the corresponding tab
@@ -105,3 +100,21 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_tabWidget_tabCloseRequested(int index)
+{
+    QWidget* tabItem = ui->tabWidget->widget(index);
+    if (tabItem) {
+        ui->tabWidget->removeTab(index);
+        delete tabItem;
+
+        // Check if all tabs are closed except the initial one
+        if (ui->tabWidget->count() == 1) {
+            tabCounter = 2; // Reset the tab counter to 2
+        }
+    }
+}
+
+
+
+
