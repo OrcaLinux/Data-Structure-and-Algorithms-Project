@@ -15,9 +15,33 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+
+    bool eventFilter(QObject *obj, QEvent *event);
+
     ~MainWindow();
+
+private slots:
+    void on_actionExit_triggered();
+
+    void on_actionCopy_triggered();
+
+    void on_actionCut_triggered();
+
+    void on_actionPast_triggered();
+
+    void on_actionUndo_triggered();
+
+    void on_actionRedo_triggered();
+
+    void on_actionAbout_Qt_triggered();
+
+    void quitApp();
+
+    void createNewTab();
 
 private:
     Ui::MainWindow *ui;
+
+    int tabCounter; // Counter to keep track of the tabs
 };
 #endif // MAINWINDOW_H

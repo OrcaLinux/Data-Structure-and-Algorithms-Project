@@ -19,5 +19,6 @@
         <file>renameIconpng.png</file>
         <file>saveACopyAsIcon.png</file>
         <file>saveAll.png</file>
+        <file>exitIcon.png</file>
     </qresource>
 </RCC>
