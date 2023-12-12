@@ -1,5 +1,5 @@
 /*****************************************************************//**
- * @file   TagMapComp_unittest.cpp
+ * @file   TagsMapComp_unittest.cpp
  * @brief  Unit test code for TagsMapComp class.
  *
  * @author eslam

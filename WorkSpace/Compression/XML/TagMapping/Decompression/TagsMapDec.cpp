@@ -1,5 +1,5 @@
 /*****************************************************************//**
- * @file   TagsMapDec.h
+ * @file   TagsMapDec.cpp
  * @brief  The header file of TagsMapDec class.
  *
  * The decompression algorithm of TagsMap compression algorithm.
