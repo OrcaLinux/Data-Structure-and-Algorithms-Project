@@ -31,6 +31,11 @@
 #include "pch.h"
 #include "TagsMapComp.h"
 
+ //initialize defaultTagMapBlock
+const std::string* TagsMapComp::defualtTagMapBlock = new std::string(
+	"<TagMap>users,user,id,name,posts,post,body,topics,topic,followers,follower</TagMap>"
+);
+
 void TagsMapComp::mapTags()
 {
 	std::stringstream ss(*this->xmlFile);
@@ -79,10 +84,16 @@ std::string* TagsMapComp::compress(bool addMapTable)
 	if (addMapTable) {
 		std::string* mapTags = map->toString();
 		result->append(*mapTags);
-		result->append(1, '\n');
+		//result->append(1, '\n');
 
 		delete mapTags;
 		mapTags = nullptr;
+	}
+	else {
+		//	Reinitialize the map to the default Tag map for
+		//	social network system.
+		delete map;
+		map = new Map(TagsMapComp::defualtTagMapBlock);
 	}
 
 	/*

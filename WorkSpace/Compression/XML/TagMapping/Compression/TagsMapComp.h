@@ -39,6 +39,7 @@ class TagsMapComp
 {
 private:
 	const std::string* xmlFile;
+	const static std::string* defualtTagMapBlock;
 	//Map of tag values.
 	Map* map;
 public:

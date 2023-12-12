@@ -61,8 +61,7 @@ namespace {
         </t1>
     </t0>     )");
 
-			resultWithMap = new std::string(R"(<TagMap>users,user,id,name,posts,post,body,topics,topic,followers,follower</TagMap>
-      <t0>
+			resultWithMap = new std::string(R"(<TagMap>users,user,id,name,posts,post,body,topics,topic,followers,follower</TagMap>      <t0>
         <t1>
                   <t2>        1       </t2>
             <t3>  Ahmed  Ali  </t3>
@@ -84,14 +83,14 @@ namespace {
 		}
 
 		void TearDown() {
-			t = nullptr;
-			input = nullptr;
-			result = nullptr;
-			resultWithMap = nullptr;
 			delete t;
 			delete input;
 			delete result;
 			delete resultWithMap;
+			t = nullptr;
+			input = nullptr;
+			result = nullptr;
+			resultWithMap = nullptr;
 		}
 	}; // TagsMapCompTest
 

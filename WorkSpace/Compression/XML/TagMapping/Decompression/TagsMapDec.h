@@ -30,24 +30,61 @@
 #define TAGS_MAP_DEC_H
 
 #include "Map.h"
+#include "MinifyingXML.h"
+#include <string>
 
 class TagsMapDec
 {
 private:
 	const std::string* xmlFile;
 
-	const static std::string* defaultTagMapBlock;
+	const static std::string* defualtTagMapBlock;
 
 	//Map of tag values.
 	Map* map;
 
 	//helper methods
-	void getMapTags();
-	void getTagsMapBlock();
-public:
-	explicit TagsMapDec();
-	~TagsMapDec();
 
+	/**
+	 * @brief Initialize the map with mapping way in the XML file.
+	 */
+	void getMapTags();
+	/**
+	 * @brief Locates the <TagMap> block for mapping values..
+	 *
+	 * Operation:
+	 * -Minify the file.
+	 * -Get a sub str from the start to the closing tag of the block.
+	 * -Return that sub string.
+	 * -If the closing tag not available, return the default TagMap block.
+	 * @return the TagMap line with the opening and closing tags.
+	 *
+	 * @throw runtime error for a defected file (the TagMap block is not in
+	 * the begging of the file.)
+	 */
+	const std::string* getTagsMapBlock();
+public:
+	/**
+	 * @brief C'tor.
+	 * -Initialize the Map with the TagMap block.
+	 */
+	explicit TagsMapDec(const std::string* xmlFile) : xmlFile(xmlFile) {
+		getMapTags();
+	}
+	/**
+	 * @brief D'tor.
+	 *
+	 */
+	~TagsMapDec() {
+		delete map;
+		map = nullptr;
+	}
+	/**
+	 * @brief This method decompresses the XML file.
+	 *
+	 * @see TagMapComp::compress() for the functionality.
+	 * @return the file data after decompression.
+	 */
 	std::string* decompress();
 };
 #endif // !TAGS_MAP_DEC_H
