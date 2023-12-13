@@ -80,10 +80,7 @@ std::string* TagsMapDec::decompress()
 	std::string* result = new std::string();
 	//length of the original file.
 	int length = this->xmlFile->size();
-	//
 	// The max size of the result string is the same of the entered string.
-	// That happens when the original doesn't contain any extra spaces or
-	// other charToSkip elements.
 	result->reserve(length);
 
 	//skip the TagMap block

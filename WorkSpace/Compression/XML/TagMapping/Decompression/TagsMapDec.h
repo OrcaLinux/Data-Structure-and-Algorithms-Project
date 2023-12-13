@@ -67,6 +67,8 @@ public:
 	/**
 	 * @brief C'tor.
 	 * -Initialize the Map with the TagMap block.
+	 *
+	 * @param the XML file without the XML version and encoding line.
 	 */
 	explicit TagsMapDec(const std::string* xmlFile) : xmlFile(xmlFile) {
 		getMapTags();

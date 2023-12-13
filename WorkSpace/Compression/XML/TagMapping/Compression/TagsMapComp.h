@@ -49,7 +49,7 @@ public:
 	 * Initializes the XML file, reads it and create a map with all
 	 * the tags.
 	 *
-	 * @param xmlFile
+	 * @param  the XML file without the XML version and encoding line.
 	 */
 	explicit TagsMapComp(const std::string* xmlFile) : xmlFile(xmlFile),
 		map(new Map()) {
