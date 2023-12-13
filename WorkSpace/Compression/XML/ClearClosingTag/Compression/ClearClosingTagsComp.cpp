@@ -33,16 +33,14 @@ std::string* ClearClosingTagsComp::compress()
 	//length of the original file.
 	int length = this->xmlFile->size();
 
-	//
+	
 	// The max size of the result string is the same of the entered string.
-	// That happens when the original doesn't contain any extra spaces or
-	// other charToSkip elements.
 	result->reserve(length);
 
 	/*
 	* Loop for all the original string.
-	* - If the current string is '<'
-	*		1.Collect the tag after it.
+	* - If the current string is '</'
+	*		1.skip that tag (increment i till the end of the tag).
 	*		2.Don't add it to the result string.
 	* - For other characters, add them to the result.
 	*/
@@ -57,5 +55,8 @@ std::string* ClearClosingTagsComp::compress()
 		}
 		result->append(1, currentChar);
 	}
+
+	// Free the extra allocated memory locations.
+	result->shrink_to_fit();
 	return result;
 }// compress()

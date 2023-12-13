@@ -45,7 +45,7 @@ public:
 	explicit ClearClosingTagsComp(const std::string* xmlFile) : xmlFile(xmlFile) {}
 
 	/**
-	 * @brief This function compresses the XML file..
+	 * @brief This function compresses the XML file.
 	 *
 	 * Operation summary:
 	 * - Find the closing tag.
