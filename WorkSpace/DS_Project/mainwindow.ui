@@ -28,7 +28,7 @@
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>new 1</string>
+        <string>New Tab</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
