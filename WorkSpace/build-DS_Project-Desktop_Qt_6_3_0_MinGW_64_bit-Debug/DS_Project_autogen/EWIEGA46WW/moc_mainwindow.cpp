@@ -109,7 +109,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->on_actionAbout_Qt_triggered(); break;
         case 7: _t->quitApp(); break;
         //case 8: _t->createNewTab(); break;
-        //case 9: _t->CloseTabRequested((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 9: _t->CloseTabRequested((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }

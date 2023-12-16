@@ -17,6 +17,7 @@ public:
 
     void initializeTabBar();
     void setTextEditSettings(const QTextEditSettings &settings);
+    bool eventFilter(QObject *obj, QEvent *event) override;
 
 public slots:
     void exitApplication();

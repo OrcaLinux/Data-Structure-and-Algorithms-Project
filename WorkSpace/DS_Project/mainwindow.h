@@ -40,7 +40,7 @@ private slots:
 
     //void createNewTab();
 
-    void CloseTabRequested(int index);
+    //void CloseTabRequested(int index);
 
 private:
     Ui::MainWindow *ui;

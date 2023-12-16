@@ -13,10 +13,23 @@ TabManager::~TabManager() {
 }
 
 void TabManager::initializeTabBar() {
-    connect(m_tabWidget, &QTabWidget::tabBarDoubleClicked, this, &TabManager::createNewTab);
+    m_tabWidget->tabBar()->installEventFilter(this);
     connect(m_tabWidget, &QTabWidget::tabCloseRequested, this, &TabManager::closeTab);
+
+    // Double-clicking on a tab to create another tab
+    connect(m_tabWidget->tabBar(), &QTabBar::tabBarDoubleClicked, this,[=](int index){
+        // Create a new tab
+        createNewTab();
+    });
 }
 
+bool TabManager::eventFilter(QObject *obj, QEvent *event) {
+    if (obj == m_tabWidget->tabBar() && event->type() == QEvent::MouseButtonDblClick) {
+        createNewTab();
+        return true; // Event handled
+    }
+    return QObject::eventFilter(obj, event);
+}
 void TabManager::createNewTab() {
     QTextEdit *textEdit = m_textEditSettings.createTextEdit();
 
@@ -58,7 +71,7 @@ void TabManager::setupCloseButton(QPushButton* closeButton) {
     QString buttonColor = QApplication::palette().color(QPalette::Button).name();
     closeButton->setFixedSize(16, 16);
     closeButton->setStyleSheet("background-color: " + buttonColor + ";");
-    connect(closeButton, &QPushButton::clicked, this,[this]() {
+    connect(closeButton, &QPushButton::clicked, this,[=]() {
         QWidget* senderButton = qobject_cast<QWidget*>(sender());
         if (senderButton) {
             int tabIndex = m_tabWidget->indexOf(senderButton->parentWidget());

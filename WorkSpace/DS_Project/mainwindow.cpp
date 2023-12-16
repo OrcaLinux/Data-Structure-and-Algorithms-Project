@@ -1,6 +1,7 @@
 #include <QTimer>
 
 #include "mainwindow.h"
+#include "qtabbar.h"
 #include "ui_mainwindow.h"
 #include "tabmanager.h"
 #include "qtexteditsetting.h"
@@ -8,7 +9,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "tabmanager.h"
-#include "qtexteditsetting.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,18 +16,29 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Create a close button for the tab
+    QPushButton *closeButton = new QPushButton("X");
+    closeButton->setFixedSize(16, 16); // Set a fixed size for the close button
+
+    // Set the background color of the close button to a red color from the Qt palette
+    QString redColor = QApplication::palette().color(QPalette::Button).name();
+    closeButton->setStyleSheet("background-color: " + redColor + ";");
+
+    //Add the push button to the default tab
+    ui->tabWidget->tabBar()->setTabButton(ui->tabWidget->currentIndex(), QTabBar::RightSide, closeButton);
+
     // Create a TabManager instance and pass the QTabWidget
     tabManager = new TabManager(ui->tabWidget);
 
-    // // Set default text editor settings
-    // QTextEditSettings textEditSettings;
-    // textEditSettings.setFont(QFont("Arial", 15));
+    // Set default text editor settings
+    QTextEditSettings textEditSettings;
+    textEditSettings.setFont(QFont("Arial", 15));
 
-    // // Pass the text editor settings to the TabManager
-    // tabManager->setTextEditSettings(textEditSettings);
+    // Pass the text editor settings to the TabManager
+    tabManager->setTextEditSettings(textEditSettings);
 
     // Initialize the TabManager
-    //tabManager->initializeTabBar();
+    tabManager->initializeTabBar();
 
     // Connect the Exit action to TabManager's exitApplication slot
     connect(ui->actionExit, &QAction::triggered, tabManager, &TabManager::exitApplication);
@@ -38,8 +49,6 @@ MainWindow::~MainWindow()
     delete ui;
     delete tabManager; // Release the memory of TabManager
 }
-
-
 
 void MainWindow::on_actionExit_triggered()
 {
