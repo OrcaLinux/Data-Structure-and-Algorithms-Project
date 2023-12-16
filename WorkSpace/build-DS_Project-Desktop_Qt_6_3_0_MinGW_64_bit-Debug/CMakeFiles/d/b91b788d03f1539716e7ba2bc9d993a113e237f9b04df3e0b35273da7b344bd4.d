@@ -1,5 +1,4 @@
 DS_Project_autogen/timestamp: \
-  C:/Qt/6.3.0/mingw_64/include/QtCore/QObject \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qalgorithms.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qanystringview.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qarraydata.h \
@@ -81,7 +80,6 @@ DS_Project_autogen/timestamp: \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qvariant.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qvarlengtharray.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qversiontagging.h \
-  C:/Qt/6.3.0/mingw_64/include/QtGui/QFont \
   C:/Qt/6.3.0/mingw_64/include/QtGui/qaction.h \
   C:/Qt/6.3.0/mingw_64/include/QtGui/qbitmap.h \
   C:/Qt/6.3.0/mingw_64/include/QtGui/qbrush.h \
@@ -113,15 +111,9 @@ DS_Project_autogen/timestamp: \
   C:/Qt/6.3.0/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.3.0/mingw_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/QMainWindow \
-  C:/Qt/6.3.0/mingw_64/include/QtWidgets/QPushButton \
-  C:/Qt/6.3.0/mingw_64/include/QtWidgets/QTabWidget \
-  C:/Qt/6.3.0/mingw_64/include/QtWidgets/QTextEdit \
-  C:/Qt/6.3.0/mingw_64/include/QtWidgets/QWidget \
-  C:/Qt/6.3.0/mingw_64/include/QtWidgets/qabstractbutton.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qframe.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qmainwindow.h \
-  C:/Qt/6.3.0/mingw_64/include/QtWidgets/qpushbutton.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qtextedit.h \
@@ -460,10 +452,6 @@ DS_Project_autogen/timestamp: \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.cpp \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.h \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.ui \
-  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/qtexteditsetting.cpp \
-  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/qtexteditsetting.h \
-  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.cpp \
-  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.h \
   .qtc/package-manager/auto-setup.cmake \
   CMakeFiles/3.27.7/CMakeCXXCompiler.cmake \
   CMakeFiles/3.27.7/CMakeRCCompiler.cmake \
