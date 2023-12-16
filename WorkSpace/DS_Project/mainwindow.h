@@ -39,7 +39,7 @@ private slots:
 
     void createNewTab();
 
-    void on_tabWidget_tabCloseRequested(int index);
+    void CloseTabRequested(int index);
 
 private:
     Ui::MainWindow *ui;
