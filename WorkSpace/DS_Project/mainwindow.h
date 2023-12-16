@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "TabManager.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -16,7 +17,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
 
-    bool eventFilter(QObject *obj, QEvent *event);
+    //bool eventFilter(QObject *obj, QEvent *event);
 
     ~MainWindow();
 
@@ -37,13 +38,13 @@ private slots:
 
     void quitApp();
 
-    void createNewTab();
+    //void createNewTab();
 
     void CloseTabRequested(int index);
 
 private:
     Ui::MainWindow *ui;
 
-    int tabCounter; // Counter to keep track of the tabs
+    TabManager* tabManager;
 };
 #endif // MAINWINDOW_H
