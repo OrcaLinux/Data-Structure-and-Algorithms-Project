@@ -168,6 +168,7 @@ public:
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setDocumentMode(false);
+        tabWidget->setTabsClosable(false);
         tabWidget->setMovable(true);
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));

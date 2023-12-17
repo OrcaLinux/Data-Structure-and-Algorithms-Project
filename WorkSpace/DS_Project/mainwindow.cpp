@@ -17,25 +17,24 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Create a close button for the tab
-    QPushButton *closeButton = new QPushButton("X");
-    closeButton->setFixedSize(16, 16); // Set a fixed size for the close button
-
-    // Set the background color of the close button to a red color from the Qt palette
-    QString redColor = QApplication::palette().color(QPalette::Button).name();
-    closeButton->setStyleSheet("background-color: " + redColor + ";");
-
-    ui->tabWidget->tabBar()->setTabButton(ui->tabWidget->currentIndex(), QTabBar::RightSide, closeButton);
+    // Call the function to create and connect the close button
+    initializeCloseButton();
 
     ui->tabWidget->installEventFilter(this); // Install event filter on tabWidget
-    connect(ui->tabWidget, &QTabWidget::tabBarDoubleClicked, this, &MainWindow::createNewTab);
-    connect(ui->tabWidget, &QTabWidget::tabCloseRequested, this, &MainWindow::CloseTabRequested);
-    connect(closeButton, &QPushButton::clicked, this, &MainWindow::CloseTabRequested);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    if (obj == ui->tabWidget && event->type() == QEvent::MouseButtonDblClick) {
+        createNewTab(); // Create a new tab on double-click event
+        return true; // Event handled
+    }
+    return false; // Event not handled
 }
 
 void MainWindow::createNewTab()
@@ -60,32 +59,10 @@ void MainWindow::createNewTab()
     ui->tabWidget->setCurrentIndex(tabIndex); // Set the current tab to the newly created one
 
     // Connect the close button's clicked signal to a slot that closes the corresponding tab
-    connect(closeButton, &QPushButton::clicked, this,[=]() {
-        // Check for the total no of tabs
-        int totalTabs = ui->tabWidget->count();
-        if (totalTabs == 1) {
-            // Do nothing when there's only one tab left
-            return;
-        }
-
-        int closeIndex = ui->tabWidget->indexOf(textEdit);
-        if (closeIndex != -1) {
-            ui->tabWidget->removeTab(closeIndex);
-            delete textEdit;
-        }
-    });
+    connect(closeButton, &QPushButton::clicked, this, &MainWindow::closeTab);
 }
 
-bool MainWindow::eventFilter(QObject *obj, QEvent *event)
-{
-    if (obj == ui->tabWidget && event->type() == QEvent::MouseButtonDblClick) {
-        createNewTab(); // Create a new tab on double-click event
-        return true; // Event handled
-    }
-    return false; // Event not handled
-}
-
-void MainWindow::CloseTabRequested(int index)
+void MainWindow::closeTab(int index)
 {
     int totalTabs = ui->tabWidget->count();
     if (totalTabs == 1) {
@@ -205,10 +182,20 @@ void MainWindow::on_actionAbout_Qt_triggered()
     QApplication::aboutQt();
 }
 
-void MainWindow::quitApp()
-{
-    QApplication::quit();
-}
+void MainWindow::initializeCloseButton() {
+    // Create a close button for the default tab
+    QPushButton *closeButton = new QPushButton("X");
+    closeButton->setFixedSize(16, 16); // Set a fixed size for the close button
 
+    // Set the background color of the close button to a red color from the Qt palette
+    QString redColor = QApplication::palette().color(QPalette::Button).name();
+    closeButton->setStyleSheet("background-color: " + redColor + ";");
+
+    // Set the close button within the default tab's title area
+    ui->tabWidget->tabBar()->setTabButton(ui->tabWidget->currentIndex(), QTabBar::RightSide, closeButton);
+
+    // Connect the close button's clicked signal to close the default tab
+    connect(closeButton, &QPushButton::clicked, this, &MainWindow::closeTab);
+}
 
 
