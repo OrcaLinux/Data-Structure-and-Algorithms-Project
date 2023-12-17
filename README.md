@@ -79,4 +79,4 @@ We welcome contributions to enhance this project. Feel free to submit issues or 
 
 ## License
 
-This project is licensed under the [MIT](link). [Additional information about the license and usage permissions.]
+This project is licensed under the [MIT](link).
