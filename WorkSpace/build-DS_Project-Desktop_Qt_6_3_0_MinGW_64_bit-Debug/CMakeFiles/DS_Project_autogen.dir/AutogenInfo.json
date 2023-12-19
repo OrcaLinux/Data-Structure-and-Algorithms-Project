@@ -244,6 +244,18 @@
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
+		],
+		[
+			"D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.h",
+			"MU",
+			"EWIEGA46WW/moc_tabmanager.cpp",
+			null
+		],
+		[
+			"D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.h",
+			"MU",
+			"EWIEGA46WW/moc_texteditmanager.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -323,6 +335,16 @@
 		],
 		[
 			"D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.cpp",
 			"MU",
 			null
 		]

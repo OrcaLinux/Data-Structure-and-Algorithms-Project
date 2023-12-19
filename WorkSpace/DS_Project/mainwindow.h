@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "qtextedit.h"
+#include "tabmanager.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -15,35 +17,31 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-
-    bool eventFilter(QObject *obj, QEvent *event);
-
     ~MainWindow();
 
+    bool eventFilter(QObject *obj, QEvent *event);
+    void setTextEditProperties(QTextEdit *textEdit);
+
+
 private slots:
-    void on_actionExit_triggered();
-
-    void on_actionCopy_triggered();
-
     void on_actionCut_triggered();
-
+    void on_actionExit_triggered();
+    void on_actionCopy_triggered();
     void on_actionPast_triggered();
-
     void on_actionUndo_triggered();
-
     void on_actionRedo_triggered();
-
+    void on_actionOpen_triggered();
     void on_actionAbout_Qt_triggered();
 
-    void quitApp();
-
     void createNewTab();
+    void closeTab(int index);
 
-    void on_tabWidget_tabCloseRequested(int index);
 
 private:
     Ui::MainWindow *ui;
+    TabManager *tabManager; // Manages the tabs
+    TextEditManager *textEditManager; // Manages the text edit properties
 
-    int tabCounter; // Counter to keep track of the tabs
+    void initializeCloseButton();
 };
 #endif // MAINWINDOW_H
