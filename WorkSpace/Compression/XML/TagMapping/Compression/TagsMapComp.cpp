@@ -15,7 +15,7 @@
  *
  * -> File after:
  * <TagMap>tag0,tag1,tag2<Tag/Map>
- * <t0><t1><t2></t2><t2></t2></t1></t0>
+ * <0><1><2></2><2></2></1></0>
  *
  * @note: <TagMap> block is optional, Will not be added to the social network
  * file, is tags are constant there.
@@ -74,8 +74,6 @@ std::string* TagsMapComp::compress(bool addMapTable)
 
 	//
 	// The max size of the result string is the same of the entered string.
-	// That happens when the original doesn't contain any extra spaces or
-	// other charToSkip elements.
 	// // the added 60 is for the mapTable.
 	//
 	result->reserve(length + 60);
@@ -143,7 +141,6 @@ std::string* TagsMapComp::compress(bool addMapTable)
 			if (!openingTag) {
 				afterMaping.append("/");
 			}
-			afterMaping.append(1, 't');
 			afterMaping.append(std::to_string(map->getValue(&tag)));
 			afterMaping.append(1, '>');
 

@@ -17,7 +17,7 @@
  * @TODO update the file to work with any type of XML data. Use Trees to
  * recored the order of the tags.
  *
- * @Warning This implementation only works for Social network system, needs an update.
+ * @warning This implementation only works for Social network system, needs an update.
  *
  * @author eslam
  * @date   December 2023
@@ -40,7 +40,13 @@ public:
 	 *
 	 * Initializes the XML file.
 	 *
+	 * XML version and encoding line example:
+	 * @verbatim
+	   <?xml version="1.0" encoding="UTF-8"?>
+	 * @endverbatim
+	 *
 	 * @param  the XML file without the XML version and encoding line.
+	 *
 	 */
 	explicit ClearClosingTagsComp(const std::string* xmlFile) : xmlFile(xmlFile) {}
 
@@ -53,7 +59,7 @@ public:
 	 *
 	 * @return The result string doesn't contain XML version and encoding line.
 	 *
-	 * @Warning use only with social network data.
+	 * @warning use only with social network data.
 	 */
 	std::string* compress();
 }; // class ClearClosingTagsComp

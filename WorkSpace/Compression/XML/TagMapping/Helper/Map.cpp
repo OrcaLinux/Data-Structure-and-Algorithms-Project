@@ -1,10 +1,11 @@
 /*****************************************************************//**
  * @file   Map.cpp
  * @brief  The source file of the simple Map.
- *
- * This a simple implementation of Map DS that will help Mapping
+ * 
+ * This a simple implementation of Map data structure that will help Mapping
  * tags into numbers.
- *
+ * Each tag will mapped into the value of its position in the vector.
+ * 
  * @author eslam
  * @date   December 2023
  *********************************************************************/
@@ -38,8 +39,10 @@ Map::Map(const std::string* tagMapBlock)
 	}
 
 	//erase the tag
-	afterMini->erase(openingTagPos, 8); // Erase the opening tag "<TagMap>"
-	afterMini->erase(afterMini->size() - 9, 9); // Erase the closing tag "</TagMap>"
+	// Erase the opening tag "<TagMap>"
+	afterMini->erase(openingTagPos, 8); 
+	// Erase the closing tag "</TagMap>"
+	afterMini->erase(afterMini->size() - 9, 9); 
 
 	// add the values between ',' into the arr vector.
 	std::stringstream ss(*afterMini);

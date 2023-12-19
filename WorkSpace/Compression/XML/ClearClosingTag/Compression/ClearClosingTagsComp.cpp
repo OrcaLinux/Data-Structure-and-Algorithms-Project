@@ -17,7 +17,7 @@
  * @TODO update the file to work with any type of XML data. Use Trees to
  * recored the order of the tags.
  *
- * @Warning This implementation only works for Social network system, needs an update.
+ * @warning This implementation only works for Social network system, needs an update.
  *
  * @author eslam
  * @date   December 2023
@@ -33,7 +33,6 @@ std::string* ClearClosingTagsComp::compress()
 	//length of the original file.
 	int length = this->xmlFile->size();
 
-	
 	// The max size of the result string is the same of the entered string.
 	result->reserve(length);
 

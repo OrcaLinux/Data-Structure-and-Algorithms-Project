@@ -1,7 +1,7 @@
 /*****************************************************************//**
  * @file   TreeNode.h
- * @brief  A simple Tree Node for the tree DS.
- * 
+ * @brief  A simple Tree Node for the tree data structure.
+ *
  * @author eslam
  * @date   December 2023
  *********************************************************************/
@@ -20,9 +20,19 @@ private:
 	std::string* value;
 
 public:
+	/**
+	 * @brief C'tor.
+	 * 
+	 * @param parentNode
+	 * @param children
+	 * @param value
+	 */
 	explicit TreeNode(const TreeNode* parentNode, std::vector<TreeNode*>* children, std::string* value)
-		: parentNode(parentNode), children(children) , value(value) {}
+		: parentNode(parentNode), children(children), value(value) {}
 
+	/**
+	 * @brief D'tor.
+	 */
 	~TreeNode() {
 		for (TreeNode* child : *children) {
 			delete child;
@@ -34,9 +44,9 @@ public:
 	//methods.
 	/**
 	 * @brief Returns The child with the assigned value.
-	 * 
+	 *
 	 * @param value
-	 * @return child TreeNode
+	 * @return child TreeNode, nullptr if not found.
 	 */
 	const TreeNode* getChild(const std::string* value) const;
 	/**
@@ -45,17 +55,13 @@ public:
 	const TreeNode* getParent()const { return this->parentNode; }
 	/**
 	 * @brief check if the value is for a child or not.
-	 * 
+	 *
 	 * @param value
 	 * @return true if found, false otherwise.
 	 */
-	bool isChild(const std::string* value) const { return getChild(value) != nullptr;	}
+	bool isChild(const std::string* value) const { return getChild(value) != nullptr; }
 
 	//getter
 	std::string getValue() const { return *value; }
-
 };
 #endif // !TREE_NODE_H
-
-
-
