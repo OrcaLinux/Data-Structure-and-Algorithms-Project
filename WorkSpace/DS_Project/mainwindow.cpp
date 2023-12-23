@@ -37,15 +37,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     return false; // Event not handled
 }
 
-void MainWindow::createNewTab()
-{
-    // Create a new QTextEdit for the tab content
-    QTextEdit *textEdit = new QTextEdit;
-
-    // Set properties for the new QTextEdit
-    setTextEditProperties(textEdit);
-
-    // Create a close button for the tab
+void MainWindow::initializeCloseButton() {
+    // Create a close button for the default tab
     QPushButton *closeButton = new QPushButton("X");
     closeButton->setFixedSize(16, 16); // Set a fixed size for the close button
 
@@ -53,13 +46,15 @@ void MainWindow::createNewTab()
     QString redColor = QApplication::palette().color(QPalette::Button).name();
     closeButton->setStyleSheet("background-color: " + redColor + ";");
 
-    // Set the close button within the tab's title area
-    int tabIndex = ui->tabWidget->addTab(textEdit, "New Tab");
-    ui->tabWidget->tabBar()->setTabButton(tabIndex, QTabBar::RightSide, closeButton);
-    ui->tabWidget->setCurrentIndex(tabIndex); // Set the current tab to the newly created one
+    // Set the close button within the default tab's title area
+    ui->tabWidget->tabBar()->setTabButton(ui->tabWidget->currentIndex(), QTabBar::RightSide, closeButton);
 
-    // Connect the close button's clicked signal to a slot that closes the corresponding tab
-    connect(closeButton, &QPushButton::clicked, this, &MainWindow::closeTab);
+    int tabIndex = ui->tabWidget->currentIndex();
+
+    // Connect the close button's clicked signal to close the default tab
+    connect(closeButton, &QPushButton::clicked, this, [=]() {
+        closeTab(tabIndex);
+    });
 }
 
 void MainWindow::closeTab(int index)
@@ -82,18 +77,45 @@ void MainWindow::closeTab(int index)
     }
 }
 
-void MainWindow::setTextEditProperties(QTextEdit* textEdit) {
-    textEdit->setContextMenuPolicy(Qt::ContextMenuPolicy::DefaultContextMenu); // Enable context menu
-    textEdit->setUndoRedoEnabled(true); // Enable undo and redo
-    textEdit->setAcceptRichText(true); // Enable rich text
-    textEdit->setReadOnly(false); // Set it to editable
+void MainWindow::createNewTab()
+{
+    // Create a new QTextEdit for the tab content
+    QTextEdit *textEdit = new QTextEdit;
 
-    // Connect signals for actions to the respective slots in the QTextEdit
-    connect(ui->actionCopy, &QAction::triggered, textEdit, &QTextEdit::copy);
-    connect(ui->actionCut, &QAction::triggered, textEdit, &QTextEdit::cut);
-    connect(ui->actionPast, &QAction::triggered, textEdit, &QTextEdit::paste);
-    connect(ui->actionUndo, &QAction::triggered, textEdit, &QTextEdit::undo);
-    connect(ui->actionRedo, &QAction::triggered, textEdit, &QTextEdit::redo);
+    // Set properties for the new QTextEdit
+    setTextEditProperties(textEdit);
+
+    // Store the new QTextEdit instance
+    textEditList.append(textEdit);
+
+    // Create a close button for the tab
+    QPushButton *closeButton = new QPushButton("X");
+    closeButton->setFixedSize(16, 16); // Set a fixed size for the close button
+
+    // Set the background color of the close button to a red color from the Qt palette
+    QString redColor = QApplication::palette().color(QPalette::Button).name();
+    closeButton->setStyleSheet("background-color: " + redColor + ";");
+
+    // Set the close button within the tab's title area
+    int tabIndex = ui->tabWidget->addTab(textEdit, "New Tab");
+    ui->tabWidget->tabBar()->setTabButton(tabIndex, QTabBar::RightSide, closeButton);
+    ui->tabWidget->setCurrentIndex(tabIndex); // Set the current tab to the newly created one
+
+    // Connect the close button's clicked signal to a slot that closes the corresponding tab
+    connect(closeButton, &QPushButton::clicked, this, [=]() {
+        // Check for the total no of tabs
+        int totalTabs = ui->tabWidget->count();
+        if (totalTabs == 1) {
+            // Do nothing when there's only one tab left
+            return;
+        }
+
+        int closeIndex = ui->tabWidget->indexOf(textEdit);
+        if (closeIndex != -1) {
+            ui->tabWidget->removeTab(closeIndex);
+            delete textEdit;
+        }
+    });
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -132,6 +154,13 @@ void MainWindow::on_actionOpen_triggered()
 
         // Connect close button's clicked signal to a slot that closes the corresponding tab
         connect(closeButton, &QPushButton::clicked, this, [=]() {
+            // Check for the total no of tabs
+            int totalTabs = ui->tabWidget->count();
+            if (totalTabs == 1) {
+                // Do nothing when there's only one tab left
+                return;
+            }
+
             int closeIndex = ui->tabWidget->indexOf(textEdit);
             if (closeIndex != -1) {
                 ui->tabWidget->removeTab(closeIndex);
@@ -141,10 +170,34 @@ void MainWindow::on_actionOpen_triggered()
     }
 }
 
+// Connect the undo, redo, copy, and paste actions to the respective QTextEdit slots
+void MainWindow::connectTextEditActions(QTextEdit* textEdit) {
+    connect(ui->actionCopy, &QAction::triggered, textEdit, &QTextEdit::copy);
+    connect(ui->actionCut, &QAction::triggered, textEdit, &QTextEdit::cut);
+    connect(ui->actionPast, &QAction::triggered, textEdit, &QTextEdit::paste);
+    connect(ui->actionUndo, &QAction::triggered, textEdit, &QTextEdit::undo);
+    connect(ui->actionRedo, &QAction::triggered, textEdit, &QTextEdit::redo);
+}
+
+void MainWindow::setTextEditProperties(QTextEdit* textEdit) {
+    textEdit->setContextMenuPolicy(Qt::ContextMenuPolicy::DefaultContextMenu); // Enable context menu
+    textEdit->setUndoRedoEnabled(true); // Enable undo and redo
+    textEdit->setAcceptRichText(true); // Enable rich text
+    textEdit->setReadOnly(false); // Set it to editable
+
+    // Connect signals for actions to the respective slots in the QTextEdit
+    connectTextEditActions(textEdit); // Connect actions to this specific QTextEdit
+}
+
 void MainWindow::on_actionExit_triggered()
 {
     statusBar()->showMessage("App will be killed in 3 seconds...", 3000);
     QTimer::singleShot(3000, this , SLOT(quitApp()));
+}
+
+// In the implementation file (mainwindow.cpp), define the quitApp slot
+void MainWindow::quitApp() {
+    QApplication::quit(); // Terminates the application
 }
 
 void MainWindow::on_actionCopy_triggered()
@@ -182,20 +235,5 @@ void MainWindow::on_actionAbout_Qt_triggered()
     QApplication::aboutQt();
 }
 
-void MainWindow::initializeCloseButton() {
-    // Create a close button for the default tab
-    QPushButton *closeButton = new QPushButton("X");
-    closeButton->setFixedSize(16, 16); // Set a fixed size for the close button
-
-    // Set the background color of the close button to a red color from the Qt palette
-    QString redColor = QApplication::palette().color(QPalette::Button).name();
-    closeButton->setStyleSheet("background-color: " + redColor + ";");
-
-    // Set the close button within the default tab's title area
-    ui->tabWidget->tabBar()->setTabButton(ui->tabWidget->currentIndex(), QTabBar::RightSide, closeButton);
-
-    // Connect the close button's clicked signal to close the default tab
-    connect(closeButton, &QPushButton::clicked, this, &MainWindow::closeTab);
-}
 
 

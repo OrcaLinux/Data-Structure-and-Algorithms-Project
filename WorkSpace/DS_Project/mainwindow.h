@@ -19,7 +19,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    bool eventFilter(QObject *obj, QEvent *event);
+
     void setTextEditProperties(QTextEdit *textEdit);
 
 
@@ -35,7 +35,8 @@ private slots:
 
     void createNewTab();
     void closeTab(int index);
-
+    bool eventFilter(QObject *obj, QEvent *event);
+    void quitApp();
 
 private:
     Ui::MainWindow *ui;
