@@ -21,6 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Apply a style sheet to the QTabWidget to set the margin
+    ui->tabWidget->setStyleSheet("QTabWidget::pane { margin: 5px; }");
+
     // Call the function to create and connect the close button
     initializeCloseButton();
 
@@ -81,8 +84,7 @@ void MainWindow::closeTab(int index)
     }
 }
 
-void MainWindow::createNewTab()
-{
+void MainWindow::createNewTab() {
     // Create a new QTextEdit for the tab content
     QTextEdit *textEdit = new QTextEdit;
     qDebug() << "Hello from ins no" << textEdit;
@@ -108,7 +110,7 @@ void MainWindow::createNewTab()
 
     // Connect the close button's clicked signal to a slot that closes the corresponding tab
     connect(closeButton, &QPushButton::clicked, this, [=]() {
-        // Check for the total no of tabs
+        // Check for the total number of tabs
         int totalTabs = ui->tabWidget->count();
         if (totalTabs == 1) {
             // Do nothing when there's only one tab left
@@ -193,7 +195,7 @@ void MainWindow::setTextEditProperties(QTextEdit* textEdit) {
     qDebug() << "Set the Properties for ins" << textEdit;
 
     // Connect signals for actions to the respective slots in the QTextEdit
-    //connectTextEditActions(textEdit); // Connect actions to this specific QTextEdit
+    connectTextEditActions(textEdit); // Connect actions to this specific QTextEdit
 
 }
 
@@ -245,12 +247,16 @@ void MainWindow::on_actionPast_triggered() {
 void MainWindow::on_actionUndo_triggered() {
     if (currentTextEdit) {
         currentTextEdit->undo();
+    } else {
+        ui->textEdit->undo();
     }
 }
 
 void MainWindow::on_actionRedo_triggered() {
     if (currentTextEdit) {
         currentTextEdit->redo();
+    } else {
+        ui->textEdit->redo();
     }
 }
 

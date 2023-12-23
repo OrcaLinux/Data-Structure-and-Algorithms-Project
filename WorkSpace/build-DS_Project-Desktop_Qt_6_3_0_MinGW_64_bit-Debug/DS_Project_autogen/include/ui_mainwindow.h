@@ -167,6 +167,10 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setAutoFillBackground(false);
+        tabWidget->setStyleSheet(QString::fromUtf8(""));
+        tabWidget->setTabShape(QTabWidget::Rounded);
+        tabWidget->setElideMode(Qt::ElideNone);
         tabWidget->setDocumentMode(false);
         tabWidget->setTabsClosable(false);
         tabWidget->setMovable(true);
@@ -176,6 +180,8 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         textEdit = new QTextEdit(tab);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setStyleSheet(QString::fromUtf8("QTabWidget::pane { border: none; }"));
+        textEdit->setFrameShape(QFrame::StyledPanel);
 
         horizontalLayout->addWidget(textEdit);
 
