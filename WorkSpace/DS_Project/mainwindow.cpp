@@ -21,9 +21,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Apply a style sheet to the QTabWidget to set the margin
-    ui->tabWidget->setStyleSheet("QTabWidget::pane { margin: 5px; }");
-
     // Call the function to create and connect the close button
     initializeCloseButton();
 
@@ -87,7 +84,6 @@ void MainWindow::closeTab(int index)
 void MainWindow::createNewTab() {
     // Create a new QTextEdit for the tab content
     QTextEdit *textEdit = new QTextEdit;
-    qDebug() << "Hello from ins no" << textEdit;
 
     // Set the current text edit to the newly created one
     currentTextEdit = textEdit;
@@ -179,7 +175,6 @@ void MainWindow::on_actionOpen_triggered()
 
 // Connect the undo, redo, copy, and paste actions to the respective QTextEdit slots
 void MainWindow::connectTextEditActions(QTextEdit* textEdit) {
-    qDebug() << "Connect the signals for ins" << textEdit;
     connect(ui->actionCopy, &QAction::triggered, textEdit, &QTextEdit::copy);
     connect(ui->actionCut, &QAction::triggered, textEdit, &QTextEdit::cut);
     connect(ui->actionPast, &QAction::triggered, textEdit, &QTextEdit::paste);
@@ -192,11 +187,9 @@ void MainWindow::setTextEditProperties(QTextEdit* textEdit) {
     textEdit->setUndoRedoEnabled(true); // Enable undo and redo
     textEdit->setAcceptRichText(true); // Enable rich text
     textEdit->setReadOnly(false); // Set it to editable
-    qDebug() << "Set the Properties for ins" << textEdit;
 
     // Connect signals for actions to the respective slots in the QTextEdit
     connectTextEditActions(textEdit); // Connect actions to this specific QTextEdit
-
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -213,6 +206,7 @@ void MainWindow::quitApp() {
 void MainWindow::on_actionCopy_triggered() {
     // Check if there's a selected text edit
     if (ui->tabWidget->currentWidget()) {
+        qDebug() << "Copy clicked";
         QTextEdit *textEdit = qobject_cast<QTextEdit*>(ui->tabWidget->currentWidget());
         if (textEdit) {
             QClipboard *clipboard = QGuiApplication::clipboard();
@@ -224,6 +218,7 @@ void MainWindow::on_actionCopy_triggered() {
 void MainWindow::on_actionCut_triggered() {
     // Check if there's a selected text edit
     if (ui->tabWidget->currentWidget()) {
+        qDebug() << "Cut clicked";
         QTextEdit *textEdit = qobject_cast<QTextEdit*>(ui->tabWidget->currentWidget());
         if (textEdit) {
             QClipboard *clipboard = QGuiApplication::clipboard();
@@ -236,8 +231,12 @@ void MainWindow::on_actionCut_triggered() {
 void MainWindow::on_actionPast_triggered() {
     // Check if there's a selected text edit
     if (ui->tabWidget->currentWidget()) {
-        QTextEdit *textEdit = qobject_cast<QTextEdit*>(ui->tabWidget->currentWidget());
+        qDebug() << "Paste clicked";
+        QWidget *currentWidget = ui->tabWidget->currentWidget();
+        qDebug() << "Current widget type:" << currentWidget->metaObject()->className();
+        QTextEdit *textEdit = qobject_cast<QTextEdit*>(currentWidget);
         if (textEdit) {
+            qDebug() << "Paste occurred";
             QClipboard *clipboard = QGuiApplication::clipboard();
             textEdit->insertPlainText(clipboard->text());
         }
