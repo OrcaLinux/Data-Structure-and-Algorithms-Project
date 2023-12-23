@@ -2,9 +2,10 @@
  * @file   Map.h
  * @brief  The header file of the simple Map.
  *
- * This a simple implementation of Map DS that will help Mapping
+ * This a simple implementation of Map data structure that will help Mapping
  * tags into numbers.
- *
+ * Each tag will mapped into the value of its position in the vector.
+ * 
  * @author eslam
  * @date   December 2023
  *********************************************************************/
@@ -40,8 +41,8 @@ public:
 	 * @brief C'tor.
 	 * Initialize the map from a <TagMap> block.
 	 *
-	 * The file must start with <TagMap> and ends with </TagMap>
-	 * otherwise the file is considered defected.
+	 ** The file must start with <TagMap> and ends with </TagMap> otherwise the file is considered defected.
+	 * 
 	 * @param tagMapBlock.
 	 * @throw runtime_error if the file is defected.
 	 */

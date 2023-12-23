@@ -1,10 +1,10 @@
 /*****************************************************************//**
  * @file   Tree.h
  * @brief  A simple Tree DS implementation.
- * 
+ *
  * This tree is for arranging social network system tags.
  * it will be in this order:
- * 
+ *
  * - users --children--> {user}
  * - user --> {id,name,posts,followers}
  * - posts --> {post}
@@ -13,7 +13,7 @@
  * - followers --> {follower}
  * - follower --> {id}
  * - not mentioned: doesn't have a child.
- * 
+ *
  * @author eslam
  * @date   December 2023
  *********************************************************************/
@@ -27,7 +27,7 @@
 
 class Tree
 {
-private: 
+private:
 	TreeNode* root;
 	//for debugging
 	void printTreeNode(const TreeNode* node, int depth) const;
@@ -46,7 +46,7 @@ public:
 	explicit Tree();
 	/**
 	 * @brief D'tor.
-	 * 
+	 *
 	 */
 	~Tree() {
 		delete root;
@@ -61,6 +61,3 @@ public:
 };
 
 #endif // !TREE_H
-
-
-

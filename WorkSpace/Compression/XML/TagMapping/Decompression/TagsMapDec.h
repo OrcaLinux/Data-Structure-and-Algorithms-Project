@@ -15,7 +15,7 @@
  * Example:
  * -> File before:
  * <TagMap>tag0,tag1,tag2<Tag/Map>
- * <t0><t1><t2></t2><t2></t2></t1></t0>
+ * <0><1><2></2><2></2></1></0>
  *
  * -> File after:
  * <tag0><tag1><tag2></tag2><tag2></tag2></tag1></tag0>
@@ -38,7 +38,7 @@ class TagsMapDec
 private:
 	const std::string* xmlFile;
 
-	const static std::string* defualtTagMapBlock;
+	std::string* defualtTagMapBlock;
 
 	//Map of tag values.
 	Map* map;
@@ -71,6 +71,9 @@ public:
 	 * @param the XML file without the XML version and encoding line.
 	 */
 	explicit TagsMapDec(const std::string* xmlFile) : xmlFile(xmlFile) {
+		defualtTagMapBlock = new std::string(
+			"<TagMap>users,user,id,name,posts,post,body,topics,topic,followers,follower</TagMap>"
+		);
 		getMapTags();
 	}
 	/**
@@ -80,6 +83,12 @@ public:
 	~TagsMapDec() {
 		delete map;
 		map = nullptr;
+
+		if (defualtTagMapBlock != nullptr) {
+			delete defualtTagMapBlock;
+
+			defualtTagMapBlock = nullptr;
+		}
 	}
 	/**
 	 * @brief This method decompresses the XML file.

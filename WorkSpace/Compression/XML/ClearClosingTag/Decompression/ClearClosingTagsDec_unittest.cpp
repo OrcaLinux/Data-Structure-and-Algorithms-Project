@@ -1,7 +1,7 @@
 /*****************************************************************//**
  * @file   ClearClosingTagsDec_unittest.cpp
  * @brief  Unit test code for ClearClosingTagsDec class.
- * 
+ *
  * @author eslam
  * @date   December 2023
  *********************************************************************/
@@ -10,7 +10,7 @@
 #include "gtest/gtest.h"
 #include "ClearClosingTagsDec.h"
 
-namespace{
+namespace {
 	class ClearClosingTagsDecTest : public::testing::Test {
 	public:
 		ClearClosingTagsDec* c;
@@ -42,5 +42,4 @@ namespace{
 		delete s;
 		s = nullptr;
 	}
-
 } // namespace

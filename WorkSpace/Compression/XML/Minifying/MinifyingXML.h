@@ -90,8 +90,6 @@ public:
 	 * Example: "   <name> Ahmed Ali  \n </name>"
 	 *			--> "<name>Ahmed Ali   </name>"
 	 *
-	 * @relates A helper function for: std::string* MinifyingXML::minifyString().
-	 * @relates Should be called before void MinifyingXML::skipFromEnd(const std::string* result).
 	 * @param result an empty string to store the result of this function.
 	 */
 	void skipFromBeginning(std::string* result)const;
@@ -112,8 +110,6 @@ public:
 	*
 	* @see void MinifyingXML::skipFromBeginning(std::string* result).
 	*
-	* @relates A helper function for: std::string* MinifyingXML::minifyString().
-	* @relates Should be called after void MinifyingXML::skipFromBeginning(std::string* result).
 	* @param result The result string from the prev step to modify it.
 	*/
 	void skipFromEnd(std::string* result) const;

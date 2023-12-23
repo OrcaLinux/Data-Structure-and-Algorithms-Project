@@ -41,45 +41,45 @@ namespace {
 
 			t = new TagsMapComp(input);
 
-			result = new std::string(R"(      <t0>
-        <t1>
-                  <t2>        1       </t2>
-            <t3>  Ahmed  Ali  </t3>
-            <t4>
-                <t5>
-                    <t6>  Lorem ipsum dolor sit ametffsjkn</t6>
-                    <t7>
-                        <t8>     economy</t8>
-                    </t7>
-                </t5>
-            </t4>
-            <t9>
-                <t10>
-                    <t2>2           </t2>
-                </t10>
-            </t9>
-        </t1>
-    </t0>     )");
+			result = new std::string(R"(      <0>
+        <1>
+                  <2>        1       </2>
+            <3>  Ahmed  Ali  </3>
+            <4>
+                <5>
+                    <6>  Lorem ipsum dolor sit ametffsjkn</6>
+                    <7>
+                        <8>     economy</8>
+                    </7>
+                </5>
+            </4>
+            <9>
+                <10>
+                    <2>2           </2>
+                </10>
+            </9>
+        </1>
+    </0>     )");
 
-			resultWithMap = new std::string(R"(<TagMap>users,user,id,name,posts,post,body,topics,topic,followers,follower</TagMap>      <t0>
-        <t1>
-                  <t2>        1       </t2>
-            <t3>  Ahmed  Ali  </t3>
-            <t4>
-                <t5>
-                    <t6>  Lorem ipsum dolor sit ametffsjkn</t6>
-                    <t7>
-                        <t8>     economy</t8>
-                    </t7>
-                </t5>
-            </t4>
-            <t9>
-                <t10>
-                    <t2>2           </t2>
-                </t10>
-            </t9>
-        </t1>
-    </t0>     )");
+			resultWithMap = new std::string(R"(<TagMap>users,user,id,name,posts,post,body,topics,topic,followers,follower</TagMap>      <0>
+        <1>
+                  <2>        1       </2>
+            <3>  Ahmed  Ali  </3>
+            <4>
+                <5>
+                    <6>  Lorem ipsum dolor sit ametffsjkn</6>
+                    <7>
+                        <8>     economy</8>
+                    </7>
+                </5>
+            </4>
+            <9>
+                <10>
+                    <2>2           </2>
+                </10>
+            </9>
+        </1>
+    </0>     )");
 		}
 
 		void TearDown() {

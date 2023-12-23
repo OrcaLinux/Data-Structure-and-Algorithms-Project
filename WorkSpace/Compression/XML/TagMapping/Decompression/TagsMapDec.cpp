@@ -15,7 +15,7 @@
  * Example:
  * -> File before:
  * <TagMap>tag0,tag1,tag2<Tag/Map>
- * <t0><t1><t2></t2><t2></t2></t1></t0>
+ * <0><1><2></2><2></2></1></0>
  *
  * -> File after:
  * <tag0><tag1><tag2></tag2><tag2></tag2></tag1></tag0>
@@ -28,17 +28,14 @@
 #include "pch.h"
 #include "TagsMapDec.h"
 
- //initialize defaultTagMapBlock
-const std::string* TagsMapDec::defualtTagMapBlock = new std::string(
-	"<TagMap>users,user,id,name,posts,post,body,topics,topic,followers,follower</TagMap>"
-);
-
 void TagsMapDec::getMapTags()
 {
 	const std::string* tagMapLine = this->getTagsMapBlock();
 	this->map = new Map(tagMapLine);
-	delete tagMapLine;
-	tagMapLine = nullptr;
+	if (tagMapLine != defualtTagMapBlock) {
+		delete tagMapLine;
+		tagMapLine = nullptr;
+	}
 }
 
 const std::string* TagsMapDec::getTagsMapBlock()
@@ -56,11 +53,11 @@ const std::string* TagsMapDec::getTagsMapBlock()
 	//if any was not found, then the file is assumed to be for
 	//social network system --> return the default line
 	if (start == std::string::npos && end == std::string::npos) {
-		return TagsMapDec::defualtTagMapBlock;
+		return defualtTagMapBlock;
 	}
 
 	//if tagMap wasn't in the first position, then the file is defected
-	if (start != 0) {
+	else if (start != 0) {
 		throw std::runtime_error("Defected file.");
 	}
 
@@ -80,8 +77,8 @@ std::string* TagsMapDec::decompress()
 	std::string* result = new std::string();
 	//length of the original file.
 	int length = this->xmlFile->size();
-	// The max size of the result string is the same of the entered string.
-	result->reserve(length);
+	// Assume that the worst case will be triple the size.
+	result->reserve(length * 3);
 
 	//skip the TagMap block
 	int i = this->xmlFile->find("</TagMap>");
@@ -124,7 +121,7 @@ std::string* TagsMapDec::decompress()
 				currentChar = this->xmlFile->at(i);
 			}
 
-			// To store the tag.
+			// To store the tag number.
 			std::string tag = std::string();
 			//loop to get the full tag
 			while (currentChar != '>') {
@@ -136,7 +133,6 @@ std::string* TagsMapDec::decompress()
 				currentChar = this->xmlFile->at(i);
 			}
 			//get the number from the tag
-			tag.erase(0, 1);
 			int value = std::stoi(tag);
 
 			//map the tag

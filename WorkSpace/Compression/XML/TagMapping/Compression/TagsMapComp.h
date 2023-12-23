@@ -6,8 +6,7 @@
  * By applying this algorithm, the size file decrease, as many characters in
  * tags will be getting red off, so theses char will not repeated over and over again.
  *
- * To now the mapping values, a <TagsMap> block will be added to the start of the
- * XML file.
+ * To now the mapping values, a <TagsMap> block will be added to the start of the XML file.
  *
  * Example:
  * -> File before:
@@ -15,7 +14,7 @@
  *
  * -> File after:
  * <TagMap>tag0,tag1,tag2<Tag/Map>
- * <t0><t1><t2></t2><t2></t2></t1></t0>
+ * <0><1><2></2><2></2></1></0>
  *
  * @note: <TagMap> block is optional, Will not be added to the social network
  * file, is tags are constant there.
@@ -76,10 +75,8 @@ public:
 	 * Operation:
 	 *	- If addMapTable is true, it adds the <TagMap> block in the first line in the string.
 	 *	  Will not added otherwise (is false by default).
-	 *  - It replaces all the tags (closing and opening) with
-	 *	  there mapped value in the map, it also adds 't' before the number
-	 *	  just for the rules of XML files.
-	 * Example: <TagEg> --> <t0>, </TagEg> --> </t0>
+	 *  - It replaces all the tags (closing and opening) with there mapped value in the map.
+	 * Example: <TagEg> --> <0>, </TagEg> --> </0>
 	 *
 	 * @param addMapTable if true, then a <TagMap> block will be added in the 1st
 	 * line in the result string.
