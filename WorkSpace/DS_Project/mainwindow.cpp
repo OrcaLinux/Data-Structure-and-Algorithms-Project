@@ -10,10 +10,14 @@
 #include <QDebug>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QClipboard>
+#include <QGuiApplication>
+#include <QTextEdit>
+#include <QTabWidget>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow), currentTextEdit(nullptr)
 {
     ui->setupUi(this);
 
@@ -81,12 +85,13 @@ void MainWindow::createNewTab()
 {
     // Create a new QTextEdit for the tab content
     QTextEdit *textEdit = new QTextEdit;
+    qDebug() << "Hello from ins no" << textEdit;
+
+    // Set the current text edit to the newly created one
+    currentTextEdit = textEdit;
 
     // Set properties for the new QTextEdit
     setTextEditProperties(textEdit);
-
-    // Store the new QTextEdit instance
-    textEditList.append(textEdit);
 
     // Create a close button for the tab
     QPushButton *closeButton = new QPushButton("X");
@@ -172,6 +177,7 @@ void MainWindow::on_actionOpen_triggered()
 
 // Connect the undo, redo, copy, and paste actions to the respective QTextEdit slots
 void MainWindow::connectTextEditActions(QTextEdit* textEdit) {
+    qDebug() << "Connect the signals for ins" << textEdit;
     connect(ui->actionCopy, &QAction::triggered, textEdit, &QTextEdit::copy);
     connect(ui->actionCut, &QAction::triggered, textEdit, &QTextEdit::cut);
     connect(ui->actionPast, &QAction::triggered, textEdit, &QTextEdit::paste);
@@ -184,9 +190,11 @@ void MainWindow::setTextEditProperties(QTextEdit* textEdit) {
     textEdit->setUndoRedoEnabled(true); // Enable undo and redo
     textEdit->setAcceptRichText(true); // Enable rich text
     textEdit->setReadOnly(false); // Set it to editable
+    qDebug() << "Set the Properties for ins" << textEdit;
 
     // Connect signals for actions to the respective slots in the QTextEdit
-    connectTextEditActions(textEdit); // Connect actions to this specific QTextEdit
+    //connectTextEditActions(textEdit); // Connect actions to this specific QTextEdit
+
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -200,35 +208,51 @@ void MainWindow::quitApp() {
     QApplication::quit(); // Terminates the application
 }
 
-void MainWindow::on_actionCopy_triggered()
-{
-    ui->textEdit->copy();
+void MainWindow::on_actionCopy_triggered() {
+    // Check if there's a selected text edit
+    if (ui->tabWidget->currentWidget()) {
+        QTextEdit *textEdit = qobject_cast<QTextEdit*>(ui->tabWidget->currentWidget());
+        if (textEdit) {
+            QClipboard *clipboard = QGuiApplication::clipboard();
+            clipboard->setText(textEdit->textCursor().selectedText());
+        }
+    }
 }
 
-
-void MainWindow::on_actionCut_triggered()
-{
-    ui->textEdit->cut();
+void MainWindow::on_actionCut_triggered() {
+    // Check if there's a selected text edit
+    if (ui->tabWidget->currentWidget()) {
+        QTextEdit *textEdit = qobject_cast<QTextEdit*>(ui->tabWidget->currentWidget());
+        if (textEdit) {
+            QClipboard *clipboard = QGuiApplication::clipboard();
+            clipboard->setText(textEdit->textCursor().selectedText());
+            textEdit->textCursor().removeSelectedText();
+        }
+    }
 }
 
-
-void MainWindow::on_actionPast_triggered()
-{
-    ui->textEdit->paste();
+void MainWindow::on_actionPast_triggered() {
+    // Check if there's a selected text edit
+    if (ui->tabWidget->currentWidget()) {
+        QTextEdit *textEdit = qobject_cast<QTextEdit*>(ui->tabWidget->currentWidget());
+        if (textEdit) {
+            QClipboard *clipboard = QGuiApplication::clipboard();
+            textEdit->insertPlainText(clipboard->text());
+        }
+    }
 }
 
-
-void MainWindow::on_actionUndo_triggered()
-{
-    ui->textEdit->undo();
+void MainWindow::on_actionUndo_triggered() {
+    if (currentTextEdit) {
+        currentTextEdit->undo();
+    }
 }
 
-
-void MainWindow::on_actionRedo_triggered()
-{
-    ui->textEdit->redo();
+void MainWindow::on_actionRedo_triggered() {
+    if (currentTextEdit) {
+        currentTextEdit->redo();
+    }
 }
-
 
 void MainWindow::on_actionAbout_Qt_triggered()
 {

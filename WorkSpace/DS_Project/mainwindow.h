@@ -42,7 +42,9 @@ private:
     Ui::MainWindow *ui;
     TabManager *tabManager; // Manages the tabs
     TextEditManager *textEditManager; // Manages the text edit properties
+    QTextEdit *currentTextEdit; // Declare a member variable to keep track of the current QTextEdit
 
     void initializeCloseButton();
+    void connectTextEditActions(QTextEdit *textEdit);
 };
 #endif // MAINWINDOW_H
