@@ -12,13 +12,15 @@
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -51,8 +53,11 @@ public:
     QVBoxLayout *verticalLayout;
     QTabWidget *tabWidget;
     QWidget *tab;
-    QHBoxLayout *horizontalLayout;
-    QTextEdit *textEdit;
+    QVBoxLayout *verticalLayout_3;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *label;
+    QTableWidget *tableWidget;
+    QSpacerItem *verticalSpacer;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -65,7 +70,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(659, 562);
+        MainWindow->resize(912, 617);
         actionAbout = new QAction(MainWindow);
         actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
         QIcon icon;
@@ -167,6 +172,7 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setCursor(QCursor(Qt::ArrowCursor));
         tabWidget->setAutoFillBackground(false);
         tabWidget->setStyleSheet(QString::fromUtf8(""));
         tabWidget->setTabShape(QTabWidget::Rounded);
@@ -176,14 +182,84 @@ public:
         tabWidget->setMovable(true);
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
-        horizontalLayout = new QHBoxLayout(tab);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        textEdit = new QTextEdit(tab);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setStyleSheet(QString::fromUtf8("QTabWidget::pane { border: none; }"));
-        textEdit->setFrameShape(QFrame::StyledPanel);
+        verticalLayout_3 = new QVBoxLayout(tab);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        label = new QLabel(tab);
+        label->setObjectName(QString::fromUtf8("label"));
+        QFont font;
+        font.setPointSize(12);
+        font.setBold(true);
+        label->setFont(font);
 
-        horizontalLayout->addWidget(textEdit);
+        verticalLayout_2->addWidget(label);
+
+        tableWidget = new QTableWidget(tab);
+        if (tableWidget->columnCount() < 2)
+            tableWidget->setColumnCount(2);
+        QFont font1;
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setItalic(true);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        __qtablewidgetitem->setFont(font1);
+        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        __qtablewidgetitem1->setFont(font1);
+        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        if (tableWidget->rowCount() < 6)
+            tableWidget->setRowCount(6);
+        QFont font2;
+        font2.setPointSize(12);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        __qtablewidgetitem2->setFont(font2);
+        tableWidget->setItem(0, 0, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        __qtablewidgetitem3->setFont(font2);
+        tableWidget->setItem(1, 0, __qtablewidgetitem3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        __qtablewidgetitem4->setFont(font2);
+        tableWidget->setItem(2, 0, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        __qtablewidgetitem5->setFont(font2);
+        tableWidget->setItem(3, 0, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        __qtablewidgetitem6->setFont(font2);
+        tableWidget->setItem(4, 0, __qtablewidgetitem6);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        __qtablewidgetitem7->setFont(font2);
+        tableWidget->setItem(5, 0, __qtablewidgetitem7);
+        tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(tableWidget->sizePolicy().hasHeightForWidth());
+        tableWidget->setSizePolicy(sizePolicy);
+        QFont font3;
+        font3.setPointSize(12);
+        font3.setBold(false);
+        tableWidget->setFont(font3);
+        tableWidget->setTabletTracking(false);
+        tableWidget->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
+        tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        tableWidget->setAlternatingRowColors(true);
+        tableWidget->setSortingEnabled(true);
+        tableWidget->horizontalHeader()->setVisible(true);
+        tableWidget->horizontalHeader()->setCascadingSectionResizes(false);
+        tableWidget->horizontalHeader()->setDefaultSectionSize(227);
+        tableWidget->horizontalHeader()->setHighlightSections(true);
+        tableWidget->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));
+        tableWidget->horizontalHeader()->setStretchLastSection(false);
+
+        verticalLayout_2->addWidget(tableWidget);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
+
+        verticalSpacer = new QSpacerItem(20, 140, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_3->addItem(verticalSpacer);
 
         tabWidget->addTab(tab, QString());
 
@@ -192,7 +268,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 659, 25));
+        menubar->setGeometry(QRect(0, 0, 912, 25));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);
@@ -282,7 +358,29 @@ public:
         actionCloseAll->setText(QCoreApplication::translate("MainWindow", "Close All", nullptr));
         actionAuto_Save->setText(QCoreApplication::translate("MainWindow", "Auto Save", nullptr));
         actionExit->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "New Tab", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Team Info.", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Team Members' Names", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Team's ID", nullptr));
+
+        const bool __sortingEnabled = tableWidget->isSortingEnabled();
+        tableWidget->setSortingEnabled(false);
+        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->item(0, 0);
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "Abdelrahman Elsayed", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->item(1, 0);
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Eslam Mohamed", nullptr));
+        QTableWidgetItem *___qtablewidgetitem4 = tableWidget->item(2, 0);
+        ___qtablewidgetitem4->setText(QCoreApplication::translate("MainWindow", "Mennatallah Amr", nullptr));
+        QTableWidgetItem *___qtablewidgetitem5 = tableWidget->item(3, 0);
+        ___qtablewidgetitem5->setText(QCoreApplication::translate("MainWindow", "Mahmoud Abdelraouf", nullptr));
+        QTableWidgetItem *___qtablewidgetitem6 = tableWidget->item(4, 0);
+        ___qtablewidgetitem6->setText(QCoreApplication::translate("MainWindow", "Maya Sharaf", nullptr));
+        QTableWidgetItem *___qtablewidgetitem7 = tableWidget->item(5, 0);
+        ___qtablewidgetitem7->setText(QCoreApplication::translate("MainWindow", "Somay Ayman", nullptr));
+        tableWidget->setSortingEnabled(__sortingEnabled);
+
+        tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Welcome Tab", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
         menuHelp->setTitle(QCoreApplication::translate("MainWindow", "Help", nullptr));

@@ -85,9 +85,6 @@ void MainWindow::createNewTab() {
     // Create a new QTextEdit for the tab content
     QTextEdit *textEdit = new QTextEdit;
 
-    // Set the current text edit to the newly created one
-    currentTextEdit = textEdit;
-
     // Set properties for the new QTextEdit
     setTextEditProperties(textEdit);
 
@@ -173,23 +170,14 @@ void MainWindow::on_actionOpen_triggered()
     }
 }
 
-// Connect the undo, redo, copy, and paste actions to the respective QTextEdit slots
-void MainWindow::connectTextEditActions(QTextEdit* textEdit) {
-    connect(ui->actionCopy, &QAction::triggered, textEdit, &QTextEdit::copy);
-    connect(ui->actionCut, &QAction::triggered, textEdit, &QTextEdit::cut);
-    connect(ui->actionPast, &QAction::triggered, textEdit, &QTextEdit::paste);
-    connect(ui->actionUndo, &QAction::triggered, textEdit, &QTextEdit::undo);
-    connect(ui->actionRedo, &QAction::triggered, textEdit, &QTextEdit::redo);
-}
-
 void MainWindow::setTextEditProperties(QTextEdit* textEdit) {
     textEdit->setContextMenuPolicy(Qt::ContextMenuPolicy::DefaultContextMenu); // Enable context menu
     textEdit->setUndoRedoEnabled(true); // Enable undo and redo
     textEdit->setAcceptRichText(true); // Enable rich text
     textEdit->setReadOnly(false); // Set it to editable
 
-    // Connect signals for actions to the respective slots in the QTextEdit
-    connectTextEditActions(textEdit); // Connect actions to this specific QTextEdit
+    // Set the current text edit to the newly created one
+    currentTextEdit = textEdit;
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -246,16 +234,12 @@ void MainWindow::on_actionPast_triggered() {
 void MainWindow::on_actionUndo_triggered() {
     if (currentTextEdit) {
         currentTextEdit->undo();
-    } else {
-        ui->textEdit->undo();
     }
 }
 
 void MainWindow::on_actionRedo_triggered() {
     if (currentTextEdit) {
         currentTextEdit->redo();
-    } else {
-        ui->textEdit->redo();
     }
 }
 
