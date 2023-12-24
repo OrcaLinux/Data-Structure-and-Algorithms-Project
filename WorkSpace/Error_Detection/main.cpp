@@ -5,7 +5,7 @@
 #include <fstream>
 #include <sstream>
 
-enum error_type { incorrect_tag, empty_field, no_error, closing_tag_with_missing_opening_tag , opening_tag_with_missing_opening_tag};
+enum error_type { incorrect_tag, empty_field, no_error, closing_tag_with_missing_opening_tag , opening_tag_with_missing_closing_tag};
 
 using namespace std;
 
@@ -114,7 +114,7 @@ vector<error_detect> int_errorDetection(const vector<string> &tokens) {
         if (token.front() == '<' && token.back() == '>') {
             if (token[1] == '/') {
                 if (stackDetect.empty()) {
-                    errors.emplace_back(-1, -1, tokens[i].length() , tokens[i] , i , closing_tag_with_missing_opening_tag);
+                    errors.emplace_back(-1, -1, tokens[i].length() , tokens[i].substr(2, token.length() - 3) , i , closing_tag_with_missing_opening_tag);
                 } else {
                     index_in_stack = stackIdx.top();
                     stackIdx.pop();
@@ -123,7 +123,7 @@ vector<error_detect> int_errorDetection(const vector<string> &tokens) {
                     closingtag = token.substr(2, token.length() - 3);
 
                     if (openingtag != closingtag) {
-                        errors.emplace_back(-1, -1, openingtag.length(), openingtag, index_in_stack, opening_tag_with_missing_opening_tag);
+                        errors.emplace_back(-1, -1, openingtag.length(), openingtag, index_in_stack, opening_tag_with_missing_closing_tag);
                     }
                 }
             } else {
@@ -140,7 +140,7 @@ vector<error_detect> int_errorDetection(const vector<string> &tokens) {
         openingtag = stackDetect.top();
         stackDetect.pop();
         if (openingtag != closingtag) {
-          errors.emplace_back(-1, -1, openingtag.length(), openingtag,index_in_stack, opening_tag_with_missing_opening_tag);
+          errors.emplace_back(-1, -1, openingtag.length(), openingtag,index_in_stack, opening_tag_with_missing_closing_tag);
         }
 
     }
