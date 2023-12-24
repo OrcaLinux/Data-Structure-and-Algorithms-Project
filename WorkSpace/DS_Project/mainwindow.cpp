@@ -257,10 +257,7 @@ void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* 
                 textEdit->clear();
                 // After setting the formatted XML content in handleFormatTheFileRequest
                 textEdit->setPlainText(indentedXml);
-                qDebug() << "Enter the colorizeXml";
-                colorizeXml(textEdit); // Apply colorization
-                qDebug() << "Exit the colorizeXml";
-
+                colorizeXml(textEdit);
             } else {
                 // Handle other file types or show a message (not XML)
                 QMessageBox::information(this, tr("File Format"),
@@ -311,14 +308,71 @@ void MainWindow::handleFormatTheFileRequest() {
     }
 }
 
+//QString MainWindow::formatXml(const QString &xmlContent) {
+//    QDomDocument doc;
+//    doc.setContent(xmlContent);
+//
+//    QString indentedXml;
+//    QTextStream stream(&indentedXml);
+//    doc.save(stream, 4); // 4 spaces indentation
+//    return indentedXml;
+//}
+
 QString MainWindow::formatXml(const QString &xmlContent) {
     QDomDocument doc;
     doc.setContent(xmlContent);
 
     QString indentedXml;
     QTextStream stream(&indentedXml);
-    doc.save(stream, 4); // 4 spaces indentation
+
+    formatNode(doc.firstChild(), stream, 0, true); // Start with root node
+
     return indentedXml;
+}
+
+void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int indentationLevel, bool isTopLevel) {
+    QDomNode domNode = node;
+
+    while (!domNode.isNull()) {
+        if (domNode.isElement()) {
+            QDomElement domElement = domNode.toElement();
+            QString tagName = domElement.tagName();
+
+            stream << QString(indentationLevel * 4, ' '); // Using 4 spaces for indentation
+
+            if (!isTopLevel) {
+                stream << "<" << tagName;
+
+                QDomNamedNodeMap attributes = domElement.attributes();
+                for (int i = 0; i < attributes.count(); ++i) {
+                    QDomAttr attribute = attributes.item(i).toAttr();
+                    stream << " " << attribute.nodeName() << "=\"" << attribute.nodeValue() << "\"";
+                }
+
+                if (domElement.hasChildNodes()) {
+                    stream << ">" << Qt::endl;
+                } else {
+                    stream << "/>" << Qt::endl;
+                }
+            }
+
+            formatNode(domElement.firstChild(), stream, indentationLevel + 1, false);
+
+            if (!isTopLevel && domElement.hasChildNodes()) {
+                stream << QString(indentationLevel * 4, ' ') << "</" << tagName << ">" << Qt::endl;
+            }
+        } else if (domNode.isText()) {
+            QString textContent = domNode.toText().nodeValue();
+            textContent = textContent.trimmed();
+            if (!textContent.isEmpty()) {
+                stream << QString(indentationLevel * 4, ' ') << textContent << Qt::endl;
+            }
+        }
+
+        formatNode(domNode.nextSibling(), stream, indentationLevel, isTopLevel);
+
+        domNode = domNode.nextSibling();
+    }
 }
 
 void MainWindow::colorizeXml(QTextEdit* textEdit) {
@@ -329,42 +383,47 @@ void MainWindow::colorizeXml(QTextEdit* textEdit) {
     QTextCursor cursor(doc);
 
     QTextCharFormat tagFormat;
-    tagFormat.setForeground(Qt::blue); // Set tag color to blue
 
-    QTextCharFormat attributeFormat;
-    attributeFormat.setForeground(Qt::red); // Set attribute color to red
+    // Colors for different levels
+    QVector<QColor> colors = {Qt::blue, Qt::darkBlue, Qt::cyan}; // Add more colors if needed
 
-    QTextCharFormat contentFormat;
-    contentFormat.setForeground(Qt::black); // Set content color to black
+    int colorIndex = 0;
 
-    // Regular expressions for tag, attribute, and content
-    QRegularExpression tagRegex("<\\/?\\w+((\\s+\\w+(\\s*=\\s*(\".*?\"|'.*?'|[^'\">\\s]+))?)+\\s*|\\s*)\\/?>");
-    QRegularExpression attributeRegex("\\w+\\s*=\\s*\"[^\"]*\"");
-    QRegularExpression contentRegex(">([^<]+)<");
+    QDomDocument document;
+    document.setContent(textEdit->toPlainText());
 
-    cursor.beginEditBlock();
+    QDomNodeList nodeList = document.childNodes();
+    for (int i = 0; i < nodeList.size(); ++i) {
+        QDomNode root = nodeList.at(i);
+        colorizeNode(root, cursor, tagFormat, colors, colorIndex, 0); // Pass level as 0 for the root node
+    }
+}
 
-    // Move cursor to the beginning
-    cursor.movePosition(QTextCursor::Start);
+void MainWindow::colorizeNode(const QDomNode &node, QTextCursor &cursor, QTextCharFormat &tagFormat, const QVector<QColor> &colors, int &colorIndex, int level) {
+    QDomNode domNode = node;
 
-    while (!cursor.atEnd()) {
-        cursor.movePosition(QTextCursor::EndOfWord);
-        QString token = cursor.selectedText();
+    while (!domNode.isNull()) {
+        if (domNode.isElement()) {
+            tagFormat.setForeground(colors[colorIndex % colors.size()]);
+            cursor.insertText("<" + domNode.nodeName() + ">", tagFormat);
 
-        if (token.contains(tagRegex)) {
-            cursor.mergeCharFormat(tagFormat);
-        } else if (token.contains(attributeRegex)) {
-            cursor.mergeCharFormat(attributeFormat);
-        } else if (token.contains(contentRegex)) {
-            cursor.movePosition(QTextCursor::PreviousCharacter);
-            cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, 2);
-            cursor.mergeCharFormat(contentFormat);
+            ++colorIndex;
+
+            QDomElement element = domNode.toElement();
+            QDomNodeList children = element.childNodes();
+            if (children.size() > 0) {
+                cursor.insertText("\n"); // Start a new line for child elements
+
+                colorizeNode(children.at(0), cursor, tagFormat, colors, colorIndex, level + 1);
+
+                cursor.insertText("</" + domNode.nodeName() + ">", tagFormat);
+            } else {
+                cursor.insertText("</" + domNode.nodeName() + ">", tagFormat);
+            }
         }
 
-        cursor.movePosition(QTextCursor::NextWord);
+        domNode = domNode.nextSibling();
     }
-
-    cursor.endEditBlock();
 }
 
 /********************************************< tabBar Actions ********************************************/
