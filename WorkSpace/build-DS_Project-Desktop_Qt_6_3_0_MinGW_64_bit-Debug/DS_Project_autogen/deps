@@ -202,6 +202,14 @@ DS_Project_autogen/timestamp: \
 	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-relwithdebinfo.cmake \
 	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake \
 	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake \
+	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6Xml/Qt6XmlAdditionalTargetInfo.cmake \
+	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6Xml/Qt6XmlConfig.cmake \
+	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6Xml/Qt6XmlConfigVersion.cmake \
+	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6Xml/Qt6XmlConfigVersionImpl.cmake \
+	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6Xml/Qt6XmlDependencies.cmake \
+	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6Xml/Qt6XmlTargets-relwithdebinfo.cmake \
+	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6Xml/Qt6XmlTargets.cmake \
+	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6Xml/Qt6XmlVersionlessTargets.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake \

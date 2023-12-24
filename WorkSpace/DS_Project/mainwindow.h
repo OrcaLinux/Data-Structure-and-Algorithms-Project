@@ -35,9 +35,9 @@ private slots:
 
     void createNewTab();
     void closeTab(int index);
+    void handleFormatTheFileRequest();
     bool eventFilter(QObject *obj, QEvent *event);
     void quitApp();
-
 private:
     Ui::MainWindow *ui;
     TabManager *tabManager; // Manages the tabs
@@ -46,5 +46,6 @@ private:
 
     void initializeCloseButton();
     void connectTextEditActions(QTextEdit *textEdit);
+    QString formatXml(const QString &xmlContent);
 };
 #endif // MAINWINDOW_H

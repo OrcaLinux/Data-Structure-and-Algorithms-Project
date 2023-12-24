@@ -14,6 +14,7 @@
 #include <QGuiApplication>
 #include <QTextEdit>
 #include <QTabWidget>
+#include <QtXml/QDomDocument>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -138,6 +139,9 @@ void MainWindow::createNewTab() {
             delete tabWidget;
         }
     });
+
+    // Connect button1's clicked signal to handleFormatTheFileRequest
+    connect(button1, &QPushButton::clicked, this, &MainWindow::handleFormatTheFileRequest);
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -167,19 +171,37 @@ void MainWindow::on_actionOpen_triggered()
         QString redColor = QApplication::palette().color(QPalette::Button).name();
         closeButton->setStyleSheet("background-color: " + redColor + ";");
 
-        // Add the textEdit and closeButton to the tabWidget
-        int tabIndex = ui->tabWidget->addTab(textEdit, QFileInfo(fileName).fileName());
-        ui->tabWidget->setCurrentIndex(tabIndex);
+        // Create buttons for the tab
+        QPushButton *button1 = new QPushButton("Forman the file");
+        QPushButton *button2 = new QPushButton("Button 2");
+        QPushButton *button3 = new QPushButton("Button 3");
+        QPushButton *button4 = new QPushButton("Button 4");
 
-        // Set the close button within the tab's title area
+        // Layout for buttons
+        QHBoxLayout *buttonLayout = new QHBoxLayout;
+        buttonLayout->addWidget(button1);
+        buttonLayout->addWidget(button2);
+        buttonLayout->addWidget(button3);
+        buttonLayout->addWidget(button4);
+
+        // Main layout for the tab's content
+        QVBoxLayout *tabLayout = new QVBoxLayout;
+        tabLayout->addWidget(textEdit);
+        tabLayout->addLayout(buttonLayout); // Add button layout to tab layout
+
+        // Create a widget to hold the layout
+        QWidget *tabWidget = new QWidget;
+        tabWidget->setLayout(tabLayout);
+
+        // Set the tab widget as the content for the new tab
+        int tabIndex = ui->tabWidget->addTab(tabWidget, QFileInfo(fileName).fileName());
+        ui->tabWidget->setCurrentIndex(tabIndex);
         ui->tabWidget->tabBar()->setTabButton(tabIndex, QTabBar::RightSide, closeButton);
 
         // Connect close button's clicked signal to a slot that closes the corresponding tab
         connect(closeButton, &QPushButton::clicked, this, [=]() {
-            // Check for the total no of tabs
             int totalTabs = ui->tabWidget->count();
             if (totalTabs == 1) {
-                // Do nothing when there's only one tab left
                 return;
             }
 
@@ -189,6 +211,10 @@ void MainWindow::on_actionOpen_triggered()
                 delete textEdit;
             }
         });
+
+        // Connect button1's clicked signal to handleFormatTheFileRequest
+        connect(button1, &QPushButton::clicked, this, &MainWindow::handleFormatTheFileRequest);
+
     }
 }
 
@@ -202,6 +228,56 @@ void MainWindow::setTextEditProperties(QTextEdit* textEdit) {
     currentTextEdit = textEdit;
 }
 
+/********************************************< Button Actions ********************************************/
+void MainWindow::handleFormatTheFileRequest() {
+    if (ui->tabWidget->currentWidget()) {
+        QWidget *currentWidget = ui->tabWidget->currentWidget();
+        QTextEdit *textEdit = currentWidget->findChild<QTextEdit *>();
+        if (textEdit) {
+            QString xmlContent = textEdit->toPlainText(); // Get XML content
+            if (!xmlContent.isEmpty()) {
+                // Check if the file is an XML file
+                //if (currentWidget->objectName().endsWith(".xml", Qt::CaseInsensitive)) {
+                    // Validate XML content
+                    QDomDocument document;
+                    QString errorMsg;
+                    int errorLine, errorColumn;
+                    if (!document.setContent(xmlContent, true, &errorMsg, &errorLine, &errorColumn)) {
+                        QMessageBox::critical(this, tr("XML Error"),
+                                              tr("XML Syntax Error at line %1, column %2: %3")
+                                                  .arg(errorLine).arg(errorColumn).arg(errorMsg));
+                        return;
+                    }
+
+                    // XML content is valid, set indentation and colorization
+                    QString indentedXml = formatXml(xmlContent);
+                    textEdit->clear();
+                    textEdit->setPlainText(indentedXml);
+                    // Apply colorization
+                    // colorizeXml(textEdit); // Function to colorize XML content
+                //} else {
+                //    QMessageBox::warning(this, tr("File Format Error"),
+                //                         tr("The opened file is not an XML file."));
+                //}
+            } else {
+                QMessageBox::information(this, tr("Empty File"),
+                                         tr("The file is empty."));
+            }
+        }
+    }
+}
+
+QString MainWindow::formatXml(const QString &xmlContent) {
+    QDomDocument doc;
+    doc.setContent(xmlContent);
+
+    QString indentedXml;
+    QTextStream stream(&indentedXml);
+    doc.save(stream, 4); // 4 spaces indentation
+    return indentedXml;
+}
+
+/********************************************< tabBar Actions ********************************************/
 void MainWindow::on_actionExit_triggered()
 {
     statusBar()->showMessage("App will be killed in 3 seconds...", 3000);
@@ -267,6 +343,6 @@ void MainWindow::on_actionAbout_Qt_triggered()
 {
     QApplication::aboutQt();
 }
-
+/********************************************< End of tabBar Actions ********************************************/
 
 
