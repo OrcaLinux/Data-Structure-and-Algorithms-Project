@@ -33,11 +33,13 @@ private slots:
     void on_actionOpen_triggered();
     void on_actionAbout_Qt_triggered();
 
+    void quitApp();
     void createNewTab();
     void closeTab(int index);
     void handleFormatTheFileRequest();
     bool eventFilter(QObject *obj, QEvent *event);
-    void quitApp();
+    void handleFormatTheFileRequest(const QString &fileName, QTextEdit *textEdit);
+
 private:
     Ui::MainWindow *ui;
     TabManager *tabManager; // Manages the tabs

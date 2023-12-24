@@ -151,6 +151,11 @@
               </font>
              </property>
             </item>
+            <item row="0" column="1">
+             <property name="text">
+              <string>2001436</string>
+             </property>
+            </item>
             <item row="1" column="0">
              <property name="text">
               <string>Eslam Mohamed</string>
@@ -159,6 +164,11 @@
               <font>
                <pointsize>12</pointsize>
               </font>
+             </property>
+            </item>
+            <item row="1" column="1">
+             <property name="text">
+              <string/>
              </property>
             </item>
             <item row="2" column="0">
@@ -191,6 +201,11 @@
               </font>
              </property>
             </item>
+            <item row="4" column="1">
+             <property name="text">
+              <string>2002124</string>
+             </property>
+            </item>
             <item row="5" column="0">
              <property name="text">
               <string>Somay Ayman</string>
@@ -199,6 +214,11 @@
               <font>
                <pointsize>12</pointsize>
               </font>
+             </property>
+            </item>
+            <item row="5" column="1">
+             <property name="text">
+              <string>2000423</string>
              </property>
             </item>
            </widget>
