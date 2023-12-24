@@ -96,8 +96,30 @@ void MainWindow::createNewTab() {
     QString redColor = QApplication::palette().color(QPalette::Button).name();
     closeButton->setStyleSheet("background-color: " + redColor + ";");
 
-    // Set the close button within the tab's title area
-    int tabIndex = ui->tabWidget->addTab(textEdit, "New Tab");
+    // Create four push buttons for the tab
+    QPushButton *button1 = new QPushButton("Forman the file");
+    QPushButton *button2 = new QPushButton("Button 2");
+    QPushButton *button3 = new QPushButton("Button 3");
+    QPushButton *button4 = new QPushButton("Button 4");
+
+    // Create a layout for the buttons and add them to it
+    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    buttonLayout->addWidget(button1);
+    buttonLayout->addWidget(button2);
+    buttonLayout->addWidget(button3);
+    buttonLayout->addWidget(button4);
+
+    // Create a layout for the entire tab's content
+    QVBoxLayout *tabLayout = new QVBoxLayout;
+    tabLayout->addWidget(textEdit);
+    tabLayout->addLayout(buttonLayout); // Add the button layout to the tab layout
+
+    // Create a widget to hold the layout
+    QWidget *tabWidget = new QWidget;
+    tabWidget->setLayout(tabLayout);
+
+    // Set the tab widget as the content for the new tab
+    int tabIndex = ui->tabWidget->addTab(tabWidget, "New Tab");
     ui->tabWidget->tabBar()->setTabButton(tabIndex, QTabBar::RightSide, closeButton);
     ui->tabWidget->setCurrentIndex(tabIndex); // Set the current tab to the newly created one
 
@@ -110,10 +132,10 @@ void MainWindow::createNewTab() {
             return;
         }
 
-        int closeIndex = ui->tabWidget->indexOf(textEdit);
+        int closeIndex = ui->tabWidget->indexOf(tabWidget);
         if (closeIndex != -1) {
             ui->tabWidget->removeTab(closeIndex);
-            delete textEdit;
+            delete tabWidget;
         }
     });
 }
@@ -192,10 +214,10 @@ void MainWindow::quitApp() {
 }
 
 void MainWindow::on_actionCopy_triggered() {
-    // Check if there's a selected text edit
     if (ui->tabWidget->currentWidget()) {
         qDebug() << "Copy clicked";
-        QTextEdit *textEdit = qobject_cast<QTextEdit*>(ui->tabWidget->currentWidget());
+        QWidget *currentWidget = ui->tabWidget->currentWidget();
+        QTextEdit *textEdit = currentWidget->findChild<QTextEdit *>();
         if (textEdit) {
             QClipboard *clipboard = QGuiApplication::clipboard();
             clipboard->setText(textEdit->textCursor().selectedText());
@@ -204,10 +226,10 @@ void MainWindow::on_actionCopy_triggered() {
 }
 
 void MainWindow::on_actionCut_triggered() {
-    // Check if there's a selected text edit
     if (ui->tabWidget->currentWidget()) {
         qDebug() << "Cut clicked";
-        QTextEdit *textEdit = qobject_cast<QTextEdit*>(ui->tabWidget->currentWidget());
+        QWidget *currentWidget = ui->tabWidget->currentWidget();
+        QTextEdit *textEdit = currentWidget->findChild<QTextEdit *>();
         if (textEdit) {
             QClipboard *clipboard = QGuiApplication::clipboard();
             clipboard->setText(textEdit->textCursor().selectedText());
@@ -217,12 +239,10 @@ void MainWindow::on_actionCut_triggered() {
 }
 
 void MainWindow::on_actionPast_triggered() {
-    // Check if there's a selected text edit
     if (ui->tabWidget->currentWidget()) {
         qDebug() << "Paste clicked";
         QWidget *currentWidget = ui->tabWidget->currentWidget();
-        qDebug() << "Current widget type:" << currentWidget->metaObject()->className();
-        QTextEdit *textEdit = qobject_cast<QTextEdit*>(currentWidget);
+        QTextEdit *textEdit = currentWidget->findChild<QTextEdit *>();
         if (textEdit) {
             qDebug() << "Paste occurred";
             QClipboard *clipboard = QGuiApplication::clipboard();
