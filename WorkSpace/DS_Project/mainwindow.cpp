@@ -15,6 +15,10 @@
 #include <QTextEdit>
 #include <QTabWidget>
 #include <QtXml/QDomDocument>
+#include <QTextStream>
+#include <QXmlStreamReader>
+#include <QXmlStreamWriter>
+#include <QBuffer>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -251,7 +255,12 @@ void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* 
                 // Format the XML content and update the QTextEdit
                 QString indentedXml = formatXml(fileContent);
                 textEdit->clear();
+                // After setting the formatted XML content in handleFormatTheFileRequest
                 textEdit->setPlainText(indentedXml);
+                qDebug() << "Enter the colorizeXml";
+                colorizeXml(textEdit); // Apply colorization
+                qDebug() << "Exit the colorizeXml";
+
             } else {
                 // Handle other file types or show a message (not XML)
                 QMessageBox::information(this, tr("File Format"),
@@ -289,7 +298,7 @@ void MainWindow::handleFormatTheFileRequest() {
                 textEdit->clear();
                 textEdit->setPlainText(indentedXml);
                 // Apply colorization
-                // colorizeXml(textEdit); // Function to colorize XML content
+                 colorizeXml(textEdit); // Function to colorize XML content
                 //} else {
                 //    QMessageBox::warning(this, tr("File Format Error"),
                 //                         tr("The opened file is not an XML file."));
@@ -310,6 +319,52 @@ QString MainWindow::formatXml(const QString &xmlContent) {
     QTextStream stream(&indentedXml);
     doc.save(stream, 4); // 4 spaces indentation
     return indentedXml;
+}
+
+void MainWindow::colorizeXml(QTextEdit* textEdit) {
+    if (!textEdit)
+        return;
+
+    QTextDocument *doc = textEdit->document();
+    QTextCursor cursor(doc);
+
+    QTextCharFormat tagFormat;
+    tagFormat.setForeground(Qt::blue); // Set tag color to blue
+
+    QTextCharFormat attributeFormat;
+    attributeFormat.setForeground(Qt::red); // Set attribute color to red
+
+    QTextCharFormat contentFormat;
+    contentFormat.setForeground(Qt::black); // Set content color to black
+
+    // Regular expressions for tag, attribute, and content
+    QRegularExpression tagRegex("<\\/?\\w+((\\s+\\w+(\\s*=\\s*(\".*?\"|'.*?'|[^'\">\\s]+))?)+\\s*|\\s*)\\/?>");
+    QRegularExpression attributeRegex("\\w+\\s*=\\s*\"[^\"]*\"");
+    QRegularExpression contentRegex(">([^<]+)<");
+
+    cursor.beginEditBlock();
+
+    // Move cursor to the beginning
+    cursor.movePosition(QTextCursor::Start);
+
+    while (!cursor.atEnd()) {
+        cursor.movePosition(QTextCursor::EndOfWord);
+        QString token = cursor.selectedText();
+
+        if (token.contains(tagRegex)) {
+            cursor.mergeCharFormat(tagFormat);
+        } else if (token.contains(attributeRegex)) {
+            cursor.mergeCharFormat(attributeFormat);
+        } else if (token.contains(contentRegex)) {
+            cursor.movePosition(QTextCursor::PreviousCharacter);
+            cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, 2);
+            cursor.mergeCharFormat(contentFormat);
+        }
+
+        cursor.movePosition(QTextCursor::NextWord);
+    }
+
+    cursor.endEditBlock();
 }
 
 /********************************************< tabBar Actions ********************************************/

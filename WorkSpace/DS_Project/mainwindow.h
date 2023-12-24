@@ -49,5 +49,6 @@ private:
     void initializeCloseButton();
     void connectTextEditActions(QTextEdit *textEdit);
     QString formatXml(const QString &xmlContent);
+    void colorizeXml(QTextEdit *textEdit);
 };
 #endif // MAINWINDOW_H
