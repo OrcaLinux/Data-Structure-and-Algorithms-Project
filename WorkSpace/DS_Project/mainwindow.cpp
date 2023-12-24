@@ -337,7 +337,7 @@ void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int inden
         if (currentNode.isElement()) {
             // Add indentation
             for (int i = 0; i < indentation; ++i) {
-                stream << "    "; // Adjust the number of spaces as per your preference
+                stream << "    ";
             }
 
             // Output the start tag
@@ -360,8 +360,8 @@ void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int inden
             // Output the end tag
             stream << "</" << element.tagName() << ">" << Qt::endl;
         } else if (currentNode.isText()) {
-            // Output the text content of the node
-            stream << currentNode.toText().data() << Qt::endl;
+            // Output the text content of the node without a preceding newline
+            stream << currentNode.toText().data().trimmed() << Qt::endl; // Trim whitespace
         }
 
         currentNode = currentNode.nextSibling();
