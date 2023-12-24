@@ -19,6 +19,7 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <QBuffer>
+//#include <Qsci/qsciscintilla.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -257,7 +258,6 @@ void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* 
                 textEdit->clear();
                 // After setting the formatted XML content in handleFormatTheFileRequest
                 textEdit->setPlainText(indentedXml);
-                colorizeXml(textEdit);
             } else {
                 // Handle other file types or show a message (not XML)
                 QMessageBox::information(this, tr("File Format"),
@@ -294,8 +294,6 @@ void MainWindow::handleFormatTheFileRequest() {
                 QString indentedXml = formatXml(xmlContent);
                 textEdit->clear();
                 textEdit->setPlainText(indentedXml);
-                // Apply colorization
-                 colorizeXml(textEdit); // Function to colorize XML content
                 //} else {
                 //    QMessageBox::warning(this, tr("File Format Error"),
                 //                         tr("The opened file is not an XML file."));
@@ -308,121 +306,65 @@ void MainWindow::handleFormatTheFileRequest() {
     }
 }
 
-//QString MainWindow::formatXml(const QString &xmlContent) {
-//    QDomDocument doc;
-//    doc.setContent(xmlContent);
-//
-//    QString indentedXml;
-//    QTextStream stream(&indentedXml);
-//    doc.save(stream, 4); // 4 spaces indentation
-//    return indentedXml;
-//}
+// QString MainWindow::formatXml(const QString &xmlContent) {
+//     // Create a QDomDocument to parse the XML content
+//     QDomDocument document;
+//     document.setContent(xmlContent);
+
+//     // Convert the QDomDocument back to a QString with indentation
+//     QString indentedXml;
+//     QTextStream stream(&indentedXml);
+//     document.save(stream, 4); // Indentation level = 4 spaces
+
+//     return indentedXml;
+// }
 
 QString MainWindow::formatXml(const QString &xmlContent) {
-    QDomDocument doc;
-    doc.setContent(xmlContent);
+    QDomDocument document;
+    document.setContent(xmlContent);
 
     QString indentedXml;
     QTextStream stream(&indentedXml);
-
-    formatNode(doc.firstChild(), stream, 0, true); // Start with root node
+    formatNode(document.documentElement(), stream, 0); // Start formatting from the root element
 
     return indentedXml;
 }
 
-void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int indentationLevel, bool isTopLevel) {
-    QDomNode domNode = node;
+void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int indentation) {
+    QDomNode currentNode = node;
 
-    while (!domNode.isNull()) {
-        if (domNode.isElement()) {
-            QDomElement domElement = domNode.toElement();
-            QString tagName = domElement.tagName();
+    while (!currentNode.isNull()) {
+        if (currentNode.isElement()) {
+            // Add indentation
+            for (int i = 0; i < indentation; ++i) {
+                stream << "    "; // Adjust the number of spaces as per your preference
+            }
 
-            stream << QString(indentationLevel * 4, ' '); // Using 4 spaces for indentation
+            // Output the start tag
+            QDomElement element = currentNode.toElement();
+            stream << "<" << element.tagName() << ">";
 
-            if (!isTopLevel) {
-                stream << "<" << tagName;
+            // Check if the element has child nodes
+            if (currentNode.hasChildNodes()) {
+                stream << Qt::endl; // Move to the next line after the start tag
 
-                QDomNamedNodeMap attributes = domElement.attributes();
-                for (int i = 0; i < attributes.count(); ++i) {
-                    QDomAttr attribute = attributes.item(i).toAttr();
-                    stream << " " << attribute.nodeName() << "=\"" << attribute.nodeValue() << "\"";
+                // Recursively format child nodes
+                formatNode(currentNode.firstChild(), stream, indentation + 1);
+
+                // Add indentation before the end tag
+                for (int i = 0; i < indentation; ++i) {
+                    stream << "    ";
                 }
-
-                if (domElement.hasChildNodes()) {
-                    stream << ">" << Qt::endl;
-                } else {
-                    stream << "/>" << Qt::endl;
-                }
             }
 
-            formatNode(domElement.firstChild(), stream, indentationLevel + 1, false);
-
-            if (!isTopLevel && domElement.hasChildNodes()) {
-                stream << QString(indentationLevel * 4, ' ') << "</" << tagName << ">" << Qt::endl;
-            }
-        } else if (domNode.isText()) {
-            QString textContent = domNode.toText().nodeValue();
-            textContent = textContent.trimmed();
-            if (!textContent.isEmpty()) {
-                stream << QString(indentationLevel * 4, ' ') << textContent << Qt::endl;
-            }
+            // Output the end tag
+            stream << "</" << element.tagName() << ">" << Qt::endl;
+        } else if (currentNode.isText()) {
+            // Output the text content of the node
+            stream << currentNode.toText().data() << Qt::endl;
         }
 
-        formatNode(domNode.nextSibling(), stream, indentationLevel, isTopLevel);
-
-        domNode = domNode.nextSibling();
-    }
-}
-
-void MainWindow::colorizeXml(QTextEdit* textEdit) {
-    if (!textEdit)
-        return;
-
-    QTextDocument *doc = textEdit->document();
-    QTextCursor cursor(doc);
-
-    QTextCharFormat tagFormat;
-
-    // Colors for different levels
-    QVector<QColor> colors = {Qt::blue, Qt::darkBlue, Qt::cyan}; // Add more colors if needed
-
-    int colorIndex = 0;
-
-    QDomDocument document;
-    document.setContent(textEdit->toPlainText());
-
-    QDomNodeList nodeList = document.childNodes();
-    for (int i = 0; i < nodeList.size(); ++i) {
-        QDomNode root = nodeList.at(i);
-        colorizeNode(root, cursor, tagFormat, colors, colorIndex, 0); // Pass level as 0 for the root node
-    }
-}
-
-void MainWindow::colorizeNode(const QDomNode &node, QTextCursor &cursor, QTextCharFormat &tagFormat, const QVector<QColor> &colors, int &colorIndex, int level) {
-    QDomNode domNode = node;
-
-    while (!domNode.isNull()) {
-        if (domNode.isElement()) {
-            tagFormat.setForeground(colors[colorIndex % colors.size()]);
-            cursor.insertText("<" + domNode.nodeName() + ">", tagFormat);
-
-            ++colorIndex;
-
-            QDomElement element = domNode.toElement();
-            QDomNodeList children = element.childNodes();
-            if (children.size() > 0) {
-                cursor.insertText("\n"); // Start a new line for child elements
-
-                colorizeNode(children.at(0), cursor, tagFormat, colors, colorIndex, level + 1);
-
-                cursor.insertText("</" + domNode.nodeName() + ">", tagFormat);
-            } else {
-                cursor.insertText("</" + domNode.nodeName() + ">", tagFormat);
-            }
-        }
-
-        domNode = domNode.nextSibling();
+        currentNode = currentNode.nextSibling();
     }
 }
 

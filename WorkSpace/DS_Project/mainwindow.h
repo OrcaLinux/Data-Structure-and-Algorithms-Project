@@ -51,7 +51,6 @@ private:
     void connectTextEditActions(QTextEdit *textEdit);
     QString formatXml(const QString &xmlContent);
     void colorizeXml(QTextEdit *textEdit);
-    void formatNode(const QDomNode &node, QTextStream &stream, int indentationLevel, bool isTopLevel);
-    void colorizeNode(const QDomNode &node, QTextCursor &cursor, QTextCharFormat &tagFormat, const QVector<QColor> &colors, int &colorIndex, int level);
+    void formatNode(const QDomNode &node, QTextStream &stream, int indentation);
 };
 #endif // MAINWINDOW_H
