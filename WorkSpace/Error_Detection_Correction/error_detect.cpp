@@ -168,7 +168,7 @@ string errorCorrect(error_detect& CurError, const string& input, vector<error_de
         }
 
         if (line == CurError.line_number) {
-            if (offset == CurError.offset) {
+            if (offset == CurError.offset+1) {
                 if (CurError.error == closing_tag_with_missing_opening_tag) {
                     // insert an opening tag right before the existing closing tag
                     correctedInput += "<" + CurError.tagInfo + ">";
@@ -176,7 +176,7 @@ string errorCorrect(error_detect& CurError, const string& input, vector<error_de
                 }
 
                 if (CurError.error == opening_tag_with_missing_closing_tag) {
-                    for(int j =0; j< CurError.tagLength; j++ ) {
+                    for(int j =-1; j< CurError.tagLength; j++ ) {
                         correctedInput += input[i];
                         i++;
                     }
@@ -194,14 +194,14 @@ string errorCorrect(error_detect& CurError, const string& input, vector<error_de
     if (flag1 == 1){
         //update all the error offsets for new corrected string
             for ( auto &error : errors) {
-                if(CurError.offset < error.offset)
+                if(CurError.offset < error.offset && CurError.line_number == error.line_number)
                 error.offset += (CurError.tagLength)-1;
             }
         }
     if (flag2 == 1){
         //update all the error offsets for new corrected string (except our current error)
             for ( auto &error : errors) {
-                if(CurError.offset < error.offset)
+                if(CurError.offset < error.offset && CurError.line_number == error.line_number)
                 error.offset += (CurError.tagLength)+1;
             }
     }
