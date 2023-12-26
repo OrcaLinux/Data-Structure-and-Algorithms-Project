@@ -102,13 +102,13 @@ vector<error_detect> int_errorDetection(const vector<string> &tokens, const stri
 
                     stackDetect.pop();
                     temp_stackDetect.push(openingtag);
-                    cout<<"temp_stackDetect "<<temp_stackDetect.top()<<endl<<endl;
+  //                  cout<<"temp_stackDetect "<<temp_stackDetect.top()<<endl<<endl;
                     temp_stackIdx.push(index_in_stack);
                     closingtag = token.substr(2, token.length() - 3);
-                    cout<<"openingtag "<<openingtag<<" closingtag "<<closingtag<<endl<<endl;
+                    //cout<<"openingtag "<<openingtag<<" closingtag "<<closingtag<<endl<<endl;
 
-                    cout << "before ";printStringStack(stackDetect);
-cout<<endl;
+                    //cout << "before ";printStringStack(stackDetect);
+//cout<<endl;
                     int flag = 1;
                     if (openingtag != closingtag) {
 
