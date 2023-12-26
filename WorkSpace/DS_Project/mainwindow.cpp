@@ -385,7 +385,6 @@ void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* 
                 // Set the formatted content with HTML-like tags in QTextEdit
                 textEdit->setHtml(indentedXml);
                 qDebug () << "Hello After Fomrmat the xml";
-
             } else {
                 // Handle other file types or show a message (not XML)
                 QMessageBox::information(this, tr("File Format"),
@@ -400,10 +399,8 @@ void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* 
 
 void MainWindow::handleFormatTheFileRequest() {
     if (ui->tabWidget->currentWidget()) {
-        QWidget *currentWidget = ui->tabWidget->currentWidget();
-        QTextEdit *textEdit = currentWidget->findChild<QTextEdit *>();
-        if (textEdit) {
-            QString xmlContent = textEdit->toPlainText().trimmed(); // Get XML content and trim whitespace
+        if (currentTextEdit) {
+            QString xmlContent = currentTextEdit->toPlainText().trimmed(); // Get XML content and trim whitespace
 
             // Check if the content starts with a common XML declaration or tag
             if (!xmlContent.isEmpty() && (xmlContent.startsWith("<?xml") || xmlContent.startsWith("<"))) {
@@ -421,10 +418,10 @@ void MainWindow::handleFormatTheFileRequest() {
 
                 // XML content is valid, set indentation and colorization
                 QString indentedXml = formatXml(xmlContent);
-                textEdit->clear();
+                currentTextEdit->clear();
 
                 // Set the formatted content with HTML-like tags in QTextEdit
-                textEdit->setHtml(indentedXml);
+                currentTextEdit->setHtml(indentedXml);
             } else {
                 QMessageBox::warning(this, tr("File Format Error"),
                                      tr("The opened file does not appear to be an XML file."));
