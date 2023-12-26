@@ -39,7 +39,8 @@ private slots:
     void closeTab(int index);
     void handleFormatTheFileRequest();
     bool eventFilter(QObject *obj, QEvent *event);
-    void handleFormatTheFileRequest(const QString &fileName, QTextEdit *textEdit);
+    /********************************************< Button Actions ********************************************/
+    void handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit, QTextEdit* lineNumberArea);
 
 private:
     Ui::MainWindow *ui;
@@ -49,8 +50,11 @@ private:
 
     void initializeCloseButton();
     void connectTextEditActions(QTextEdit *textEdit);
+    void setLineNumberAreaProperties(QTextEdit *textEdit);
     QString formatXml(const QString &xmlContent);
     void colorizeXml(QTextEdit *textEdit);
     void formatNode(const QDomNode &node, QTextStream &stream, int indentation);
+    void createLineNumberArea(QTextEdit* textEdit);
+    void updateLineNumbers(QTextEdit *textEdit, QTextEdit *lineNumberArea);
 };
 #endif // MAINWINDOW_H

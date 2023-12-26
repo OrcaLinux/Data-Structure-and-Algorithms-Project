@@ -19,7 +19,8 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <QBuffer>
-//#include <Qsci/qsciscintilla.h>
+#include <QScrollBar>
+#include <QTextBlock>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -66,7 +67,7 @@ void MainWindow::initializeCloseButton() {
         closeTab(tabIndex);
     });
 }
-
+/********************************************< Tab Bar Action ********************************************/
 void MainWindow::closeTab(int index)
 {
     int totalTabs = ui->tabWidget->count();
@@ -102,11 +103,50 @@ void MainWindow::createNewTab() {
     QString redColor = QApplication::palette().color(QPalette::Button).name();
     closeButton->setStyleSheet("background-color: " + redColor + ";");
 
+    // Create a QTextEdit for line numbers
+    QTextEdit* lineNumberArea = new QTextEdit;
+    setLineNumberAreaProperties(lineNumberArea);
+
+    // Connect scrolling between textEdit and lineNumberArea
+    connect(textEdit->verticalScrollBar(), &QScrollBar::valueChanged,
+            lineNumberArea->verticalScrollBar(), &QScrollBar::setValue);
+
+    connect(lineNumberArea->verticalScrollBar(), &QScrollBar::valueChanged,
+            textEdit->verticalScrollBar(), &QScrollBar::setValue);
+
+    // Disable the vertical scrollbar in lineNumberArea
+    lineNumberArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    // Connect text changes to update line numbers
+    connect(textEdit->document(), &QTextDocument::blockCountChanged,
+            this, [=]() {
+                QTextBlock block = textEdit->document()->firstBlock();
+                QString numbers;
+                while (block.isValid()) {
+                    numbers += QString::number(block.blockNumber() + 1) + "\n";
+                    block = block.next();
+                }
+                lineNumberArea->setText(numbers);
+            });
+
+    connect(textEdit, &QTextEdit::cursorPositionChanged,
+            this, [=]() {
+                QTextCursor cursor = textEdit->textCursor();
+                QTextBlock block = cursor.block();
+                int lineNumber = block.blockNumber() + 1;
+                statusBar()->showMessage("Line: " + QString::number(lineNumber));
+            });
+
+    // Create a horizontal layout to contain textEdit and lineNumberArea
+    QHBoxLayout *textEditLayout = new QHBoxLayout;
+    textEditLayout->addWidget(lineNumberArea);
+    textEditLayout->addWidget(textEdit);
+
     // Create four push buttons for the tab
-    QPushButton *button1 = new QPushButton("Forman the file");
-    QPushButton *button2 = new QPushButton("Correct the errors");
-    QPushButton *button3 = new QPushButton("Convert to json");
-    QPushButton *button4 = new QPushButton("Compressed the file");
+    QPushButton *button1 = new QPushButton("Visualize");
+    QPushButton *button2 = new QPushButton("Correct");
+    QPushButton *button3 = new QPushButton("XML -> JSON");
+    QPushButton *button4 = new QPushButton("Compresse");
 
     // Create a layout for the buttons and add them to it
     QHBoxLayout *buttonLayout = new QHBoxLayout;
@@ -117,7 +157,7 @@ void MainWindow::createNewTab() {
 
     // Create a layout for the entire tab's content
     QVBoxLayout *tabLayout = new QVBoxLayout;
-    tabLayout->addWidget(textEdit);
+    tabLayout->addLayout(textEditLayout); // Add the text edit layout to the tab layout
     tabLayout->addLayout(buttonLayout); // Add the button layout to the tab layout
 
     // Create a widget to hold the layout
@@ -149,6 +189,15 @@ void MainWindow::createNewTab() {
     connect(button1, &QPushButton::clicked, this, [=](){
         handleFormatTheFileRequest();
     });
+
+    // Trigger an initial update of line numbers upon tab creation
+    QTextBlock block = textEdit->document()->firstBlock();
+    QString numbers;
+    while (block.isValid()) {
+        numbers += QString::number(block.blockNumber() + 1) + "\n";
+        block = block.next();
+    }
+    lineNumberArea->setText(numbers);
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -178,11 +227,46 @@ void MainWindow::on_actionOpen_triggered()
         QString redColor = QApplication::palette().color(QPalette::Button).name();
         closeButton->setStyleSheet("background-color: " + redColor + ";");
 
-        // Create buttons for the tab
-        QPushButton *button1 = new QPushButton("Forman the file");
-        QPushButton *button2 = new QPushButton("Correct the errors");
-        QPushButton *button3 = new QPushButton("Convert to json");
-        QPushButton *button4 = new QPushButton("Compressed the file");
+        // Create a QTextEdit for line numbers
+        QTextEdit *lineNumberArea = new QTextEdit;
+        setLineNumberAreaProperties(lineNumberArea);
+
+        // Connect scrolling between textEdit and lineNumberArea
+        connect(textEdit->verticalScrollBar(), &QScrollBar::valueChanged,
+                lineNumberArea->verticalScrollBar(), &QScrollBar::setValue);
+
+        connect(lineNumberArea->verticalScrollBar(), &QScrollBar::valueChanged,
+                textEdit->verticalScrollBar(), &QScrollBar::setValue);
+
+        // Disable the vertical scrollbar in lineNumberArea
+        lineNumberArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+        // Connect text changes to update line numbers
+        connect(textEdit->document(), &QTextDocument::blockCountChanged,
+                this, [=]() {
+                    QTextBlock block = textEdit->document()->firstBlock();
+                    QString numbers;
+                    while (block.isValid()) {
+                        numbers += QString::number(block.blockNumber() + 1) + "\n";
+                        block = block.next();
+                    }
+                    lineNumberArea->setText(numbers);
+                });
+
+        // Update line numbers immediately after setting text content
+        QTextBlock block = textEdit->document()->firstBlock();
+        QString numbers;
+        while (block.isValid()) {
+            numbers += QString::number(block.blockNumber() + 1) + "\n";
+            block = block.next();
+        }
+        lineNumberArea->setText(numbers);
+
+        // Create four push buttons for the tab
+        QPushButton *button1 = new QPushButton("Visualize");
+        QPushButton *button2 = new QPushButton("Correct");
+        QPushButton *button3 = new QPushButton("XML -> JSON");
+        QPushButton *button4 = new QPushButton("Compress");
 
         // Layout setup for buttons
         QHBoxLayout *buttonLayout = new QHBoxLayout;
@@ -191,9 +275,12 @@ void MainWindow::on_actionOpen_triggered()
         buttonLayout->addWidget(button3);
         buttonLayout->addWidget(button4);
 
-        // Main layout for the tab's content
+        // Main layout for the tab's content including textEdit and lineNumberArea
         QVBoxLayout *tabLayout = new QVBoxLayout;
-        tabLayout->addWidget(textEdit);
+        QHBoxLayout *textEditLayout = new QHBoxLayout;
+        textEditLayout->addWidget(lineNumberArea);
+        textEditLayout->addWidget(textEdit);
+        tabLayout->addLayout(textEditLayout);
         tabLayout->addLayout(buttonLayout);
 
         // Create a widget to hold the layout
@@ -205,15 +292,26 @@ void MainWindow::on_actionOpen_triggered()
         ui->tabWidget->setCurrentIndex(tabIndex);
         ui->tabWidget->tabBar()->setTabButton(tabIndex, QTabBar::RightSide, closeButton);
 
-        // Connect the close button's clicked signal to close the default tab
+        // Connect the close button's clicked signal to a slot that closes the corresponding tab
         connect(closeButton, &QPushButton::clicked, this, [=]() {
-            closeTab(tabIndex);
+            // Check for the total number of tabs
+            int totalTabs = ui->tabWidget->count();
+            if (totalTabs == 1) {
+                // Do nothing when there's only one tab left
+                return;
+            }
+
+            int closeIndex = ui->tabWidget->indexOf(tabWidget);
+            if (closeIndex != -1) {
+                ui->tabWidget->removeTab(closeIndex);
+                delete tabWidget;
+            }
         });
 
         // Connect close button's clicked signal to a slot that closes the corresponding tab
         // Pass file type information to the function for processing
         connect(button1, &QPushButton::clicked, this, [=](){
-            handleFormatTheFileRequest(fileName, textEdit);
+            handleFormatTheFileRequest(fileName, textEdit, lineNumberArea);
         });
 
     }
@@ -225,12 +323,39 @@ void MainWindow::setTextEditProperties(QTextEdit* textEdit) {
     textEdit->setAcceptRichText(true); // Enable rich text
     textEdit->setReadOnly(false); // Set it to editable
 
+    // Set the font and its properties for the text edit
+    QFont font;
+    font.setFamily("Open Sans"); // Set the font family
+    font.setPointSize(10); // Set the font size
+    textEdit->setFont(font); // Apply the font to the text edit
+
+    // Set additional style properties
+    // Setting background color and text color
+    //textEdit->setStyleSheet("background-color: #F0F0F0; color: #333333;");
+
     // Set the current text edit to the newly created one
     currentTextEdit = textEdit;
 }
 
+void MainWindow::setLineNumberAreaProperties(QTextEdit* lineNumberArea) {
+    lineNumberArea->setReadOnly(true);
+    lineNumberArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    lineNumberArea->setTextInteractionFlags(Qt::NoTextInteraction);
+    lineNumberArea->setFixedWidth(40);
+
+    // Set the font and its properties for the text edit
+    QFont font;
+    font.setFamily("Open Sans"); // Set the font family
+    font.setPointSize(10); // Set the font size
+    lineNumberArea->setFont(font); // Apply the font to the text edit
+
+    // Set additional style properties
+    // Setting background color and text color
+    //textEdit->setStyleSheet("background-color: #F0F0F0; color: #333333;");
+}
+
 /********************************************< Button Actions ********************************************/
-void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit) {
+void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit, QTextEdit* lineNumberArea) {
     // Extract the file extension to determine the file type
     QString fileType = QFileInfo(fileName).suffix().toLower();
 
@@ -256,8 +381,11 @@ void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* 
                 // Format the XML content and update the QTextEdit
                 QString indentedXml = formatXml(fileContent);
                 textEdit->clear();
-                // After setting the formatted XML content in handleFormatTheFileRequest
-                textEdit->setPlainText(indentedXml);
+
+                // Set the formatted content with HTML-like tags in QTextEdit
+                textEdit->setHtml(indentedXml);
+                qDebug () << "Hello After Fomrmat the xml";
+
             } else {
                 // Handle other file types or show a message (not XML)
                 QMessageBox::information(this, tr("File Format"),
@@ -275,14 +403,15 @@ void MainWindow::handleFormatTheFileRequest() {
         QWidget *currentWidget = ui->tabWidget->currentWidget();
         QTextEdit *textEdit = currentWidget->findChild<QTextEdit *>();
         if (textEdit) {
-            QString xmlContent = textEdit->toPlainText(); // Get XML content
-            if (!xmlContent.isEmpty()) {
-                // Check if the file is an XML file
-                //if (currentWidget->objectName().endsWith(".xml", Qt::CaseInsensitive)) {
-                // Validate XML content
+            QString xmlContent = textEdit->toPlainText().trimmed(); // Get XML content and trim whitespace
+
+            // Check if the content starts with a common XML declaration or tag
+            if (!xmlContent.isEmpty() && (xmlContent.startsWith("<?xml") || xmlContent.startsWith("<"))) {
                 QDomDocument document;
                 QString errorMsg;
                 int errorLine, errorColumn;
+
+                // Attempt to parse the XML content
                 if (!document.setContent(xmlContent, true, &errorMsg, &errorLine, &errorColumn)) {
                     QMessageBox::critical(this, tr("XML Error"),
                                           tr("XML Syntax Error at line %1, column %2: %3")
@@ -293,31 +422,16 @@ void MainWindow::handleFormatTheFileRequest() {
                 // XML content is valid, set indentation and colorization
                 QString indentedXml = formatXml(xmlContent);
                 textEdit->clear();
-                textEdit->setPlainText(indentedXml);
-                //} else {
-                //    QMessageBox::warning(this, tr("File Format Error"),
-                //                         tr("The opened file is not an XML file."));
-                //}
+
+                // Set the formatted content with HTML-like tags in QTextEdit
+                textEdit->setHtml(indentedXml);
             } else {
-                QMessageBox::information(this, tr("Empty File"),
-                                         tr("The file is empty."));
+                QMessageBox::warning(this, tr("File Format Error"),
+                                     tr("The opened file does not appear to be an XML file."));
             }
         }
     }
 }
-
-// QString MainWindow::formatXml(const QString &xmlContent) {
-//     // Create a QDomDocument to parse the XML content
-//     QDomDocument document;
-//     document.setContent(xmlContent);
-
-//     // Convert the QDomDocument back to a QString with indentation
-//     QString indentedXml;
-//     QTextStream stream(&indentedXml);
-//     document.save(stream, 4); // Indentation level = 4 spaces
-
-//     return indentedXml;
-// }
 
 QString MainWindow::formatXml(const QString &xmlContent) {
     QDomDocument document;
@@ -337,31 +451,37 @@ void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int inden
         if (currentNode.isElement()) {
             // Add indentation
             for (int i = 0; i < indentation; ++i) {
-                stream << "    ";
+                stream << "&nbsp;&nbsp;&nbsp;&nbsp;"; // Use non-breaking spaces for indentation
             }
 
-            // Output the start tag
+            // Output the start tag with color formatting
             QDomElement element = currentNode.toElement();
-            stream << "<" << element.tagName() << ">";
+            stream << "<font color=\"#0000FF\">&lt;" << element.tagName() << "&gt;</font>";
 
             // Check if the element has child nodes
             if (currentNode.hasChildNodes()) {
-                stream << Qt::endl; // Move to the next line after the start tag
+                stream << "<br>"; // Move to the next line after the start tag
 
                 // Recursively format child nodes
                 formatNode(currentNode.firstChild(), stream, indentation + 1);
 
                 // Add indentation before the end tag
                 for (int i = 0; i < indentation; ++i) {
-                    stream << "    ";
+                    stream << "&nbsp;&nbsp;&nbsp;&nbsp;";
                 }
             }
 
-            // Output the end tag
-            stream << "</" << element.tagName() << ">" << Qt::endl;
+            // Output the end tag with color formatting
+            stream << "<font color=\"#0000FF\">&lt;/" << element.tagName() << "&gt;</font><br>";
         } else if (currentNode.isText()) {
-            // Output the text content of the node without a preceding newline
-            stream << currentNode.toText().data().trimmed() << Qt::endl; // Trim whitespace
+            // Output the text content of the node with indentation
+            QString textContent = currentNode.toText().data().trimmed(); // Trim whitespace
+            if (!textContent.isEmpty()) {
+                for (int i = 0; i < indentation; ++i) {
+                    stream << "&nbsp;&nbsp;&nbsp;&nbsp;";
+                }
+                stream << textContent << "<br>";
+            }
         }
 
         currentNode = currentNode.nextSibling();
@@ -382,39 +502,24 @@ void MainWindow::quitApp() {
 
 void MainWindow::on_actionCopy_triggered() {
     if (ui->tabWidget->currentWidget()) {
-        qDebug() << "Copy clicked";
-        QWidget *currentWidget = ui->tabWidget->currentWidget();
-        QTextEdit *textEdit = currentWidget->findChild<QTextEdit *>();
-        if (textEdit) {
-            QClipboard *clipboard = QGuiApplication::clipboard();
-            clipboard->setText(textEdit->textCursor().selectedText());
-        }
+        QClipboard *clipboard = QGuiApplication::clipboard();
+        clipboard->setText(currentTextEdit->textCursor().selectedText());
     }
 }
 
 void MainWindow::on_actionCut_triggered() {
     if (ui->tabWidget->currentWidget()) {
-        qDebug() << "Cut clicked";
-        QWidget *currentWidget = ui->tabWidget->currentWidget();
-        QTextEdit *textEdit = currentWidget->findChild<QTextEdit *>();
-        if (textEdit) {
-            QClipboard *clipboard = QGuiApplication::clipboard();
-            clipboard->setText(textEdit->textCursor().selectedText());
-            textEdit->textCursor().removeSelectedText();
-        }
+        QClipboard *clipboard = QGuiApplication::clipboard();
+        clipboard->setText(currentTextEdit->textCursor().selectedText());
+        currentTextEdit->textCursor().removeSelectedText();
     }
 }
 
 void MainWindow::on_actionPast_triggered() {
     if (ui->tabWidget->currentWidget()) {
         qDebug() << "Paste clicked";
-        QWidget *currentWidget = ui->tabWidget->currentWidget();
-        QTextEdit *textEdit = currentWidget->findChild<QTextEdit *>();
-        if (textEdit) {
-            qDebug() << "Paste occurred";
-            QClipboard *clipboard = QGuiApplication::clipboard();
-            textEdit->insertPlainText(clipboard->text());
-        }
+        QClipboard *clipboard = QGuiApplication::clipboard();
+        currentTextEdit->insertPlainText(clipboard->text());
     }
 }
 
