@@ -280,7 +280,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 909, 25));
+        menubar->setGeometry(QRect(0, 0, 909, 21));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName("menuFile");
         menuEdit = new QMenu(menubar);
@@ -399,7 +399,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem11 = tableWidget->item(4, 1);
         ___qtablewidgetitem11->setText(QCoreApplication::translate("MainWindow", "2002124", nullptr));
         QTableWidgetItem *___qtablewidgetitem12 = tableWidget->item(5, 0);
-        ___qtablewidgetitem12->setText(QCoreApplication::translate("MainWindow", "Somay Ayman", nullptr));
+        ___qtablewidgetitem12->setText(QCoreApplication::translate("MainWindow", "Somaya Ayman", nullptr));
         QTableWidgetItem *___qtablewidgetitem13 = tableWidget->item(5, 1);
         ___qtablewidgetitem13->setText(QCoreApplication::translate("MainWindow", "2000423", nullptr));
         tableWidget->setSortingEnabled(__sortingEnabled);

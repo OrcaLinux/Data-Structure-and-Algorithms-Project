@@ -54,6 +54,7 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "closeTab",
     "index",
     "handleFormatTheFileRequest",
+    "compressFile",
     "eventFilter",
     "obj",
     "QEvent*",
@@ -65,7 +66,7 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
-    uint offsetsAndSizes[46];
+    uint offsetsAndSizes[48];
     char stringdata0[11];
     char stringdata1[23];
     char stringdata2[1];
@@ -81,14 +82,15 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata12[9];
     char stringdata13[6];
     char stringdata14[27];
-    char stringdata15[12];
-    char stringdata16[4];
-    char stringdata17[8];
-    char stringdata18[6];
-    char stringdata19[9];
-    char stringdata20[11];
-    char stringdata21[9];
-    char stringdata22[15];
+    char stringdata15[13];
+    char stringdata16[12];
+    char stringdata17[4];
+    char stringdata18[8];
+    char stringdata19[6];
+    char stringdata20[9];
+    char stringdata21[11];
+    char stringdata22[9];
+    char stringdata23[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -109,14 +111,15 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(228, 8),  // "closeTab"
         QT_MOC_LITERAL(237, 5),  // "index"
         QT_MOC_LITERAL(243, 26),  // "handleFormatTheFileRequest"
-        QT_MOC_LITERAL(270, 11),  // "eventFilter"
-        QT_MOC_LITERAL(282, 3),  // "obj"
-        QT_MOC_LITERAL(286, 7),  // "QEvent*"
-        QT_MOC_LITERAL(294, 5),  // "event"
-        QT_MOC_LITERAL(300, 8),  // "fileName"
-        QT_MOC_LITERAL(309, 10),  // "QTextEdit*"
-        QT_MOC_LITERAL(320, 8),  // "textEdit"
-        QT_MOC_LITERAL(329, 14)   // "lineNumberArea"
+        QT_MOC_LITERAL(270, 12),  // "compressFile"
+        QT_MOC_LITERAL(283, 11),  // "eventFilter"
+        QT_MOC_LITERAL(295, 3),  // "obj"
+        QT_MOC_LITERAL(299, 7),  // "QEvent*"
+        QT_MOC_LITERAL(307, 5),  // "event"
+        QT_MOC_LITERAL(313, 8),  // "fileName"
+        QT_MOC_LITERAL(322, 10),  // "QTextEdit*"
+        QT_MOC_LITERAL(333, 8),  // "textEdit"
+        QT_MOC_LITERAL(342, 14)   // "lineNumberArea"
     },
     "MainWindow",
     "on_actionCut_triggered",
@@ -133,6 +136,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "closeTab",
     "index",
     "handleFormatTheFileRequest",
+    "compressFile",
     "eventFilter",
     "obj",
     "QEvent*",
@@ -152,7 +156,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -160,20 +164,22 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   98,    2, 0x08,    1 /* Private */,
-       3,    0,   99,    2, 0x08,    2 /* Private */,
-       4,    0,  100,    2, 0x08,    3 /* Private */,
-       5,    0,  101,    2, 0x08,    4 /* Private */,
-       6,    0,  102,    2, 0x08,    5 /* Private */,
-       7,    0,  103,    2, 0x08,    6 /* Private */,
-       8,    0,  104,    2, 0x08,    7 /* Private */,
-       9,    0,  105,    2, 0x08,    8 /* Private */,
-      10,    0,  106,    2, 0x08,    9 /* Private */,
-      11,    0,  107,    2, 0x08,   10 /* Private */,
-      12,    1,  108,    2, 0x08,   11 /* Private */,
-      14,    0,  111,    2, 0x08,   13 /* Private */,
-      15,    2,  112,    2, 0x08,   14 /* Private */,
-      14,    3,  117,    2, 0x08,   17 /* Private */,
+       1,    0,  110,    2, 0x08,    1 /* Private */,
+       3,    0,  111,    2, 0x08,    2 /* Private */,
+       4,    0,  112,    2, 0x08,    3 /* Private */,
+       5,    0,  113,    2, 0x08,    4 /* Private */,
+       6,    0,  114,    2, 0x08,    5 /* Private */,
+       7,    0,  115,    2, 0x08,    6 /* Private */,
+       8,    0,  116,    2, 0x08,    7 /* Private */,
+       9,    0,  117,    2, 0x08,    8 /* Private */,
+      10,    0,  118,    2, 0x08,    9 /* Private */,
+      11,    0,  119,    2, 0x08,   10 /* Private */,
+      12,    1,  120,    2, 0x08,   11 /* Private */,
+      14,    0,  123,    2, 0x08,   13 /* Private */,
+      15,    0,  124,    2, 0x08,   14 /* Private */,
+      16,    2,  125,    2, 0x08,   15 /* Private */,
+      14,    3,  130,    2, 0x08,   18 /* Private */,
+      15,    2,  137,    2, 0x08,   22 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -188,8 +194,10 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void,
-    QMetaType::Bool, QMetaType::QObjectStar, 0x80000000 | 17,   16,   18,
-    QMetaType::Void, QMetaType::QString, 0x80000000 | 20, 0x80000000 | 20,   19,   21,   22,
+    QMetaType::Void,
+    QMetaType::Bool, QMetaType::QObjectStar, 0x80000000 | 18,   17,   19,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 21, 0x80000000 | 21,   20,   22,   23,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 21,   20,   22,
 
        0        // eod
 };
@@ -228,6 +236,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'handleFormatTheFileRequest'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'compressFile'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'eventFilter'
         QtPrivate::TypeAndForceComplete<bool, std::false_type>,
         QtPrivate::TypeAndForceComplete<QObject *, std::false_type>,
@@ -236,6 +246,10 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>,
+        // method 'compressFile'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>
     >,
     nullptr
@@ -259,18 +273,27 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 9: _t->createNewTab(); break;
         case 10: _t->closeTab((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 11: _t->handleFormatTheFileRequest(); break;
-        case 12: { bool _r = _t->eventFilter((*reinterpret_cast< std::add_pointer_t<QObject*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QEvent*>>(_a[2])));
+        case 12: _t->compressFile(); break;
+        case 13: { bool _r = _t->eventFilter((*reinterpret_cast< std::add_pointer_t<QObject*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QEvent*>>(_a[2])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 13: _t->handleFormatTheFileRequest((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[3]))); break;
+        case 14: _t->handleFormatTheFileRequest((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[3]))); break;
+        case 15: _t->compressFile((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 13:
+        case 14:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 2:
+            case 1:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTextEdit* >(); break;
+            }
+            break;
+        case 15:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 1:
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTextEdit* >(); break;
             }
@@ -298,13 +321,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 16;
     }
     return _id;
 }

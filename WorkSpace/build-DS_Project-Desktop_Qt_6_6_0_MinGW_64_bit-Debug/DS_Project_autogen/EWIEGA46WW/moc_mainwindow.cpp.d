@@ -1,5 +1,19 @@
 D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/EWIEGA46WW/moc_mainwindow.cpp: D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/moc_predefs.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/ClearClosingTagsComp.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/ClearClosingTagsDec.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/CompressionSystem.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/DecompressSystem.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanComp.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanDec.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanTree.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanTreeNode.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/Map.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/MinifyingXML.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TagsMapComp.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TagsMapDec.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/Tree.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TreeNode.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20functional.h \

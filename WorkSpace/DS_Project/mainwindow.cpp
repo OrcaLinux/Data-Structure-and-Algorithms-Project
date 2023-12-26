@@ -190,6 +190,11 @@ void MainWindow::createNewTab() {
         handleFormatTheFileRequest();
     });
 
+    // Connect button4's clicked signal to handleFormatTheFileRequest
+    connect(button4, &QPushButton::clicked, this, [=](){
+        compressFile();
+    });
+
     // Trigger an initial update of line numbers upon tab creation
     QTextBlock block = textEdit->document()->firstBlock();
     QString numbers;
@@ -430,6 +435,11 @@ void MainWindow::handleFormatTheFileRequest() {
     }
 }
 
+//TODO: ??
+void MainWindow::compressFile(){
+
+}
+
 QString MainWindow::formatXml(const QString &xmlContent) {
     QDomDocument document;
     document.setContent(xmlContent);
@@ -484,6 +494,12 @@ void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int inden
         currentNode = currentNode.nextSibling();
     }
 }
+
+/********************************************< compression Actions ********************************************/
+void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit){
+
+}
+
 
 /********************************************< tabBar Actions ********************************************/
 void MainWindow::on_actionExit_triggered()

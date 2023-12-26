@@ -218,7 +218,7 @@
             </item>
             <item row="5" column="0">
              <property name="text">
-              <string>Somay Ayman</string>
+              <string>Somaya Ayman</string>
              </property>
              <property name="font">
               <font>
@@ -260,7 +260,7 @@
      <x>0</x>
      <y>0</y>
      <width>909</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

@@ -3,6 +3,20 @@ D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Dat
  mmc:Q_OBJECT
  mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.h
  mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/moc_predefs.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/ClearClosingTagsComp.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/ClearClosingTagsDec.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/CompressionSystem.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/DecompressSystem.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanComp.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanDec.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanTree.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanTreeNode.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/Map.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/MinifyingXML.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TagsMapComp.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TagsMapDec.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/Tree.h
+ mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TreeNode.h
  mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.h
  mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.h
  mdp:D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20functional.h
@@ -486,27 +500,27 @@ D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Dat
  mdp:D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qtwidgetsexports.h
  mdp:D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h
  mdp:D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qwidget.h
-D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/main.cpp
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.cpp
  uic:./ui_mainwindow.h
+D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/main.cpp
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/Map.cpp
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.cpp
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.cpp
-D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/CompressionSystem.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/ClearClosingTagsDec.h
+D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/CompressionSystem.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/DecompressSystem.h
-D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/CompressionSystem.cpp
-D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/ClearClosingTagsComp.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/ClearClosingTagsDec.cpp
+D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/ClearClosingTagsComp.h
+D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/CompressionSystem.cpp
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/DecompressSystem.cpp
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanComp.h
-D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanDec.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanComp.cpp
+D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanDec.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanTree.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/HuffmanTreeNode.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/MinifyingXML.h
-D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TagsMapComp.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TagsMapDec.cpp
+D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TagsMapComp.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TagsMapDec.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/Tree.h
 D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TreeNode.h

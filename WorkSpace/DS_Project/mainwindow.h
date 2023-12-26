@@ -6,6 +6,9 @@
 #include "tabmanager.h"
 #include <QMainWindow>
 
+#include "CompressionSystem.h"
+#include "DecompressSystem.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -38,9 +41,11 @@ private slots:
     void createNewTab();
     void closeTab(int index);
     void handleFormatTheFileRequest();
+    void compressFile();
     bool eventFilter(QObject *obj, QEvent *event);
     /********************************************< Button Actions ********************************************/
     void handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit, QTextEdit* lineNumberArea);
+    void compressFile(const QString& fileName, QTextEdit* textEdit);
 
 private:
     Ui::MainWindow *ui;
