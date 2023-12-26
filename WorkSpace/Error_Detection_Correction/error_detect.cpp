@@ -1,26 +1,4 @@
-#include <iostream>
-#include <stack>
-#include <string>
-#include <vector>
-#include <fstream>
-#include <sstream>
-
-enum error_type { incorrect_tag, empty_field, no_error, closing_tag_with_missing_opening_tag , opening_tag_with_missing_closing_tag};
-
-using namespace std;
-
-class error_detect {
-public:
-    int offset ;
-    int line_number ;
-    int tagLength ;
-    string tagInfo ;
-    int tagIdx ;
-    error_type error;
-
-    error_detect(int offset, int line_number, int tagLength, const string &tagInfo, int tagIdx, error_type error)
-        : offset(offset), line_number(line_number), tagLength(tagLength), tagInfo(tagInfo), tagIdx(tagIdx), error(error) {}
-};
+#include "error_detect.h"
 
 vector<string> tokenizeFileFromTextInput(const string &textInput) {
     vector<string> tokens;
@@ -123,7 +101,7 @@ vector<error_detect> int_errorDetection(const vector<string> &tokens) {
                     closingtag = token.substr(2, token.length() - 3);
 
                     if (openingtag != closingtag) {
-                        errors.emplace_back(-1, -1, openingtag.length(), openingtag, index_in_stack, opening_tag_with_missing_closing_tag);
+                        errors.emplace_back(-1, -1, openingtag.length()+2, openingtag, index_in_stack, opening_tag_with_missing_closing_tag);
                     }
                 }
             } else {
@@ -140,7 +118,7 @@ vector<error_detect> int_errorDetection(const vector<string> &tokens) {
         openingtag = stackDetect.top();
         stackDetect.pop();
         if (openingtag != closingtag) {
-          errors.emplace_back(-1, -1, openingtag.length(), openingtag,index_in_stack, opening_tag_with_missing_closing_tag);
+          errors.emplace_back(-1, -1, openingtag.length()+2, openingtag,index_in_stack, opening_tag_with_missing_closing_tag);
         }
 
     }
@@ -175,31 +153,57 @@ void getErrorInfo(error_detect& error, const string& input) {
     }
 }
 
+//function to correct all errors in XML file
+//takes vector of error_detect and a const string
+//returns modified string
+string errorCorrect(error_detect& CurError, const string& input, vector<error_detect> &errors) {
+    string correctedInput;
+    int offset = 1;
+    int line = 0;
+    int flag1 = 0;  //flag to indicate if we corrected 1st type error or not
+    int flag2 = 0;  //flag to indicate if we corrected 2nd type error or not
+    for (size_t i = 0; i < input.size(); ++i) {
+        if (input[i] == '\n') {
+            line++;
+        }
 
+        if (line == CurError.line_number) {
+            if (offset == CurError.offset) {
+                if (CurError.error == closing_tag_with_missing_opening_tag) {
+                    // insert an opening tag right before the existing closing tag
+                    correctedInput += "<" + CurError.tagInfo + ">";
+                    flag1 =1;
+                }
 
+                if (CurError.error == opening_tag_with_missing_closing_tag) {
+                    for(int j =0; j< CurError.tagLength; j++ ) {
+                        correctedInput += input[i];
+                        i++;
+                    }
+                    //i--;    //to counteract the extra loop d
+                    // insert a closing tag right after the existing opening tag
+                    correctedInput = correctedInput + "</" + CurError.tagInfo + ">";
+                    flag2 =1;
+                }
 
-int main() {
-   // string input = "This</k><mamamia> <b>is some<tag>text</tag><anotherTag><n>tag</anotherTag> inside.";
-
-    vector<string> tok = tokenizeFileFromFileLoc("file.txt");
-    for (string &t : tok) {
-        cout << t << endl;
+            }
+            offset++;
+        }
+        correctedInput += input[i];
     }
-    string input = FileToString("file.txt");
-    if (!bool_errorDetection(tok)) {
-        cout << "There is an error in the tags." << endl;
-    } else {
-        cout << "No tag errors found." << endl;
+    if (flag1 == 1){
+        //update all the error offsets for new corrected string
+            for ( auto &error : errors) {
+                if(CurError.offset < error.offset)
+                error.offset += (CurError.tagLength)-1;
+            }
+        }
+    if (flag2 == 1){
+        //update all the error offsets for new corrected string (except our current error)
+            for ( auto &error : errors) {
+                if(CurError.offset < error.offset)
+                error.offset += (CurError.tagLength)+1;
+            }
     }
-
-    vector<error_detect> errors = int_errorDetection(tok);
-
-    for ( auto &error : errors) {
-    getErrorInfo(error, input);
-    cout << "Error type: " << error.error << ", Line: " << error.line_number << ", Offset: " << error.offset
-         << ", Tag Length: " << error.tagLength << ", Tag Info: " << error.tagInfo << ", Tag Index: " << error.tagIdx << endl;
-}
-
-
-    return 0;
+    return correctedInput;
 }
