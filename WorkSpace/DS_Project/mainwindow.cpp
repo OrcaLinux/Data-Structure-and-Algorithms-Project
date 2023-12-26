@@ -528,34 +528,148 @@ void MainWindow::compressFile(){
 }
 
 void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit){
-    //get the file
+    std::string fileText = textEdit->toPlainText().toStdString();
 
+    std::string extension;
+    int dotIndex = fileName.lastIndexOf('.');
+    if(dotIndex== -1){
+        //TODO: show an error.
+        return;
+    }
+    //extract the extension excluding the dot.
+    extension = fileName.mid(dotIndex + 1).toStdString();
+
+    //to know if the process completed or not
+    bool completed = false;
+    //compressed file path.
+    std::string newFilePath;
     //check the extention,
-    //if xml
-    //-> if it doesn't contain errors
-    //->>if it can parsed, then its social network data.
-    //->> open a dialog box to get the path.
-    //--->let the path be sncxml
-    //--->call CompressionSystem::compress_SocialNetworkXML(file, path);
-    //->>else
-    //->> open a dialog box to get the path.
-    //--->let the path be cxml
-    //->>call CompressionSystem::compress_XML(file, path);
-    //-> if is contain error, show an error message. then return.
+    if(extension == "xml"){
+        //TODO: if it doesn't contain errors
+        bool correctFile = true;
 
-    //if json file
+        if(correctFile){
+            //check the data
+            //TODO: if parsable is true, then the opened file holds social network data.
+            bool parsableFile = true;
+            if(parsableFile){
+                //social network data.
+                //open a dialog box with the sncxml extension, and get the path.
+                newFilePath = saveDialogBox(QString("sncxml")).toStdString();
 
-    //if another file
-    //->> open a dialog box to get the path.
-    //--->let the path be cfile
-    //call  CompressionSystem::compress_File(file, path);
+                if(newFilePath.empty()){
+                    return;
+                }
 
+                //compress and save the file.
+                completed = CompressionSystem::compress_SocialNetworkXML(fileText, newFilePath);
+            } else{
+                //any correct xml file.
+                //open a dialog box with the cxml extension, and get the path.
+                newFilePath = saveDialogBox(QString("cxml")).toStdString();
 
-    //open the file in a new tab for the compressed file.
+                if(newFilePath.empty()){
+                    return;
+                }
+
+                //compress and save the file.
+                completed = CompressionSystem::compress_XML(fileText, newFilePath);
+            }
+        } else{
+            //error message that the file isn't correct.
+            QMessageBox::critical(nullptr, "Defected File.", "Please rectify the errors in the file to proceed.");
+        }
+    } else if (extension == "json"){
+        //TODO: open a dialog box with the cjson extension, and get the path.
+        newFilePath = saveDialogBox(QString("cjson")).toStdString();
+
+        if(newFilePath.empty()){
+            return;
+        }
+
+        //compress and save the file.
+        completed = CompressionSystem::compress_JSON(fileText, newFilePath);
+    } else {
+        //open a dialog box with the cfile extension, and get the path.
+        newFilePath = saveDialogBox(QString("cfile")).toStdString();
+
+        if(newFilePath.empty()){
+            return;
+        }
+
+        //compress and save the file.
+        completed = CompressionSystem::compress_File(fileText, newFilePath);
+    }
+
+    if(completed){
+    //open the file in a new tab for the compressed file using the newFilePath.
     //TODO: create a function for opennig tabs for the compressed files.
+    } else{
+        //show an error message that the proccess wasn't comleted.
+        QMessageBox::critical(nullptr, "Error", "The operation was aborted due to an unexpected error.");
+    }
 }
 
+QString MainWindow::saveDialogBox(const std::vector<QString>& expectedExtensions){
+    if(expectedExtensions.size() == 0){
+        std::runtime_error("Empty vector of extensions.");
+    }
 
+    QString formats;
+    for(QString expectedExtension : expectedExtensions){
+        formats += extensionLabel(expectedExtension) + ";;";
+    }
+    formats.chop(2); // Removes the last two characters (";;")
+
+    //open a dialog box with the sncxml extension, and get the path.
+    QString newFilePath =QFileDialog::getSaveFileName(nullptr, "Save File", QDir::homePath(), formats);
+
+    //if the file path was empty, show an error message
+    if(newFilePath.isEmpty()){
+        QMessageBox::critical(nullptr, "Operation terminated.", "Please provide a file name to proceed.");
+        return QString();
+    }
+
+    return newFilePath;
+}
+
+QString MainWindow::saveDialogBox(const QString& expectedExtension){
+    // call the overloaded function
+    std::vector<QString> expectedExtensions;
+    expectedExtensions.push_back(expectedExtension);
+    QString newFilePath = saveDialogBox(expectedExtensions);
+//    //get the extension
+//    QString format = extensionLabel(expectedExtension);
+//    //open a dialog box with the sncxml extension, and get the path.
+//    QString newFilePath =QFileDialog::getSaveFileName(nullptr, "Save File", QDir::homePath(), format);
+
+    // Ensure the chosen file has the specified extension.
+    QString chosenExtension = QFileInfo(newFilePath).suffix();
+    if (chosenExtension.isEmpty()) {
+        newFilePath += "." + expectedExtension;
+    }
+    return newFilePath;
+}
+
+QString MainWindow::extensionLabel(const QString& expectedExtension){
+    if(expectedExtension == "sncxml"){
+        return QString("Social Network Compressed XML (*.sncxml)");
+    } else if (expectedExtension == "cxml"){
+        return QString("Compressed XML (*.cxml)");
+    } else if (expectedExtension == "cjson"){
+        return QString("Compressed JSON (*.cjson)");
+    } else if (expectedExtension == "cfile"){
+        return QString("Compressed Txt (*.cfile)");
+    } else if (expectedExtension == "xml"){
+        return QString("XML (*.xml)");
+    } else if (expectedExtension == "json"){
+        return QString("JSON (*.json)");
+    } else if (expectedExtension == "txt"){
+        return QString("Txt File (*.txt)");
+    } else{
+        return QString("All Files (*)");
+    }
+}
 /********************************************< tabBar Actions ********************************************/
 void MainWindow::on_actionExit_triggered()
 {

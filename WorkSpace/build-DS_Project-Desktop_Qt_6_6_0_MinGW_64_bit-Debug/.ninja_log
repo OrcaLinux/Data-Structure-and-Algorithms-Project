@@ -1,95 +1,74 @@
 # ninja log v5
-8	358	7253046644769180	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-8	358	7253046644769180	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-8	358	7253046644769180	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-344	1450	7253033236458856	CMakeFiles/DS_Project.dir/CompressionSystem.cpp.obj	9cb5cd48541934f1
+18	413	7253254006948738	DS_Project_autogen/timestamp	2ce590a219dbc2f3
+489	1734	7253227781496152	CMakeFiles/DS_Project.dir/CompressionSystem.cpp.obj	9cb5cd48541934f1
 784	1565	7252967701547096	CMakeFiles/DS_Project.dir/DS_Project_autogen/4UGIYD6VGQ/qrc_resources.cpp.obj	eab08bcf42497e52
-8	358	7253046644769180	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
+18	413	7253254006948738	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+18	413	7253254006948738	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+18	413	7253254006948738	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
 679	763	7252967693504857	DS_Project_autogen/4UGIYD6VGQ/qrc_resources.cpp	f56b660b5c74bb29
 679	763	7252967693504857	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/4UGIYD6VGQ/qrc_resources.cpp	f56b660b5c74bb29
 780	3731	7252967723195862	CMakeFiles/DS_Project.dir/texteditmanager.cpp.obj	3e7febae227d9083
-767	3758	7252967723479146	CMakeFiles/DS_Project.dir/main.cpp.obj	8d3698208985d8a6
+783	4311	7253231185764378	CMakeFiles/DS_Project.dir/main.cpp.obj	8d3698208985d8a6
 771	3875	7252967724649048	CMakeFiles/DS_Project.dir/tabmanager.cpp.obj	b596e82789a3666e
-764	3957	7252967725452502	CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj	26a17da3043704c3
-364	4148	7253046682650797	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
-4148	4748	7253046688589707	DS_Project.exe	c4797b021e17f795
+787	4595	7253231188607788	CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj	26a17da3043704c3
+416	5134	7253254054137648	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
+5135	5810	7253254060838909	DS_Project.exe	c4797b021e17f795
 2	984	7253023955423706	build.ninja	6d2d547cdf8188ba
 522	1319	7253024020531530	CMakeFiles/DS_Project.dir/ClearClosingTagsComp.cpp.obj	3b37da9ac4d7d4
-364	1342	7253033235383600	CMakeFiles/DS_Project.dir/HuffmanDec.cpp.obj	94e76d2eaa5065f7
 545	1629	7253024023923535	CMakeFiles/DS_Project.dir/TreeNode.cpp.obj	6b7c166a1f1182e7
+364	1342	7253033235383600	CMakeFiles/DS_Project.dir/HuffmanDec.cpp.obj	94e76d2eaa5065f7
 540	1799	7253024025823632	CMakeFiles/DS_Project.dir/Tree.cpp.obj	20872b8357e69702
-360	1665	7253033238608016	CMakeFiles/DS_Project.dir/HuffmanTree.cpp.obj	533d44bf55fc76fa
-363	1484	7253024601035829	CMakeFiles/DS_Project.dir/TagsMapDec.cpp.obj	226a56e26fcdd713
 368	1400	7253024351698370	CMakeFiles/DS_Project.dir/MinifyingXML.cpp.obj	ba88dc3aa48436c7
+363	1484	7253024601035829	CMakeFiles/DS_Project.dir/TagsMapDec.cpp.obj	226a56e26fcdd713
+360	1665	7253033238608016	CMakeFiles/DS_Project.dir/HuffmanTree.cpp.obj	533d44bf55fc76fa
 360	1656	7253024354465229	CMakeFiles/DS_Project.dir/Map.cpp.obj	4ca2f43bbe7f5674
-360	1386	7253046655032441	CMakeFiles/DS_Project.dir/DecompressSystem.cpp.obj	8ea1c2e6376d50eb
+791	2130	7253231163954380	CMakeFiles/DS_Project.dir/DecompressSystem.cpp.obj	8ea1c2e6376d50eb
 356	1249	7253033234458285	CMakeFiles/DS_Project.dir/HuffmanComp.cpp.obj	16a15290822acdb6
 421	1422	7253031844144782	CMakeFiles/DS_Project.dir/ClearClosingTagsDec.cpp.obj	4cbad8d8cee49733
 368	1276	7253032671205602	CMakeFiles/DS_Project.dir/TagsMapComp.cpp.obj	1ce0b6bdc4bac877
-14	885	7253053992730410	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-14	885	7253053992730410	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-14	885	7253053992730410	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
-14	885	7253053992730410	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-885	4913	7253054035994961	CMakeFiles/DS_Project.dir/main.cpp.obj	8d3698208985d8a6
-890	5212	7253054038956688	CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj	26a17da3043704c3
-894	6551	7253054052364531	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
-25	682	7253055597404145	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-25	682	7253055597404145	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-25	682	7253055597404145	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
-25	682	7253055597404145	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-687	6299	7253055653614377	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
-6300	7096	7253055661530212	DS_Project.exe	c4797b021e17f795
-26	1466	7253207113307855	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-26	1466	7253207113307855	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-26	1466	7253207113307855	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
-26	1466	7253207113307855	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-1468	6786	7253207172898027	CMakeFiles/DS_Project.dir/main.cpp.obj	8d3698208985d8a6
-1474	6834	7253207173484851	CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj	26a17da3043704c3
-26	802	7253207590025020	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-26	802	7253207590025020	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-26	802	7253207590025020	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
-26	802	7253207590025020	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-808	4720	7253207632333085	CMakeFiles/DS_Project.dir/main.cpp.obj	8d3698208985d8a6
-803	4992	7253207635040028	CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj	26a17da3043704c3
-813	6785	7253207652977047	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
-6785	8016	7253207665231920	DS_Project.exe	c4797b021e17f795
-14	341	7253209398042882	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-14	341	7253209398042882	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-14	341	7253209398042882	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
-14	341	7253209398042882	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-14	376	7253209809279856	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-14	376	7253209809279856	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-14	376	7253209809279856	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
-14	376	7253209809279856	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-379	5368	7253209859154890	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
-5369	6031	7253209865745876	DS_Project.exe	c4797b021e17f795
-16	668	7253222556554286	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-16	668	7253222556554286	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-16	668	7253222556554286	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
-16	668	7253222556554286	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-677	1690	7253222569391562	CMakeFiles/DS_Project.dir/CompressionSystem.cpp.obj	9cb5cd48541934f1
-669	4058	7253222593099905	CMakeFiles/DS_Project.dir/main.cpp.obj	8d3698208985d8a6
-673	4428	7253222596768586	CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj	26a17da3043704c3
-681	5783	7253222610331888	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
-5783	6376	7253222616188618	DS_Project.exe	c4797b021e17f795
-17	514	7253226514197585	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-17	514	7253226514197585	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-17	514	7253226514197585	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
-17	514	7253226514197585	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-518	5086	7253226560017560	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
-23	481	7253227768896889	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-23	481	7253227768896889	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-23	481	7253227768896889	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
-23	481	7253227768896889	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-489	1734	7253227781496152	CMakeFiles/DS_Project.dir/CompressionSystem.cpp.obj	9cb5cd48541934f1
-485	5337	7253227817509093	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
-5338	5985	7253227823906450	DS_Project.exe	c4797b021e17f795
-21	782	7253231147372006	DS_Project_autogen/timestamp	2ce590a219dbc2f3
-21	782	7253231147372006	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-21	782	7253231147372006	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
-21	782	7253231147372006	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
-791	2130	7253231163954380	CMakeFiles/DS_Project.dir/DecompressSystem.cpp.obj	8ea1c2e6376d50eb
-783	4311	7253231185764378	CMakeFiles/DS_Project.dir/main.cpp.obj	8d3698208985d8a6
-787	4595	7253231188607788	CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj	26a17da3043704c3
-796	5883	7253231201469032	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
-5883	6496	7253231207537577	DS_Project.exe	c4797b021e17f795
+11	431	7253257416454454	DS_Project_autogen/timestamp	2ce590a219dbc2f3
+11	431	7253257416454454	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+11	431	7253257416454454	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
+11	431	7253257416454454	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+435	6897	7253257481090404	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
+6898	7569	7253257487752940	DS_Project.exe	c4797b021e17f795
+22	425	7253258467752105	DS_Project_autogen/timestamp	2ce590a219dbc2f3
+22	425	7253258467752105	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+22	425	7253258467752105	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
+22	425	7253258467752105	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+428	5521	7253258518702360	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
+5522	6171	7253258525143869	DS_Project.exe	c4797b021e17f795
+21	416	7253260644426757	DS_Project_autogen/timestamp	2ce590a219dbc2f3
+21	416	7253260644426757	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+21	416	7253260644426757	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
+21	416	7253260644426757	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+419	5198	7253260692219015	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
+5198	5884	7253260699028739	DS_Project.exe	c4797b021e17f795
+21	973	7253281729704064	DS_Project_autogen/timestamp	2ce590a219dbc2f3
+21	973	7253281729704064	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+21	973	7253281729704064	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
+21	973	7253281729704064	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+978	5353	7253281776919411	CMakeFiles/DS_Project.dir/main.cpp.obj	8d3698208985d8a6
+973	6030	7253281783653945	CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj	26a17da3043704c3
+982	7062	7253281793997805	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
+7062	7962	7253281802917505	DS_Project.exe	c4797b021e17f795
+10	395	7253282652081054	DS_Project_autogen/timestamp	2ce590a219dbc2f3
+10	395	7253282652081054	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+10	395	7253282652081054	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
+10	395	7253282652081054	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+399	5145	7253282699553177	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
+5145	5962	7253282707680892	DS_Project.exe	c4797b021e17f795
+23	517	7253284381861297	DS_Project_autogen/timestamp	2ce590a219dbc2f3
+23	517	7253284381861297	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+23	517	7253284381861297	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
+23	517	7253284381861297	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+522	6088	7253284437565063	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
+6089	6913	7253284445744163	DS_Project.exe	c4797b021e17f795
+23	985	7253294055619880	DS_Project_autogen/timestamp	2ce590a219dbc2f3
+23	985	7253294055619880	DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+23	985	7253294055619880	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/timestamp	2ce590a219dbc2f3
+23	985	7253294055619880	D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/mocs_compilation.cpp	2ce590a219dbc2f3
+990	4651	7253294095532442	CMakeFiles/DS_Project.dir/main.cpp.obj	8d3698208985d8a6
+985	5407	7253294103072347	CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj	26a17da3043704c3
+995	6647	7253294115486897	CMakeFiles/DS_Project.dir/mainwindow.cpp.obj	9a722295099a6d40
+6648	7594	7253294124882120	DS_Project.exe	c4797b021e17f795

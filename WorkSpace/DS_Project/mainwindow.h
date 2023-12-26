@@ -44,6 +44,14 @@ private slots:
     void handleFormatTheFileRequest();
     void compressFile();
     bool eventFilter(QObject *obj, QEvent *event);
+    /********************************************< Save dialog box ********************************************/
+
+    //pass the extention name without the leading dot '.'
+    QString extensionLabel(const QString& expectedExtension);
+    //pass the extention name without the leading dot '.'
+    QString saveDialogBox(const QString& expectedExtension);
+    //pass the extention names without the leading dot '.'
+    QString saveDialogBox(const std::vector<QString>& expectedExtensions);
     /********************************************< Button Actions ********************************************/
     void handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit, QTextEdit* lineNumberArea);
     void compressFile(const QString& fileName, QTextEdit* textEdit);
