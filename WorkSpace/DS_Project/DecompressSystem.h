@@ -44,6 +44,43 @@ public:
 	 * @return A pointer to a string that contains the decompressed file.
 	 */
 	static std::string* decompress_SocialNetworkXML(const std::string& filePath);
+
+    /**
+     * @brief Decompresses a social network XML file..
+     *
+     * It will read the file using std::string* readFile(const std::string& filePath) method.
+     * It apply these algorithms on the read file string in order:
+     * -Huffman Decompress.
+     * -Tags Mapping Decompress.
+     *
+     * @param filePath Path of the output file + file name and extension.
+     * @return A pointer to a string that contains the decompressed file.
+     */
+    static std::string* decompress_XML(const std::string& filePath);
+
+    /**
+     * @brief Decompresses a social network XML file..
+     *
+     * It will read the file using std::string* readFile(const std::string& filePath) method.
+     * It apply these algorithms on the read file string in order:
+     * -Huffman Decompress.
+     *
+     * @param filePath Path of the output file + file name and extension.
+     * @return A pointer to a string that contains the decompressed file.
+     */
+    static std::string* decompress_JSON(const std::string& filePath);
+
+    /**
+     * @brief Decompresses a social network XML file..
+     *
+     * It will read the file using std::string* readFile(const std::string& filePath) method.
+     * It apply these algorithms on the read file string in order:
+     * -Huffman Decompress.
+     *
+     * @param filePath Path of the output file + file name and extension.
+     * @return A pointer to a string that contains the decompressed file.
+     */
+    static std::string* decompress_File(const std::string& filePath);
 };
 
 #endif // !DECOMPRESS_SYSTEM_H

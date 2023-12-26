@@ -71,3 +71,57 @@ std::string* DecompressSystem::decompress_SocialNetworkXML(const std::string& fi
 
 	return clearingDec;
 }
+
+std::string* DecompressSystem::decompress_XML(const std::string& filePath){
+    //read the file
+    std::string* fileComp = readFile(filePath);
+
+    //Huffman Decompress
+    HuffmanDec* huffmanObj = new HuffmanDec(fileComp);
+    std::string* huffmanDec = huffmanObj->decompress();
+
+    delete huffmanObj;
+    huffmanObj = nullptr;
+
+    //Tags Mapping Decompress
+    TagsMapDec* mappingDecObj = new TagsMapDec(huffmanDec);
+    std::string* mapDec = mappingDecObj->decompress();
+
+    delete mappingDecObj;
+    mappingDecObj = nullptr;
+    delete huffmanDec;
+    huffmanDec = nullptr;
+
+    return mapDec;
+}
+
+std::string* DecompressSystem::decompress_File(const std::string& filePath){
+    //read the file
+    std::string* fileComp = readFile(filePath);
+
+    //Huffman Decompress
+    HuffmanDec* huffmanObj = new HuffmanDec(fileComp);
+    std::string* huffmanDec = huffmanObj->decompress();
+
+    delete huffmanObj;
+    huffmanObj = nullptr;
+
+
+    return huffmanDec;
+}
+
+
+std::string* DecompressSystem::decompress_JSON(const std::string& filePath){
+    //read the file
+    std::string* fileComp = readFile(filePath);
+
+    //Huffman Decompress
+    HuffmanDec* huffmanObj = new HuffmanDec(fileComp);
+    std::string* huffmanDec = huffmanObj->decompress();
+
+    delete huffmanObj;
+    huffmanObj = nullptr;
+
+
+    return huffmanDec;
+}

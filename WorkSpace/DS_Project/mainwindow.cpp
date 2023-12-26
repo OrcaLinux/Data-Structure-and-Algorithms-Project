@@ -190,6 +190,7 @@ void MainWindow::createNewTab() {
         handleFormatTheFileRequest();
     });
 
+    //Added for compress
     // Connect button4's clicked signal to compressFile
     connect(button4, &QPushButton::clicked, this, [=](){
         compressFile();
@@ -319,6 +320,12 @@ void MainWindow::on_actionOpen_triggered()
             handleFormatTheFileRequest(fileName, textEdit, lineNumberArea);
         });
 
+        //Added for compress
+        // Connect button4's clicked signal to compressFile
+        connect(button4, &QPushButton::clicked, this, [=](){
+            compressFile(fileName, textEdit);
+        });
+
     }
 }
 
@@ -435,11 +442,6 @@ void MainWindow::handleFormatTheFileRequest() {
     }
 }
 
-//TODO: ??
-void MainWindow::compressFile(){
-
-}
-
 QString MainWindow::formatXml(const QString &xmlContent) {
     QDomDocument document;
     document.setContent(xmlContent);
@@ -496,8 +498,61 @@ void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int inden
 }
 
 /********************************************< compression Actions ********************************************/
-void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit){
+//TODO: implement this function
+void MainWindow::compressFile(){
+    //TODO: get the file
 
+    //check the extention,
+    //if xml
+    //-> if it doesn't contain errors
+    //->>if it can parsed, then its social network data.
+    //->> open a dialog box to get the path.
+    //--->let the path be sncxml
+    //--->call CompressionSystem::compress_SocialNetworkXML(file, path);
+    //->>else
+    //->> open a dialog box to get the path.
+    //--->let the path be cxml
+    //->>call CompressionSystem::compress_XML(file, path);
+    //-> if is contain error, show an error message. then return.
+
+    //if json file
+
+    //if another file
+    //->> open a dialog box to get the path.
+    //--->let the path be cfile
+    //call  CompressionSystem::compress_File(file, path);
+
+
+    //open the file in a new tab for the compressed file.
+    //TODO: create a function for opennig tabs for the compressed files.
+}
+
+void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit){
+    //get the file
+
+    //check the extention,
+    //if xml
+    //-> if it doesn't contain errors
+    //->>if it can parsed, then its social network data.
+    //->> open a dialog box to get the path.
+    //--->let the path be sncxml
+    //--->call CompressionSystem::compress_SocialNetworkXML(file, path);
+    //->>else
+    //->> open a dialog box to get the path.
+    //--->let the path be cxml
+    //->>call CompressionSystem::compress_XML(file, path);
+    //-> if is contain error, show an error message. then return.
+
+    //if json file
+
+    //if another file
+    //->> open a dialog box to get the path.
+    //--->let the path be cfile
+    //call  CompressionSystem::compress_File(file, path);
+
+
+    //open the file in a new tab for the compressed file.
+    //TODO: create a function for opennig tabs for the compressed files.
 }
 
 

@@ -19,6 +19,7 @@ D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Dat
  mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TreeNode.h
  mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.h
  mdp:D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.h
+ mdp:D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QDebug
  mdp:D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20functional.h
  mdp:D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20memory.h
  mdp:D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20type_traits.h

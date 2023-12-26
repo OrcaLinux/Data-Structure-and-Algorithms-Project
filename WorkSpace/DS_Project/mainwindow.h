@@ -6,6 +6,7 @@
 #include "tabmanager.h"
 #include <QMainWindow>
 
+#include <QDebug>
 #include "CompressionSystem.h"
 #include "DecompressSystem.h"
 

@@ -40,6 +40,7 @@ DS_Project_autogen/timestamp: \
   CMakeFiles/3.24.2/CMakeRCCompiler.cmake \
   CMakeFiles/3.24.2/CMakeSystem.cmake \
   DS_Project_autogen/moc_predefs.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QDebug \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20functional.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20memory.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20type_traits.h \
