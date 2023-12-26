@@ -1,0 +1,80 @@
+The system is: Windows - 10.0.22635 - AMD64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: D:/Programming/Qt/Tools/mingw1120_64/bin/g++.exe 
+Build flags: -DQT_QML_DEBUG
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+
+The CXX compiler identification is GNU, found in "D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/3.24.2/CompilerIdCXX/a.exe"
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Programming/Qt/Tools/Ninja/ninja.exe cmTC_1a5d2 && [1/2] Building CXX object CMakeFiles/cmTC_1a5d2.dir/testCXXCompiler.cxx.obj
+[2/2] Linking CXX executable cmTC_1a5d2.exe
+
+
+
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Programming/Qt/Tools/Ninja/ninja.exe cmTC_136cd && [1/2] Building CXX object CMakeFiles/cmTC_136cd.dir/src.cxx.obj
+[2/2] Linking CXX executable cmTC_136cd.exe
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test HAVE_STDATOMIC succeeded with the following output:
+Change Dir: D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Programming/Qt/Tools/Ninja/ninja.exe cmTC_811bf && [1/2] Building CXX object CMakeFiles/cmTC_811bf.dir/src.cxx.obj
+[2/2] Linking CXX executable cmTC_811bf.exe
+
+
+Source file was:
+#include <atomic>
+#include <cstdint>
+
+int main(int, char **)
+{
+    volatile std::atomic<char>    size_1;
+    volatile std::atomic<short>   size_2;
+    volatile std::atomic<int>     size_4;
+    volatile std::atomic<int64_t> size_8;
+
+    ++size_1;
+    ++size_2;
+    ++size_4;
+    ++size_8;
+
+    (void)size_1.load(std::memory_order_relaxed);
+    (void)size_2.load(std::memory_order_relaxed);
+    (void)size_4.load(std::memory_order_relaxed);
+    (void)size_8.load(std::memory_order_relaxed);
+
+    return 0;
+}

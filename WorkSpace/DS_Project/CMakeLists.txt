@@ -18,6 +18,39 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+
+
+        CompressionSystem.cpp
+        CompressionSystem.h
+        DecompressSystem.cpp
+        DecompressSystem.h
+
+        HuffmanComp.cpp
+        HuffmanComp.h
+        HuffmanDec.cpp
+        HuffmanDec.h
+        HuffmanTree.cpp
+        HuffmanTree.h
+        HuffmanTreeNode.h
+
+        ClearClosingTagsComp.cpp
+        ClearClosingTagsComp.h
+        ClearClosingTagsDec.cpp
+        ClearClosingTagsDec.h
+        Tree.cpp
+        Tree.h
+        TreeNode.cpp
+        TreeNode.h
+
+        MinifyingXML.cpp
+        MinifyingXML.h
+
+        TagsMapComp.cpp
+        TagsMapComp.h
+        TagsMapDec.cpp
+        TagsMapDec.h
+        Map.cpp
+        Map.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
