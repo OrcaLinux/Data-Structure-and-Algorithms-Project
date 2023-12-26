@@ -190,7 +190,7 @@ void MainWindow::createNewTab() {
         handleFormatTheFileRequest();
     });
 
-    // Connect button4's clicked signal to handleFormatTheFileRequest
+    // Connect button4's clicked signal to compressFile
     connect(button4, &QPushButton::clicked, this, [=](){
         compressFile();
     });
