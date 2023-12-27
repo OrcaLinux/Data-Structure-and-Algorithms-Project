@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>aboutIcon.png</file>
+        <file>aboutQtIcon.png</file>
+        <file>copyIcon.png</file>
+        <file>cutIcon.png</file>
+        <file>pasteIcon.png</file>
+        <file>quitIcon.png</file>
+        <file>redoIcon.png</file>
+        <file>undoIcon.png</file>
+        <file>autoSaveIcon.png</file>
+        <file>findIcon.jpg</file>
+        <file>newIcon.png</file>
+        <file>openIcon.png</file>
+        <file>saveAsIcon.png</file>
+        <file>saveIcon.png</file>
+        <file>closeAllIcon.jpg</file>
+        <file>closeFileIcon.png</file>
+        <file>renameIconpng.png</file>
+        <file>saveACopyAsIcon.png</file>
+        <file>saveAll.png</file>
+        <file>exitIcon.png</file>
+    </qresource>
+</RCC>

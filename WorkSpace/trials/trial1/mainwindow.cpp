@@ -453,8 +453,7 @@ void MainWindow::correct(QTextEdit* textEdit) {
                     currentTextEdit->clear();
                     QString qtString = QString::fromStdString(corrected);
                     QTextEdit textEdit;
-                    //currentTextEdit->setHtml(qtString);
-
+                    currentTextEdit->setHtml(qtString);
                     //qDebug () << "Hello After Fomrmat the xml";
                 }
 }
@@ -463,10 +462,7 @@ void MainWindow::correct() {
 
     if (ui->tabWidget->currentWidget()) {
         if (currentTextEdit) {
-            QString xmlContent = currentTextEdit->toPlainText().trimmed(); // Get XML content and trim whitespace
-                QDomDocument document;
-                QString errorMsg;
-                int errorLine, errorColumn;
+            QString xmlContent = currentTextEdit->toPlainText(); // Get XML content and trim whitespace
                 string input = xmlContent.toStdString();
                 vector<string> tok = tokenizeFileFromTextInput(input);
                 if (!bool_errorDetection(tok)){
@@ -476,8 +472,9 @@ void MainWindow::correct() {
                         corrected = errorCorrect(error,corrected,errors);
                     }
                     currentTextEdit->clear();
-                    QString qtString = QString::fromStdString(corrected);
-                    currentTextEdit->setHtml(qtString);
+                    QString Corrected = QString::fromStdString(corrected);
+                    //Corrected = "<s>somaya</s>";
+                    currentTextEdit->setPlainText(Corrected);
                     //qDebug () << "Hello After Fomrmat the xml";
                 }
                 else {
