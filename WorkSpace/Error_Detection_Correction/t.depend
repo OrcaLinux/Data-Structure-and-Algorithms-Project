@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1703594502 source:c:\users\somia\documents\t\error_detect.cpp
+	"error_detect.h"
+
+1703594502 c:\users\somia\documents\t\error_detect.h
+	<iostream>
+	<stack>
+	<string>
+	<vector>
+	<fstream>
+	<sstream>
+
+1703594917 source:c:\users\somia\documents\t\main.cpp
+	<iostream>
+	"error_detect.h"
+
