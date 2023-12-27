@@ -67,11 +67,12 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "fileName",
     "QTextEdit*",
     "textEdit",
-    "lineNumberArea"
+    "lineNumberArea",
+    "fileSize"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
-    uint offsetsAndSizes[58];
+    uint offsetsAndSizes[60];
     char stringdata0[11];
     char stringdata1[23];
     char stringdata2[1];
@@ -101,6 +102,7 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata26[11];
     char stringdata27[9];
     char stringdata28[15];
+    char stringdata29[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -134,7 +136,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(400, 8),  // "fileName"
         QT_MOC_LITERAL(409, 10),  // "QTextEdit*"
         QT_MOC_LITERAL(420, 8),  // "textEdit"
-        QT_MOC_LITERAL(429, 14)   // "lineNumberArea"
+        QT_MOC_LITERAL(429, 14),  // "lineNumberArea"
+        QT_MOC_LITERAL(444, 8)   // "fileSize"
     },
     "MainWindow",
     "on_actionCut_triggered",
@@ -164,7 +167,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "fileName",
     "QTextEdit*",
     "textEdit",
-    "lineNumberArea"
+    "lineNumberArea",
+    "fileSize"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -202,7 +206,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       22,    1,  151,    2, 0x08,   20 /* Private */,
       22,    1,  154,    2, 0x08,   22 /* Private */,
       14,    3,  157,    2, 0x08,   24 /* Private */,
-      15,    2,  164,    2, 0x08,   28 /* Private */,
+      15,    3,  164,    2, 0x08,   28 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -223,7 +227,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::QString, QMetaType::QString,   21,
     QMetaType::QString, 0x80000000 | 23,   24,
     QMetaType::Void, QMetaType::QString, 0x80000000 | 26, 0x80000000 | 26,   25,   27,   28,
-    QMetaType::Void, QMetaType::QString, 0x80000000 | 26,   25,   27,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 26, QMetaType::LongLong,   25,   27,   29,
 
        0        // eod
 };
@@ -285,7 +289,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'compressFile'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>
+        QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<qint64, std::false_type>
     >,
     nullptr
 } };
@@ -318,7 +323,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 16: { QString _r = _t->saveDialogBox((*reinterpret_cast< std::add_pointer_t<std::vector<QString>>>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         case 17: _t->handleFormatTheFileRequest((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[3]))); break;
-        case 18: _t->compressFile((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[2]))); break;
+        case 18: _t->compressFile((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<qint64>>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {

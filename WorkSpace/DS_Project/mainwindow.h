@@ -54,7 +54,7 @@ private slots:
     QString saveDialogBox(const std::vector<QString>& expectedExtensions);
     /********************************************< Button Actions ********************************************/
     void handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit, QTextEdit* lineNumberArea);
-    void compressFile(const QString& fileName, QTextEdit* textEdit);
+    void compressFile(const QString& fileName, QTextEdit* textEdit, qint64 fileSize);
 
 private:
     Ui::MainWindow *ui;

@@ -322,8 +322,9 @@ void MainWindow::on_actionOpen_triggered()
 
         //Added for compress
         // Connect button4's clicked signal to compressFile
+        //TODO: add the size.
         connect(button4, &QPushButton::clicked, this, [=](){
-            compressFile(fileName, textEdit);
+            compressFile(fileName, textEdit, 17000);
         });
 
     }
@@ -500,40 +501,17 @@ void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int inden
 /********************************************< compression Actions ********************************************/
 //TODO: implement this function
 void MainWindow::compressFile(){
-    //TODO: get the file
-
-    //check the extention,
-    //if xml
-    //-> if it doesn't contain errors
-    //->>if it can parsed, then its social network data.
-    //->> open a dialog box to get the path.
-    //--->let the path be sncxml
-    //--->call CompressionSystem::compress_SocialNetworkXML(file, path);
-    //->>else
-    //->> open a dialog box to get the path.
-    //--->let the path be cxml
-    //->>call CompressionSystem::compress_XML(file, path);
-    //-> if is contain error, show an error message. then return.
-
-    //if json file
-
-    //if another file
-    //->> open a dialog box to get the path.
-    //--->let the path be cfile
-    //call  CompressionSystem::compress_File(file, path);
-
-
-    //open the file in a new tab for the compressed file.
-    //TODO: create a function for opennig tabs for the compressed files.
+    //TODO: get the file, check if xml then send to the overloaded method.
 }
 
-void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit){
+void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint64 fileSize){
     std::string fileText = textEdit->toPlainText().toStdString();
 
     std::string extension;
     int dotIndex = fileName.lastIndexOf('.');
     if(dotIndex== -1){
-        //TODO: show an error.
+        //show an error.
+        QMessageBox::critical(nullptr, "Defected file name.", "Please rectify the errors in the file to proceed.");
         return;
     }
     //extract the extension excluding the dot.
@@ -580,7 +558,7 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit){
             QMessageBox::critical(nullptr, "Defected File.", "Please rectify the errors in the file to proceed.");
         }
     } else if (extension == "json"){
-        //TODO: open a dialog box with the cjson extension, and get the path.
+        //open a dialog box with the cjson extension, and get the path.
         newFilePath = saveDialogBox(QString("cjson")).toStdString();
 
         if(newFilePath.empty()){
@@ -602,8 +580,21 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit){
     }
 
     if(completed){
-    //open the file in a new tab for the compressed file using the newFilePath.
-    //TODO: create a function for opennig tabs for the compressed files.
+        //get the size of the file after compressing
+        qint64 compressedSize = QFileInfo(QString::fromStdString(newFilePath)).size();
+        //message to show
+        QString message = QString("Compression completed.\n\n"
+                                  "Original file size: %1 bytes\n"
+                                  "Compressed file size: %2 bytes\n"
+                                  "New file path: %3\n\n"
+                                  "Do you want to open the file in a new tab?").arg(fileSize).arg(compressedSize)
+                                  .arg(QString::fromStdString(newFilePath));
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(nullptr, "Compression Completed", message, QMessageBox::Yes | QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            //open the file in a new tab for the compressed file using the newFilePath.
+            //TODO: create a function for opennig tabs for the compressed files.
+        }
     } else{
         //show an error message that the proccess wasn't comleted.
         QMessageBox::critical(nullptr, "Error", "The operation was aborted due to an unexpected error.");
@@ -638,10 +629,6 @@ QString MainWindow::saveDialogBox(const QString& expectedExtension){
     std::vector<QString> expectedExtensions;
     expectedExtensions.push_back(expectedExtension);
     QString newFilePath = saveDialogBox(expectedExtensions);
-//    //get the extension
-//    QString format = extensionLabel(expectedExtension);
-//    //open a dialog box with the sncxml extension, and get the path.
-//    QString newFilePath =QFileDialog::getSaveFileName(nullptr, "Save File", QDir::homePath(), format);
 
     // Ensure the chosen file has the specified extension.
     QString chosenExtension = QFileInfo(newFilePath).suffix();
