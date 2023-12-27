@@ -1,5 +1,5 @@
-#include "xmlToJson.h"
-
+#include "xmlToJson_private.h"
+#include "xmlToJson_interface.h"
 /********************************************< Function Implementation ********************************************/
 
 // Function to convert XML text to a pretty-formatted JSON string
@@ -26,7 +26,6 @@ QString XML_2_JSON(QString xmlText) {
     // Apply a function to format the JSON string for readability
     return prettyJSON(jsonText);
 }
-
 
 // Function to convert XML text to a minified JSON string
 QString XML_2_JSON_Minified(QString xmlText) {
@@ -182,7 +181,6 @@ void WriteJSON_Minified(QDomNode& root, QTextStream& json) {
     }
 }
 
-
 // Function to format JSON text for readability
 QString prettyJSON(QString jsonText) {
     QTextStream inStream(&jsonText); // Create a QTextStream to read from the input JSON text
@@ -214,7 +212,6 @@ QString prettyJSON(QString jsonText) {
     prettyJSONText.chop(1); // Remove the extra new line at the end
     return prettyJSONText; // Return the formatted JSON text
 }
-
 
 // Function to handle closing brackets in the JSON output
 void closingBracketHandler(QDomElement& currentElement, std::stack<QDomElement>& stack, QTextStream& json) {

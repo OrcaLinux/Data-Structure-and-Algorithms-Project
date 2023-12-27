@@ -21,6 +21,7 @@
 #include <QBuffer>
 #include <QScrollBar>
 #include <QTextBlock>
+#include "xmlToJson_interface.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -146,7 +147,8 @@ void MainWindow::createNewTab() {
     QPushButton *button1 = new QPushButton("Visualize");
     QPushButton *button2 = new QPushButton("Correct");
     QPushButton *button3 = new QPushButton("XML -> JSON");
-    QPushButton *button4 = new QPushButton("Compresse");
+    QPushButton *button4 = new QPushButton("Compress");
+    QPushButton *button5 = new QPushButton("Minify");
 
     // Create a layout for the buttons and add them to it
     QHBoxLayout *buttonLayout = new QHBoxLayout;
@@ -154,6 +156,7 @@ void MainWindow::createNewTab() {
     buttonLayout->addWidget(button2);
     buttonLayout->addWidget(button3);
     buttonLayout->addWidget(button4);
+    buttonLayout->addWidget(button5);
 
     // Create a layout for the entire tab's content
     QVBoxLayout *tabLayout = new QVBoxLayout;
@@ -273,6 +276,7 @@ void MainWindow::on_actionOpen_triggered()
         QPushButton *button2 = new QPushButton("Correct");
         QPushButton *button3 = new QPushButton("XML -> JSON");
         QPushButton *button4 = new QPushButton("Compress");
+        QPushButton *button5 = new QPushButton("Minify");
 
         // Layout setup for buttons
         QHBoxLayout *buttonLayout = new QHBoxLayout;
@@ -280,6 +284,7 @@ void MainWindow::on_actionOpen_triggered()
         buttonLayout->addWidget(button2);
         buttonLayout->addWidget(button3);
         buttonLayout->addWidget(button4);
+        buttonLayout->addWidget(button5);
 
         // Main layout for the tab's content including textEdit and lineNumberArea
         QVBoxLayout *tabLayout = new QVBoxLayout;
@@ -414,6 +419,8 @@ void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* 
     }
 }
 
+// TODO: Check file format
+
 void MainWindow::handleFormatTheFileRequest() {
     if (ui->tabWidget->currentWidget()) {
         if (currentTextEdit) {
@@ -508,6 +515,8 @@ void MainWindow::compressFile(){
     //TODO: get the file, check if xml then send to the overloaded method.
 }
 
+
+// TODO: Add the default parameter
 void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint64 fileSize){
     std::string fileText = textEdit->toPlainText().toStdString();
 

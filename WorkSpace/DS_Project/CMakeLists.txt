@@ -51,8 +51,8 @@ set(PROJECT_SOURCES
         Map.cpp
         Map.h
 
-        xmlToJson.cpp
-        xmlToJson.h
+        xmlToJson_interface.cpp
+        xmlToJson_interface.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -62,6 +62,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         images/resources.qrc
         tabmanager.h tabmanager.cpp
         texteditmanager.h texteditmanager.cpp
+        xmlToJson_private.h
 
     )
 # Define target properties for Android with Qt 6 as:
