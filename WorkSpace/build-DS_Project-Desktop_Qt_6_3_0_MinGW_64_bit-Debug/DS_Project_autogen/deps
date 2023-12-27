@@ -124,6 +124,10 @@ DS_Project_autogen/timestamp: \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qwidget.h \
+	C:/Qt/6.3.0/mingw_64/include/QtXml/qdom.h \
+	C:/Qt/6.3.0/mingw_64/include/QtXml/qtxml-config.h \
+	C:/Qt/6.3.0/mingw_64/include/QtXml/qtxmlexports.h \
+	C:/Qt/6.3.0/mingw_64/include/QtXml/qtxmlglobal.h \
 	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake \
 	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake \
 	C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6/Qt6Config.cmake \

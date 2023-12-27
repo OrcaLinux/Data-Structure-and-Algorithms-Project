@@ -1,0 +1,19 @@
+{
+	"BUILD_DIR" : "D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/DS_Project_autogen",
+	"CMAKE_BINARY_DIR" : "D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project",
+	"CMAKE_SOURCE_DIR" : "D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project",
+	"INCLUDE_DIR" : "D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/DS_Project_autogen/include",
+	"INPUTS" : [],
+	"LOCK_FILE" : "D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/CMakeFiles/DS_Project_autogen.dir/AutoRcc_QScintilla_src_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "QScintilla_src" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_QScintilla_src.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.3.0/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/CMakeFiles/DS_Project_autogen.dir/AutoRcc_QScintilla_src_EWIEGA46WW_Used.txt",
+	"SOURCE" : "D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/QScintilla_src.qrc",
+	"VERBOSITY" : 0
+}

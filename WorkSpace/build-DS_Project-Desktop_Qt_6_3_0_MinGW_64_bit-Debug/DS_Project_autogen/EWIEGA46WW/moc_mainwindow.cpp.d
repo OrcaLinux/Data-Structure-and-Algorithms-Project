@@ -125,6 +125,10 @@ D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/buil
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qwidget.h \
+  C:/Qt/6.3.0/mingw_64/include/QtXml/qdom.h \
+  C:/Qt/6.3.0/mingw_64/include/QtXml/qtxml-config.h \
+  C:/Qt/6.3.0/mingw_64/include/QtXml/qtxmlexports.h \
+  C:/Qt/6.3.0/mingw_64/include/QtXml/qtxmlglobal.h \
   C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/limits.h \
   C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/syslimits.h \
   C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/algorithm \

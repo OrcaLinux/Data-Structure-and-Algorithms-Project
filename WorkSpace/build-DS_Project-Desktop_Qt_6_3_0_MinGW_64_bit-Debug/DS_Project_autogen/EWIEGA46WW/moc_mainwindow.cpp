@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    const uint offsetsAndSize[44];
-    char stringdata0[329];
+    const uint offsetsAndSize[46];
+    char stringdata0[342];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
@@ -51,7 +51,8 @@ QT_MOC_LITERAL(286, 7), // "QEvent*"
 QT_MOC_LITERAL(294, 5), // "event"
 QT_MOC_LITERAL(300, 8), // "fileName"
 QT_MOC_LITERAL(309, 10), // "QTextEdit*"
-QT_MOC_LITERAL(320, 8) // "textEdit"
+QT_MOC_LITERAL(320, 8), // "textEdit"
+QT_MOC_LITERAL(329, 12) // "colorizeTags"
 
     },
     "MainWindow\0on_actionCut_triggered\0\0"
@@ -62,7 +63,7 @@ QT_MOC_LITERAL(320, 8) // "textEdit"
     "createNewTab\0closeTab\0index\0"
     "handleFormatTheFileRequest\0eventFilter\0"
     "obj\0QEvent*\0event\0fileName\0QTextEdit*\0"
-    "textEdit"
+    "textEdit\0colorizeTags"
 };
 #undef QT_MOC_LITERAL
 
@@ -72,7 +73,7 @@ static const uint qt_meta_data_MainWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -80,20 +81,21 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   98,    2, 0x08,    1 /* Private */,
-       3,    0,   99,    2, 0x08,    2 /* Private */,
-       4,    0,  100,    2, 0x08,    3 /* Private */,
-       5,    0,  101,    2, 0x08,    4 /* Private */,
-       6,    0,  102,    2, 0x08,    5 /* Private */,
-       7,    0,  103,    2, 0x08,    6 /* Private */,
-       8,    0,  104,    2, 0x08,    7 /* Private */,
-       9,    0,  105,    2, 0x08,    8 /* Private */,
-      10,    0,  106,    2, 0x08,    9 /* Private */,
-      11,    0,  107,    2, 0x08,   10 /* Private */,
-      12,    1,  108,    2, 0x08,   11 /* Private */,
-      14,    0,  111,    2, 0x08,   13 /* Private */,
-      15,    2,  112,    2, 0x08,   14 /* Private */,
-      14,    2,  117,    2, 0x08,   17 /* Private */,
+       1,    0,  104,    2, 0x08,    1 /* Private */,
+       3,    0,  105,    2, 0x08,    2 /* Private */,
+       4,    0,  106,    2, 0x08,    3 /* Private */,
+       5,    0,  107,    2, 0x08,    4 /* Private */,
+       6,    0,  108,    2, 0x08,    5 /* Private */,
+       7,    0,  109,    2, 0x08,    6 /* Private */,
+       8,    0,  110,    2, 0x08,    7 /* Private */,
+       9,    0,  111,    2, 0x08,    8 /* Private */,
+      10,    0,  112,    2, 0x08,    9 /* Private */,
+      11,    0,  113,    2, 0x08,   10 /* Private */,
+      12,    1,  114,    2, 0x08,   11 /* Private */,
+      14,    0,  117,    2, 0x08,   13 /* Private */,
+      15,    2,  118,    2, 0x08,   14 /* Private */,
+      14,    2,  123,    2, 0x08,   17 /* Private */,
+      22,    0,  128,    2, 0x08,   20 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -110,6 +112,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Bool, QMetaType::QObjectStar, 0x80000000 | 17,   16,   18,
     QMetaType::Void, QMetaType::QString, 0x80000000 | 20,   19,   21,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -159,7 +162,7 @@ const QMetaObject MainWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t
 , QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QObject *, std::false_type>, QtPrivate::TypeAndForceComplete<QEvent *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QObject *, std::false_type>, QtPrivate::TypeAndForceComplete<QEvent *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -186,13 +189,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 15;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 15;
     }
     return _id;
 }
