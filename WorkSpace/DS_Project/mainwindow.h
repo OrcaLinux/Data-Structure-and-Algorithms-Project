@@ -55,6 +55,7 @@ private slots:
     /********************************************< Button Actions ********************************************/
     void handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit, QTextEdit* lineNumberArea);
     void compressFile(const QString& fileName, QTextEdit* textEdit, qint64 fileSize);
+    QString decompressFile(const QString& filePath);
 
 private:
     Ui::MainWindow *ui;

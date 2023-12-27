@@ -42,8 +42,8 @@ bool CompressionSystem::compress_SocialNetworkXML(const std::string& file, const
 
 	delete huffmanObj;
 	huffmanObj = nullptr;
-	/*delete afterMapping;
-	afterMapping = nullptr;*/
+    delete afterMapping;
+    afterMapping = nullptr;
 
 
 	bool result = saveFile(*afterHuffman, path);
@@ -78,8 +78,8 @@ bool CompressionSystem::compress_XML(const std::string& file, const std::string&
 
     delete huffmanObj;
     huffmanObj = nullptr;
-    /*delete afterMapping;
-    afterMapping = nullptr;*/
+    delete afterMapping;
+    afterMapping = nullptr;
 
 
     bool result = saveFile(*afterHuffman, path);

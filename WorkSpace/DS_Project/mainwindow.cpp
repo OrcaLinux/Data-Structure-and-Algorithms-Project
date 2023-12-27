@@ -657,6 +657,64 @@ QString MainWindow::extensionLabel(const QString& expectedExtension){
         return QString("All Files (*)");
     }
 }
+
+/********************************************< decompression Actions ********************************************/
+QString MainWindow::decompressFile(const QString& filePath){
+    //Check the extension
+    std::string extension;
+    int dotIndex = filePath.lastIndexOf('.');
+    if(dotIndex== -1){
+        //show an error.
+        QMessageBox::critical(nullptr, "Invalid File Path", "Please correct the errors within the file before proceeding.");
+        return QString();
+    }
+    //extract the extension excluding the dot.
+    extension = filePath.mid(dotIndex + 1).toStdString();
+
+    //store the result of decompression
+    QString result;
+    //compress the file according to its extension
+    try{
+        if(extension == "sncxml"){
+            //compressed social network data.
+            std::string* r = DecompressSystem::decompress_SocialNetworkXML(filePath.toStdString());
+            result = QString::fromStdString(*r);
+            delete r;
+            r = nullptr;
+
+        } else if(extension == "cxml"){
+            //compressed xml file.
+            std::string* r = DecompressSystem::decompress_XML(filePath.toStdString());
+            result = QString::fromStdString(*r);
+            delete r;
+            r = nullptr;
+
+        } else if(extension == "cjson"){
+            //compressed json
+            std::string* r = DecompressSystem::decompress_JSON(filePath.toStdString());
+            result = QString::fromStdString(*r);
+            delete r;
+            r = nullptr;
+
+        } else if(extension == "cfile"){
+            //compressed file.
+            std::string* r = DecompressSystem::decompress_File(filePath.toStdString());
+            result = QString::fromStdString(*r);
+            delete r;
+            r = nullptr;
+
+        } else {
+            //show an error, that file can't be decompressed.
+            QMessageBox::critical(nullptr, "Operation terminated.", "The file format is not recognized as a standard compressed format and cannot be decompressed.");
+            return QString();
+        }
+    }
+    catch(const std::exception& e){
+        QMessageBox::critical(nullptr, "Operation terminated.", "The file is corrupt and cannot be decompressed.");
+        return QString();
+    }
+    return result;
+}
 /********************************************< tabBar Actions ********************************************/
 void MainWindow::on_actionExit_triggered()
 {

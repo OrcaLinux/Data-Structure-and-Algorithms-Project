@@ -40,7 +40,9 @@ public:
 	/**
 	 * @brief D'tor.
 	 */
-	~HuffmanComp() { delete tree; delete file; }
+    ~HuffmanComp() { delete tree;
+        //delete file;
+    }
 
 	/**
 	 * @brief Compresses the file content using the Huffman tree.
