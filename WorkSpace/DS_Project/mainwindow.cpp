@@ -320,6 +320,10 @@ void MainWindow::on_actionOpen_triggered()
             handleFormatTheFileRequest(fileName, textEdit, lineNumberArea);
         });
 
+
+
+        //connect();
+
         //Added for compress
         // Connect button4's clicked signal to compressFile
         //TODO: add the size.
@@ -715,6 +719,7 @@ QString MainWindow::decompressFile(const QString& filePath){
     }
     return result;
 }
+
 /********************************************< tabBar Actions ********************************************/
 void MainWindow::on_actionExit_triggered()
 {

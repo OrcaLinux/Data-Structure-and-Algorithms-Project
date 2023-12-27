@@ -18,11 +18,6 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-<<<<<<< HEAD
-
-||||||| aaeb7bb
-=======
-
 
         CompressionSystem.cpp
         CompressionSystem.h
@@ -55,7 +50,9 @@ set(PROJECT_SOURCES
         TagsMapDec.h
         Map.cpp
         Map.h
->>>>>>> dbf186ce844b5685277efa98ba0f691b876c16f3
+
+        xmlToJson.cpp
+        xmlToJson.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
