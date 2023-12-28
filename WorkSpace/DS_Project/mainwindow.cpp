@@ -21,6 +21,7 @@
 #include <QBuffer>
 #include <QScrollBar>
 #include <QTextBlock>
+#include "qjsondocument.h"
 #include "xmlToJson_interface.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -31,8 +32,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Call the function to create and connect the close button
     initializeCloseButton();
+    // Install event filter on tabWidget
+    ui->tabWidget->installEventFilter(this);
 
-    ui->tabWidget->installEventFilter(this); // Install event filter on tabWidget
+    connect(ui->actionNew, &QAction::triggered, this, &MainWindow::createNewTab);
 }
 
 MainWindow::~MainWindow()
@@ -68,6 +71,7 @@ void MainWindow::initializeCloseButton() {
         closeTab(tabIndex);
     });
 }
+
 /********************************************< Tab Bar Action ********************************************/
 void MainWindow::closeTab(int index)
 {
@@ -191,6 +195,25 @@ void MainWindow::createNewTab() {
     // Connect button1's clicked signal to handleFormatTheFileRequest
     connect(button1, &QPushButton::clicked, this, [=](){
         handleFormatTheFileRequest();
+    });
+
+    // Connect button3's clicked signal to displayTextEditTab and perform XML to JSON conversion
+    connect(button3, &QPushButton::clicked, this, [=]() {
+        // Check if the XML content is valid before proceeding with conversion
+        if (!checkIfValidXML(textEdit)) {
+            return; // Do not proceed if the XML is invalid
+        }
+
+        QString xmlContent = textEdit->toPlainText();
+        QString jsonContent = XML_2_JSON(xmlContent);
+
+        // Create a new QTextEdit for the converted JSON content
+        QTextEdit *jsonTextEdit = new QTextEdit;
+        setTextEditProperties(jsonTextEdit);
+        jsonTextEdit->setText(jsonContent);
+
+        // Display the converted JSON content in a new tab using displayTextEditTab
+        displayTextEditTab(jsonTextEdit);
     });
 
     //Added for compress
@@ -322,12 +345,27 @@ void MainWindow::on_actionOpen_triggered()
         // Connect close button's clicked signal to a slot that closes the corresponding tab
         // Pass file type information to the function for processing
         connect(button1, &QPushButton::clicked, this, [=](){
-            handleFormatTheFileRequest(fileName, textEdit, lineNumberArea);
+            handleFormatTheFileRequest(fileName, textEdit);
         });
 
+        // Connect button3's clicked signal to displayTextEditTab and perform XML to JSON conversion
+        connect(button3, &QPushButton::clicked, this, [=]() {
+            // Check if the XML content is valid before proceeding with conversion
+            if (!checkIfValidXML(textEdit)) {
+                return; // Do not proceed if the XML is invalid
+            }
 
+            QString xmlContent = textEdit->toPlainText();
+            QString jsonContent = XML_2_JSON(xmlContent);
 
-        //connect();
+            // Create a new QTextEdit for the converted JSON content
+            QTextEdit *jsonTextEdit = new QTextEdit;
+            setTextEditProperties(jsonTextEdit);
+            jsonTextEdit->setText(jsonContent);
+
+            // Display the converted JSON content in a new tab using displayTextEditTab
+            displayTextEditTab(jsonTextEdit);
+        });
 
         //Added for compress
         // Connect button4's clicked signal to compressFile
@@ -337,6 +375,129 @@ void MainWindow::on_actionOpen_triggered()
         });
 
     }
+}
+
+void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
+    // Set properties for the new QTextEdit if needed
+    setTextEditProperties(textEdit);
+
+    // Create a close button for the tab
+    QPushButton *closeButton = new QPushButton("X");
+    closeButton->setFixedSize(16, 16); // Set a fixed size for the close button
+
+    // Set the background color of the close button to a red color from the Qt palette
+    QString redColor = QApplication::palette().color(QPalette::Button).name();
+    closeButton->setStyleSheet("background-color: " + redColor + ";");
+
+    // Create a QTextEdit for line numbers
+    QTextEdit* lineNumberArea = new QTextEdit;
+    setLineNumberAreaProperties(lineNumberArea);
+
+    // Connect scrolling between textEdit and lineNumberArea
+    connect(textEdit->verticalScrollBar(), &QScrollBar::valueChanged,
+            lineNumberArea->verticalScrollBar(), &QScrollBar::setValue);
+
+    connect(lineNumberArea->verticalScrollBar(), &QScrollBar::valueChanged,
+            textEdit->verticalScrollBar(), &QScrollBar::setValue);
+
+    // Disable the vertical scrollbar in lineNumberArea
+    lineNumberArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    // Connect text changes to update line numbers
+    connect(textEdit->document(), &QTextDocument::blockCountChanged,
+            this, [=]() {
+                QTextBlock block = textEdit->document()->firstBlock();
+                QString numbers;
+                while (block.isValid()) {
+                    numbers += QString::number(block.blockNumber() + 1) + "\n";
+                    block = block.next();
+                }
+                lineNumberArea->setText(numbers);
+            });
+
+    connect(textEdit, &QTextEdit::cursorPositionChanged,
+            this, [=]() {
+                QTextCursor cursor = textEdit->textCursor();
+                QTextBlock block = cursor.block();
+                int lineNumber = block.blockNumber() + 1;
+                statusBar()->showMessage("Line: " + QString::number(lineNumber));
+            });
+
+    // Create layouts for textEdit and buttons
+    QHBoxLayout *textEditLayout = new QHBoxLayout;
+    textEditLayout->addWidget(lineNumberArea);
+    textEditLayout->addWidget(textEdit);
+
+    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    QPushButton *button1 = new QPushButton("Visualize");
+    QPushButton *button2 = new QPushButton("Correct");
+    QPushButton *button3 = new QPushButton("XML -> JSON");
+    QPushButton *button4 = new QPushButton("Compress");
+    QPushButton *button5 = new QPushButton("Minify");
+    buttonLayout->addWidget(button1);
+    buttonLayout->addWidget(button2);
+    buttonLayout->addWidget(button3);
+    buttonLayout->addWidget(button4);
+    buttonLayout->addWidget(button5);
+
+    QVBoxLayout *tabLayout = new QVBoxLayout;
+    tabLayout->addLayout(textEditLayout);
+    tabLayout->addLayout(buttonLayout);
+
+    QWidget *tabWidget = new QWidget;
+    tabWidget->setLayout(tabLayout);
+
+    int tabIndex = ui->tabWidget->addTab(tabWidget, "XML->JSON");
+    ui->tabWidget->tabBar()->setTabButton(tabIndex, QTabBar::RightSide, closeButton);
+    ui->tabWidget->setCurrentIndex(tabIndex);
+
+    connect(closeButton, &QPushButton::clicked, this, [=]() {
+        int totalTabs = ui->tabWidget->count();
+        if (totalTabs == 1) {
+            return;
+        }
+        int closeIndex = ui->tabWidget->indexOf(tabWidget);
+        if (closeIndex != -1) {
+            ui->tabWidget->removeTab(closeIndex);
+            delete tabWidget;
+        }
+    });
+
+    connect(button1, &QPushButton::clicked, this, [=](){
+        handleFormatTheFileRequest();
+    });
+
+    // Connect button3's clicked signal to check if the text is already in JSON format
+    connect(button3, &QPushButton::clicked, this, [=]() {
+        QString currentText = textEdit->toPlainText();
+
+        // Check if the current text content is JSON
+        QJsonParseError jsonError;
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(currentText.toUtf8(), &jsonError);
+
+        // If the document is valid JSON, inform the user and return
+        if (jsonDoc.isNull() || !jsonDoc.isObject()) {
+            // Perform XML to JSON conversion as before
+            QString xmlContent = currentText;
+            QString jsonContent = XML_2_JSON(xmlContent);
+            QMessageBox::information(this, "XML to JSON", "Converted JSON:\n" + jsonContent);
+        } else {
+            // Display a message indicating the file is already in JSON format
+            QMessageBox::information(this, "Already in JSON", "The existing file content is already in JSON format.");
+        }
+    });
+
+    connect(button4, &QPushButton::clicked, this, [=](){
+        compressFile();
+    });
+
+    QTextBlock block = textEdit->document()->firstBlock();
+    QString numbers;
+    while (block.isValid()) {
+        numbers += QString::number(block.blockNumber() + 1) + "\n";
+        block = block.next();
+    }
+    lineNumberArea->setText(numbers);
 }
 
 void MainWindow::setTextEditProperties(QTextEdit* textEdit) {
@@ -377,7 +538,7 @@ void MainWindow::setLineNumberAreaProperties(QTextEdit* lineNumberArea) {
 }
 
 /********************************************< Button Actions ********************************************/
-void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit, QTextEdit* lineNumberArea) {
+void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit) {
     // Extract the file extension to determine the file type
     QString fileType = QFileInfo(fileName).suffix().toLower();
 
@@ -419,7 +580,30 @@ void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* 
     }
 }
 
-// TODO: Check file format
+bool MainWindow::checkIfValidXML(QTextEdit *textEdit) {
+    if (!ui->tabWidget->currentWidget() || !textEdit)
+        return false;
+
+    QString xmlContent = textEdit->toPlainText().trimmed();
+    if (xmlContent.isEmpty() || (!xmlContent.startsWith("<?xml") && !xmlContent.startsWith("<"))) {
+        QMessageBox::warning(this, tr("File Format Error"),
+                             tr("The opened file does not appear to be an XML file."));
+        return false;
+    }
+
+    QDomDocument document;
+    QString errorMsg;
+    int errorLine, errorColumn;
+
+    if (!document.setContent(xmlContent, true, &errorMsg, &errorLine, &errorColumn)) {
+        QMessageBox::critical(this, tr("XML Error"),
+                              tr("XML Syntax Error at line %1, column %2: %3")
+                                  .arg(errorLine).arg(errorColumn).arg(errorMsg));
+        return false;
+    }
+
+    return true;
+}
 
 void MainWindow::handleFormatTheFileRequest() {
     if (ui->tabWidget->currentWidget()) {
@@ -745,6 +929,8 @@ void MainWindow::on_actionCopy_triggered() {
     if (ui->tabWidget->currentWidget()) {
         QClipboard *clipboard = QGuiApplication::clipboard();
         clipboard->setText(currentTextEdit->textCursor().selectedText());
+    } else {
+        return;
     }
 }
 
@@ -753,6 +939,8 @@ void MainWindow::on_actionCut_triggered() {
         QClipboard *clipboard = QGuiApplication::clipboard();
         clipboard->setText(currentTextEdit->textCursor().selectedText());
         currentTextEdit->textCursor().removeSelectedText();
+    } else {
+        return;
     }
 }
 
@@ -761,18 +949,24 @@ void MainWindow::on_actionPast_triggered() {
         qDebug() << "Paste clicked";
         QClipboard *clipboard = QGuiApplication::clipboard();
         currentTextEdit->insertPlainText(clipboard->text());
+    } else {
+        return;
     }
 }
 
 void MainWindow::on_actionUndo_triggered() {
     if (currentTextEdit) {
         currentTextEdit->undo();
+    } else {
+        return;
     }
 }
 
 void MainWindow::on_actionRedo_triggered() {
     if (currentTextEdit) {
         currentTextEdit->redo();
+    } else {
+        return;
     }
 }
 

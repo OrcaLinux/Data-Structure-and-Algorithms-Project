@@ -53,9 +53,10 @@ private slots:
     //pass the extention names without the leading dot '.'
     QString saveDialogBox(const std::vector<QString>& expectedExtensions);
     /********************************************< Button Actions ********************************************/
-    void handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit, QTextEdit* lineNumberArea);
+    void handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit);
     void compressFile(const QString& fileName, QTextEdit* textEdit, qint64 fileSize);
     QString decompressFile(const QString& filePath);
+
 
 private:
     Ui::MainWindow *ui;
@@ -71,5 +72,7 @@ private:
     void formatNode(const QDomNode &node, QTextStream &stream, int indentation);
     void createLineNumberArea(QTextEdit* textEdit);
     void updateLineNumbers(QTextEdit *textEdit, QTextEdit *lineNumberArea);
+    bool checkIfValidXML(QTextEdit *textEdit);
+    void displayTextEditTab(QTextEdit *textEdit);
 };
 #endif // MAINWINDOW_H
