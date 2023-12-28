@@ -22,7 +22,7 @@
 #include <QScrollBar>
 #include <QTextBlock>
 #include "qjsondocument.h"
-#include "xmlToJson_interface.h"
+#include "XmlToJson_interface.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

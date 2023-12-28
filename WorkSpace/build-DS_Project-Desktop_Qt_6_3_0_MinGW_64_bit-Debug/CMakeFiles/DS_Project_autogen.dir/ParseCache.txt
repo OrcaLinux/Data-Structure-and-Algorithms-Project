@@ -1097,3 +1097,4 @@ D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_P
 D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/MinifyingXML.cpp
 D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TreeNode.cpp
 D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/xmlToJson.cpp
+D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmelToJson_private.h
