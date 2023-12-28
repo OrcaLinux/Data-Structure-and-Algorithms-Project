@@ -453,7 +453,7 @@ void MainWindow::correct(QTextEdit* textEdit) {
                     currentTextEdit->clear();
                     QString qtString = QString::fromStdString(corrected);
                     QTextEdit textEdit;
-                    currentTextEdit->setHtml(qtString);
+                    currentTextEdit->setPlainText(qtString);
                     //qDebug () << "Hello After Fomrmat the xml";
                 }
 }
