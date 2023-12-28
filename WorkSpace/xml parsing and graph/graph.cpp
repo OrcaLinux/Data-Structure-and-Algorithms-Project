@@ -41,3 +41,87 @@ void Graph::printGraph() {
         std::cout << std::endl;
     }
 }
+
+QString Graph::findMostInfluentialUser() const {
+    std::unordered_map<QString, int> followerCount;
+
+    for (const auto& neighbors : adjacencyList) {
+        for (const auto& follower : neighbors) {
+            ++followerCount[follower];
+        }
+    }
+
+    QString mostInfluentialUser;
+    int maxFollowers = 0;
+
+    for (const auto& entry : followerCount) {
+        if (entry.second > maxFollowers) {
+            mostInfluentialUser = entry.first;
+            maxFollowers = entry.second;
+        }
+    }
+
+    return mostInfluentialUser;
+}
+
+QString Graph::findMostActiveUser() const {
+    QString mostActiveUser;
+    int maxConnections = 0;
+
+    for (int i = 0; i < numVertices; ++i) {
+        if (adjacencyList[i].size() > maxConnections) {
+            mostActiveUser = vertexIds[i];
+            maxConnections = adjacencyList[i].size();
+        }
+    }
+
+    return mostActiveUser;
+}
+
+QList<QString> Graph::findMutualFollowers(QString user1, QString user2) const {
+    auto index1 = vertexIds.indexOf(user1);
+    auto index2 = vertexIds.indexOf(user2);
+
+    if (index1 != -1 && index2 != -1) {
+        const QList<QString>& followers1 = adjacencyList[index1];
+        const QList<QString>& followers2 = adjacencyList[index2];
+
+        QList<QString> mutualFollowers;
+        for (const auto& follower : followers1) {
+            if (followers2.contains(follower)) {
+                mutualFollowers.append(follower);
+            }
+        }
+
+        return mutualFollowers;
+    } else {
+        std::cerr << "Error: One or both users not found." << std::endl;
+        return QList<QString>();
+    }
+}
+
+QList<QString> Graph::suggestUsersToFollow(QString userId) const {
+    auto userIndex = vertexIds.indexOf(userId);
+
+    if (userIndex != -1) {
+        const QList<QString>& followers = adjacencyList[userIndex];
+        QList<QString> suggestedUsers;
+
+        for (const auto& follower : followers) {
+            auto followerIndex = vertexIds.indexOf(follower);
+            if (followerIndex != -1) {
+                const QList<QString>& followersOfFollower = adjacencyList[followerIndex];
+                for (const auto& suggestedUser : followersOfFollower) {
+                    if (!followers.contains(suggestedUser) && suggestedUser != userId) {
+                        suggestedUsers.append(suggestedUser);
+                    }
+                }
+            }
+        }
+
+        return suggestedUsers;
+    } else {
+        std::cerr << "Error: User not found." << std::endl;
+        return QList<QString>();
+    }
+}
