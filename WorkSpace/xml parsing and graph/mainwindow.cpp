@@ -51,8 +51,22 @@ void MainWindow::on_pushButton_clicked()
             graph.setAdjacencyListForVertex(users.at(j)->getId(),followers);
 
         }
+        std::cout<<std::endl;
         graph.printGraph();
-
+        QString mostInfluential = graph.findMostInfluentialUser();
+        std::cout<<std::endl<< "Most Influential User "<< mostInfluential.toStdString();
+        QString MostActiveUser = graph.findMostActiveUser();
+        std::cout<<std::endl<< "Most Active User "<< MostActiveUser.toStdString();
+        QList<QString> MutualFollowers;
+        MutualFollowers = graph.findMutualFollowers("3","2");
+        for(int j = 0; j <MutualFollowers.size();j++){
+            std::cout<<std::endl<< "MutualFollowers: "<< MutualFollowers.at(j).toStdString()<<" "<<std::endl;
+        }
+        QList<QString> SuggestFollowers;
+        SuggestFollowers = graph.suggestUsersToFollow("2");
+        for(int j = 0; j <SuggestFollowers.size();j++){
+            std::cout<<std::endl<< "SuggestFollowers: "<< SuggestFollowers.at(j).toStdString()<<" "<<std::endl;
+        }
 
     }
     else
