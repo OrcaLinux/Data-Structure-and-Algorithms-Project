@@ -19,6 +19,14 @@ public:
     void setAdjacencyListForVertex(QString vertexId, const QList<QString>& adjacency);
 
     void printGraph();
+
+    QString findMostInfluentialUser() const;
+
+    QString findMostActiveUser() const;
+
+    QList<QString> findMutualFollowers(QString user1, QString user2) const;
+
+    QList<QString> suggestUsersToFollow(QString userId) const;
 };
 
 #endif // GRAPH_H
