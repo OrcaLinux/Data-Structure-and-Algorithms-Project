@@ -194,7 +194,7 @@ void MainWindow::createNewTab() {
 
     // Connect button1's clicked signal to handleFormatTheFileRequest
     connect(button1, &QPushButton::clicked, this, [=](){
-        handleFormatTheFileRequest();
+        handleFormatTheFileRequest(textEdit);
     });
 
     // Connect button3's clicked signal to displayTextEditTab and perform XML to JSON conversion
@@ -464,7 +464,7 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     });
 
     connect(button1, &QPushButton::clicked, this, [=](){
-        handleFormatTheFileRequest();
+        handleFormatTheFileRequest(textEdit);
     });
 
     // Connect button3's clicked signal to check if the text is already in JSON format
@@ -561,11 +561,9 @@ void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* 
                     return;
                 }
 
-                // Format the XML content and update the QTextEdit
+                // Set the formatted content with HTML-like tags in QTextEdit
                 QString indentedXml = formatXml(fileContent);
                 textEdit->clear();
-
-                // Set the formatted content with HTML-like tags in QTextEdit
                 textEdit->setHtml(indentedXml);
                 qDebug () << "Hello After Fomrmat the xml";
             } else {
@@ -576,6 +574,39 @@ void MainWindow::handleFormatTheFileRequest(const QString& fileName, QTextEdit* 
         } else {
             QMessageBox::information(this, tr("Empty File"),
                                      tr("The file is empty."));
+        }
+    }
+}
+
+void MainWindow::handleFormatTheFileRequest(QTextEdit* textEdit) {
+    if (ui->tabWidget->currentWidget()) {
+        if (textEdit) {
+            QString xmlContent = textEdit->toPlainText().trimmed(); // Get XML content and trim whitespace
+
+            // Check if the content starts with a common XML declaration or tag
+            if (!xmlContent.isEmpty() && (xmlContent.startsWith("<?xml") || xmlContent.startsWith("<"))) {
+                QDomDocument document;
+                QString errorMsg;
+                int errorLine, errorColumn;
+
+                // Attempt to parse the XML content
+                if (!document.setContent(xmlContent, true, &errorMsg, &errorLine, &errorColumn)) {
+                    QMessageBox::critical(this, tr("XML Error"),
+                                          tr("XML Syntax Error at line %1, column %2: %3")
+                                              .arg(errorLine).arg(errorColumn).arg(errorMsg));
+                    return;
+                }
+
+                // XML content is valid, set indentation and colorization
+                QString indentedXml = formatXml(xmlContent);
+                textEdit->clear();
+
+                // Set the formatted content with HTML-like tags in QTextEdit
+                textEdit->setHtml(indentedXml);
+            } else {
+                QMessageBox::warning(this, tr("File Format Error"),
+                                     tr("The opened file does not appear to be an XML file."));
+            }
         }
     }
 }
@@ -603,39 +634,6 @@ bool MainWindow::checkIfValidXML(QTextEdit *textEdit) {
     }
 
     return true;
-}
-
-void MainWindow::handleFormatTheFileRequest() {
-    if (ui->tabWidget->currentWidget()) {
-        if (currentTextEdit) {
-            QString xmlContent = currentTextEdit->toPlainText().trimmed(); // Get XML content and trim whitespace
-
-            // Check if the content starts with a common XML declaration or tag
-            if (!xmlContent.isEmpty() && (xmlContent.startsWith("<?xml") || xmlContent.startsWith("<"))) {
-                QDomDocument document;
-                QString errorMsg;
-                int errorLine, errorColumn;
-
-                // Attempt to parse the XML content
-                if (!document.setContent(xmlContent, true, &errorMsg, &errorLine, &errorColumn)) {
-                    QMessageBox::critical(this, tr("XML Error"),
-                                          tr("XML Syntax Error at line %1, column %2: %3")
-                                              .arg(errorLine).arg(errorColumn).arg(errorMsg));
-                    return;
-                }
-
-                // XML content is valid, set indentation and colorization
-                QString indentedXml = formatXml(xmlContent);
-                currentTextEdit->clear();
-
-                // Set the formatted content with HTML-like tags in QTextEdit
-                currentTextEdit->setHtml(indentedXml);
-            } else {
-                QMessageBox::warning(this, tr("File Format Error"),
-                                     tr("The opened file does not appear to be an XML file."));
-            }
-        }
-    }
 }
 
 QString MainWindow::formatXml(const QString &xmlContent) {

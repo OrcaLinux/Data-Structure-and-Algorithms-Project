@@ -41,7 +41,7 @@ private slots:
     void quitApp();
     void createNewTab();
     void closeTab(int index);
-    void handleFormatTheFileRequest();
+    void handleFormatTheFileRequest(QTextEdit *textEdit);
     void compressFile();
     bool eventFilter(QObject *obj, QEvent *event);
     /********************************************< Save dialog box ********************************************/
