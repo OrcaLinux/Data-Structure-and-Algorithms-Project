@@ -36,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tabWidget->installEventFilter(this);
 
     connect(ui->actionNew, &QAction::triggered, this, &MainWindow::createNewTab);
+    connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::openNewTabHandler);
 }
 
 MainWindow::~MainWindow()
@@ -232,11 +233,15 @@ void MainWindow::createNewTab() {
     lineNumberArea->setText(numbers);
 }
 
-void MainWindow::on_actionOpen_triggered()
+void MainWindow::openNewTabHandler()
 {
     // Open a file dialog to select a file
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), QString(),
                                                     tr("XML Files (*.xml);;All Files (*)"));
+    setOpenNewTabProperties(fileName);
+}
+
+void MainWindow::setOpenNewTabProperties(QString fileName) {
     if (!fileName.isEmpty()) {
         // Read the contents of the selected file
         QFile file(fileName);
@@ -447,7 +452,7 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     QWidget *tabWidget = new QWidget;
     tabWidget->setLayout(tabLayout);
 
-    int tabIndex = ui->tabWidget->addTab(tabWidget, "XML->JSON");
+    int tabIndex = ui->tabWidget->addTab(tabWidget, "XML->JSON.json");
     ui->tabWidget->tabBar()->setTabButton(tabIndex, QTabBar::RightSide, closeButton);
     ui->tabWidget->setCurrentIndex(tabIndex);
 
@@ -487,8 +492,11 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
         }
     });
 
+    //Added for compress
+    // Connect button4's clicked signal to compressFile
+    //TODO: add the size.
     connect(button4, &QPushButton::clicked, this, [=](){
-        compressFile();
+        compressFile("XML->JSON.json", textEdit, 17000);
     });
 
     QTextBlock block = textEdit->document()->firstBlock();
@@ -697,7 +705,6 @@ void MainWindow::compressFile(){
     //TODO: get the file, check if xml then send to the overloaded method.
 }
 
-
 // TODO: Add the default parameter
 void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint64 fileSize){
     std::string fileText = textEdit->toPlainText().toStdString();
@@ -719,7 +726,7 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint
     //check the extention,
     if(extension == "xml"){
         //TODO: if it doesn't contain errors
-        bool correctFile = true;
+        bool correctFile = checkIfValidXML(textEdit);
 
         if(correctFile){
             //check the data
@@ -730,7 +737,8 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint
                 //open a dialog box with the sncxml extension, and get the path.
                 newFilePath = saveDialogBox(QString("sncxml")).toStdString();
 
-                if(newFilePath.empty()){
+                if(newFilePath == "-1"){
+                    qDebug() << "Here iam from xml_1";
                     return;
                 }
 
@@ -741,7 +749,8 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint
                 //open a dialog box with the cxml extension, and get the path.
                 newFilePath = saveDialogBox(QString("cxml")).toStdString();
 
-                if(newFilePath.empty()){
+                if(newFilePath == "-1"){
+                    qDebug() << "Here iam";
                     return;
                 }
 
@@ -749,14 +758,13 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint
                 completed = CompressionSystem::compress_XML(fileText, newFilePath);
             }
         } else{
-            //error message that the file isn't correct.
-            QMessageBox::critical(nullptr, "Defected File.", "Please rectify the errors in the file to proceed.");
+            return;
         }
     } else if (extension == "json"){
         //open a dialog box with the cjson extension, and get the path.
         newFilePath = saveDialogBox(QString("cjson")).toStdString();
 
-        if(newFilePath.empty()){
+        if(newFilePath == "-1"){
             return;
         }
 
@@ -766,7 +774,7 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint
         //open a dialog box with the cfile extension, and get the path.
         newFilePath = saveDialogBox(QString("cfile")).toStdString();
 
-        if(newFilePath.empty()){
+        if(newFilePath == "-1"){
             return;
         }
 
@@ -789,6 +797,8 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint
         if (reply == QMessageBox::Yes) {
             //open the file in a new tab for the compressed file using the newFilePath.
             //TODO: create a function for opennig tabs for the compressed files.
+            setOpenNewTabProperties(QString::fromStdString(newFilePath));
+
         }
     } else{
         //show an error message that the proccess wasn't comleted.
@@ -813,7 +823,7 @@ QString MainWindow::saveDialogBox(const std::vector<QString>& expectedExtensions
     //if the file path was empty, show an error message
     if(newFilePath.isEmpty()){
         QMessageBox::critical(nullptr, "Operation terminated.", "Please provide a file name to proceed.");
-        return QString();
+        return "-1";
     }
 
     return newFilePath;
@@ -824,6 +834,10 @@ QString MainWindow::saveDialogBox(const QString& expectedExtension){
     std::vector<QString> expectedExtensions;
     expectedExtensions.push_back(expectedExtension);
     QString newFilePath = saveDialogBox(expectedExtensions);
+
+    if(newFilePath == "-1") {
+        return newFilePath;
+    }
 
     // Ensure the chosen file has the specified extension.
     QString chosenExtension = QFileInfo(newFilePath).suffix();

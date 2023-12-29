@@ -38,7 +38,7 @@ public:
      * E.g., ".../path to the file/file name.sncxml"
 	 * @return true if the operation succeed. 
 	 */
-	static bool compress_SocialNetworkXML(const std::string& file, const std::string& path);
+    static bool compress_SocialNetworkXML(const std::string& file, const std::string& path);
 
     /**
      * @brief Compresses any correct XML file.
@@ -73,7 +73,7 @@ public:
      * E.g., ".../path to the file/file name.cjson"
      * @return true if the operation succeed.
      */
-    static bool compress_JSON(const std::string& file, const std::string& path);
+    static bool compress_JSON(std::string& file, const std::string& path);
 
     /**
      * @brief Compresses any correct XML file.

@@ -8,6 +8,8 @@
  * @date   December 2023
  *********************************************************************/
 #include "CompressionSystem.h"
+#include "XmlToJson_interface.h"
+#include <QString>
 
 bool CompressionSystem::compress_SocialNetworkXML(const std::string& file, const std::string& path)
 {
@@ -90,22 +92,20 @@ bool CompressionSystem::compress_XML(const std::string& file, const std::string&
     return result;
 }
 
-bool CompressionSystem::compress_JSON(const std::string& file, const std::string& path)
+bool CompressionSystem::compress_JSON(std::string& file, const std::string& path)
 {
     //Minify JSON
     //TODO: ask abdo
-    std::string* afterMinifying;
+    std::string afterMinifying = XML_2_JSON_Minified(QString::fromStdString(file)).toStdString();
 
 //    delete minifyObj;
 //    minifyObj = nullptr;
 
 
     //Huffman
-    HuffmanComp* huffmanObj = new HuffmanComp(afterMinifying);
+    HuffmanComp* huffmanObj = new HuffmanComp(&file);
     std::string* afterHuffman = huffmanObj->compress();
 
-    delete afterMinifying;
-    afterMinifying = nullptr;
 
     delete huffmanObj;
     huffmanObj = nullptr;

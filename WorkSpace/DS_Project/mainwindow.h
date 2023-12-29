@@ -29,13 +29,13 @@ public:
 
 
 private slots:
+    void openNewTabHandler();
     void on_actionCut_triggered();
     void on_actionExit_triggered();
     void on_actionCopy_triggered();
     void on_actionPast_triggered();
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();
-    void on_actionOpen_triggered();
     void on_actionAbout_Qt_triggered();
 
     void quitApp();
@@ -74,5 +74,6 @@ private:
     void updateLineNumbers(QTextEdit *textEdit, QTextEdit *lineNumberArea);
     bool checkIfValidXML(QTextEdit *textEdit);
     void displayTextEditTab(QTextEdit *textEdit);
+    void setOpenNewTabProperties(QString fileName);
 };
 #endif // MAINWINDOW_H
