@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-c7b8e3b76ced37092683.json",
+					"jsonFile" : "directory-.-Debug-45f4e0568e91fa8b367f.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "DS_Project::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-DS_Project-Debug-6cab9d142e68661c5f20.json",
+					"jsonFile" : "target-DS_Project-Debug-e3c5afa29389ec35ddf7.json",
 					"name" : "DS_Project",
 					"projectIndex" : 0
 				},

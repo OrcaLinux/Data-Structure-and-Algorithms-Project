@@ -349,6 +349,18 @@
 			null
 		],
 		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.h",
+			"MU",
+			"EWIEGA46WW/moc_XmlToJson_interface.cpp",
+			null
+		],
+		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_private.h",
+			"MU",
+			"EWIEGA46WW/moc_XmlToJson_private.cpp",
+			null
+		],
+		[
 			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -494,6 +506,11 @@
 		],
 		[
 			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TreeNode.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.cpp",
 			"MU",
 			null
 		],

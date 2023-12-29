@@ -196,6 +196,28 @@ bool CompressionSystem::saveFile(const std::string& fileComp, const std::string&
 	}
 	catch (const std::exception& e) {
 		return false;
-	}
-	return result;
+    }
+    return result;
+}
+
+QString CompressionSystem::minifyXML(const QString &file)
+{
+    std::string fileStr = file.toStdString();
+    //Minify
+    MinifyingXML* minifyObj = new MinifyingXML(&fileStr);
+    std::string* afterMinifying = minifyObj->minifyString();
+
+    delete minifyObj;
+    minifyObj = nullptr;
+
+    QString result = QString::fromStdString(*afterMinifying);
+
+    delete afterMinifying;
+    afterMinifying = nullptr;
+    return result;
+}
+
+QString CompressionSystem::minifyJSON(const QString &file)
+{
+    //TODO:
 }

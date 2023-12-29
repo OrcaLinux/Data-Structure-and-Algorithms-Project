@@ -75,5 +75,6 @@ private:
     bool checkIfValidXML(QTextEdit *textEdit);
     void displayTextEditTab(QTextEdit *textEdit);
     void setOpenNewTabProperties(QString fileName);
+    void minify(QString fileName, QTextEdit* textEdit);
 };
 #endif // MAINWINDOW_H

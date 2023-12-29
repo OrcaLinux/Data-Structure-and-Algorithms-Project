@@ -382,6 +382,27 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
     }
 }
 
+void MainWindow::minify(QString fileName, QTextEdit *textEdit)
+{
+    std::string extension;
+    int dotIndex = fileName.lastIndexOf('.');
+    if(dotIndex== -1){
+        //show an error.
+        QMessageBox::critical(nullptr, "Defected file name.", "Please check the file extension.");
+        return;
+    }
+    //extract the extension excluding the dot.
+    extension = fileName.mid(dotIndex + 1).toStdString();
+
+    if(extension == "xml"){
+        textEdit->setText(CompressionSystem::minifyXML(textEdit->toPlainText()));
+    } else if (extension == "json"){
+        textEdit->setText(CompressionSystem::minifyJSON(textEdit->toPlainText()));
+    } else{
+        QMessageBox::critical(nullptr, "Operation terminated.", "This file can't be minified.");
+    }
+}
+
 void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     // Set properties for the new QTextEdit if needed
     setTextEditProperties(textEdit);

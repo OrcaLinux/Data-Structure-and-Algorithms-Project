@@ -17,6 +17,7 @@
 #include "TagsMapComp.h"
 #include "HuffmanComp.h"
 #include <fstream>
+#include <QString>
 
 class CompressionSystem
 {
@@ -100,7 +101,19 @@ public:
 	 */
 	static bool saveFile(const std::string& file, const std::string& path);
 
+    /**
+     * @brief minify an XML file.
+     * @param file to compress.
+     * @return File after compression.
+     */
+    static QString minifyXML(const QString& file);
 
+    /**
+     * @brief minify an JSON file.
+     * @param file to compress.
+     * @return File after compression.
+     */
+    static QString minifyJSON(const QString& file);
 };
 
 #endif // !COMPRESSION_SYSTEM_H
