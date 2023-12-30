@@ -35,7 +35,9 @@ MainWindow::MainWindow(QWidget *parent)
     // Install event filter on tabWidget
     ui->tabWidget->installEventFilter(this);
 
-    connect(ui->actionNew, &QAction::triggered, this, &MainWindow::createNewTab);
+    connect(ui->actionNew, &QAction::triggered, this, [=](){
+        createNewTab();
+    });
     connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::openNewTabHandler);
 }
 
@@ -149,7 +151,7 @@ void MainWindow::createNewTab() {
     textEditLayout->addWidget(textEdit);
 
     // Create four push buttons for the tab
-    QPushButton *button1 = new QPushButton("Visualize");
+    QPushButton *button1 = new QPushButton("Prettify");
     QPushButton *button2 = new QPushButton("Correct");
     QPushButton *button3 = new QPushButton("XML -> JSON");
     QPushButton *button4 = new QPushButton("Compress");
@@ -220,7 +222,153 @@ void MainWindow::createNewTab() {
     //Added for compress
     // Connect button4's clicked signal to compressFile
     connect(button4, &QPushButton::clicked, this, [=](){
-        compressFile();
+        compressFile("New Tab", textEdit, 17000);
+    });
+
+    connect(button5, &QPushButton::clicked, this, [=](){
+        minify("New Tab", textEdit);
+    });
+
+    // Trigger an initial update of line numbers upon tab creation
+    QTextBlock block = textEdit->document()->firstBlock();
+    QString numbers;
+    while (block.isValid()) {
+        numbers += QString::number(block.blockNumber() + 1) + "\n";
+        block = block.next();
+    }
+    lineNumberArea->setText(numbers);
+}
+
+void MainWindow::createNewTab(const QString& content, const QString& fileName) {
+    // Create a new QTextEdit for the tab content and set its properties
+    QTextEdit *textEdit = new QTextEdit;
+    setTextEditProperties(textEdit);
+    textEdit->setText(content); // Set the provided content to the textEdit
+    QFileInfo fileInfo(fileName);
+    QString extractedFileName = fileInfo.fileName();
+
+    // Create a close button for the tab
+    QPushButton *closeButton = new QPushButton("X");
+    closeButton->setFixedSize(16, 16);
+    QString redColor = QApplication::palette().color(QPalette::Button).name();
+    closeButton->setStyleSheet("background-color: " + redColor + ";");
+
+    // Create a QTextEdit for line numbers
+    QTextEdit* lineNumberArea = new QTextEdit;
+    setLineNumberAreaProperties(lineNumberArea);
+
+    // Connect scrolling between textEdit and lineNumberArea
+    connect(textEdit->verticalScrollBar(), &QScrollBar::valueChanged,
+            lineNumberArea->verticalScrollBar(), &QScrollBar::setValue);
+
+    connect(lineNumberArea->verticalScrollBar(), &QScrollBar::valueChanged,
+            textEdit->verticalScrollBar(), &QScrollBar::setValue);
+
+    // Disable the vertical scrollbar in lineNumberArea
+    lineNumberArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    // Connect text changes to update line numbers
+    connect(textEdit->document(), &QTextDocument::blockCountChanged,
+            this, [=]() {
+                QTextBlock block = textEdit->document()->firstBlock();
+                QString numbers;
+                while (block.isValid()) {
+                    numbers += QString::number(block.blockNumber() + 1) + "\n";
+                    block = block.next();
+                }
+                lineNumberArea->setText(numbers);
+            });
+
+    // Create a horizontal layout to contain textEdit and lineNumberArea
+    QHBoxLayout *textEditLayout = new QHBoxLayout;
+    textEditLayout->addWidget(lineNumberArea);
+    textEditLayout->addWidget(textEdit);
+
+    // Create four push buttons for the tab
+    QPushButton *button1 = new QPushButton("Prettify");
+    QPushButton *button2 = new QPushButton("Correct");
+    QPushButton *button3 = new QPushButton("XML -> JSON");
+    QPushButton *button4 = new QPushButton("Compress");
+    QPushButton *button5 = new QPushButton("Minify");
+    QPushButton *button6 = new QPushButton("Decompress");
+
+    // Create a layout for the buttons and add them to it
+    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    buttonLayout->addWidget(button1);
+    buttonLayout->addWidget(button2);
+    buttonLayout->addWidget(button3);
+    buttonLayout->addWidget(button4);
+    buttonLayout->addWidget(button5);
+    buttonLayout->addWidget(button6);
+
+    // Set the tab name using the extracted filename
+    QVBoxLayout *tabLayout = new QVBoxLayout;
+    tabLayout->addLayout(textEditLayout);
+    tabLayout->addLayout(buttonLayout);
+
+    QWidget *tabWidget = new QWidget;
+    tabWidget->setLayout(tabLayout);
+
+    int tabIndex = ui->tabWidget->addTab(tabWidget, extractedFileName);
+    ui->tabWidget->tabBar()->setTabButton(tabIndex, QTabBar::RightSide, closeButton);
+    ui->tabWidget->setCurrentIndex(tabIndex);
+
+    // Connect the close button's clicked signal to close the corresponding tab
+    connect(closeButton, &QPushButton::clicked, this, [=]() {
+        int totalTabs = ui->tabWidget->count();
+        if (totalTabs == 1) {
+            return;
+        }
+
+        int closeIndex = ui->tabWidget->indexOf(tabWidget);
+        if (closeIndex != -1) {
+            ui->tabWidget->removeTab(closeIndex);
+            delete tabWidget;
+        }
+    });
+
+
+    // Connect close button's clicked signal to a slot that closes the corresponding tab
+    // Pass file type information to the function for processing
+    connect(button1, &QPushButton::clicked, this, [=](){
+        handleFormatTheFileRequest(fileName, textEdit);
+    });
+
+    // Connect button3's clicked signal to displayTextEditTab and perform XML to JSON conversion
+    connect(button3, &QPushButton::clicked, this, [=]() {
+        // Check if the XML content is valid before proceeding with conversion
+        if (!checkIfValidXML(textEdit)) {
+            return; // Do not proceed if the XML is invalid
+        }
+
+        QString xmlContent = textEdit->toPlainText();
+        QString jsonContent = XML_2_JSON(xmlContent);
+
+        // Create a new QTextEdit for the converted JSON content
+        QTextEdit *jsonTextEdit = new QTextEdit;
+        setTextEditProperties(jsonTextEdit);
+        jsonTextEdit->setText(jsonContent);
+
+        // Display the converted JSON content in a new tab using displayTextEditTab
+        displayTextEditTab(jsonTextEdit);
+    });
+
+    //Added for compress
+    // Connect button4's clicked signal to compressFile
+    //TODO: add the size.
+    connect(button4, &QPushButton::clicked, this, [=](){
+        compressFile(fileName, textEdit, 17000);
+    });
+
+    connect(button5, &QPushButton::clicked, this, [=](){
+        minify(fileName, textEdit);
+    });
+
+    connect(button6, &QPushButton::clicked, this, [=](){
+        QString decompressedFile = decompressFile(fileName);
+        QString newFilePath = changeFileExtension(fileName); // Change the extension based on conditions
+
+        createNewTab(decompressedFile, newFilePath);
     });
 
     // Trigger an initial update of line numbers upon tab creation
@@ -300,11 +448,12 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
         lineNumberArea->setText(numbers);
 
         // Create four push buttons for the tab
-        QPushButton *button1 = new QPushButton("Visualize");
+        QPushButton *button1 = new QPushButton("Prettify");
         QPushButton *button2 = new QPushButton("Correct");
         QPushButton *button3 = new QPushButton("XML -> JSON");
         QPushButton *button4 = new QPushButton("Compress");
         QPushButton *button5 = new QPushButton("Minify");
+        QPushButton *button6 = new QPushButton("Decompress");
 
         // Layout setup for buttons
         QHBoxLayout *buttonLayout = new QHBoxLayout;
@@ -313,6 +462,7 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
         buttonLayout->addWidget(button3);
         buttonLayout->addWidget(button4);
         buttonLayout->addWidget(button5);
+        buttonLayout->addWidget(button6);
 
         // Main layout for the tab's content including textEdit and lineNumberArea
         QVBoxLayout *tabLayout = new QVBoxLayout;
@@ -379,7 +529,38 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
             compressFile(fileName, textEdit, 17000);
         });
 
+        connect(button5, &QPushButton::clicked, this, [=](){
+            minify(fileName, textEdit);
+        });
+
+        connect(button6, &QPushButton::clicked, this, [=](){
+            QString decompressedFile = decompressFile(fileName);
+            QString newFilePath = changeFileExtension(fileName); // Change the extension based on conditions
+
+            createNewTab(decompressedFile, newFilePath);
+        });
+
+
     }
+}
+
+QString MainWindow::changeFileExtension(const QString& filePath) {
+    QString newFilePath = filePath;
+
+    // Extract the file extension
+    QFileInfo fileInfo(filePath);
+    QString currentExtension = fileInfo.suffix().toLower(); // Get the current file extension
+
+    // Replace the extension based on conditions
+    if (currentExtension == "sncxml" || currentExtension == "cxml") {
+        newFilePath.replace(QRegularExpression("\\.(sncxml|cxml)$"), ".xml");
+    } else if (currentExtension == "cjson") {
+        newFilePath.replace(QRegularExpression("\\.cjson$"), ".json");
+    } else if (currentExtension == "cfile") {
+        newFilePath.replace(QRegularExpression("\\.cfile$"), ".txt");
+    }
+
+    return newFilePath;
 }
 
 void MainWindow::minify(QString fileName, QTextEdit *textEdit)

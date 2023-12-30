@@ -1,6 +1,7 @@
 D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/DS_Project_autogen/EWIEGA46WW/moc_mainwindow.cpp: D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.h \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/DS_Project_autogen/moc_predefs.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/QDebug \
+  C:/Qt/6.3.0/mingw_64/include/QtCore/QString \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qalgorithms.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qanystringview.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qarraydata.h \

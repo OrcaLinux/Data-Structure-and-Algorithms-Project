@@ -76,5 +76,7 @@ private:
     void displayTextEditTab(QTextEdit *textEdit);
     void setOpenNewTabProperties(QString fileName);
     void minify(QString fileName, QTextEdit* textEdit);
+    QString changeFileExtension(const QString& filePath);
+    void createNewTab(const QString &content, const QString &filename);
 };
 #endif // MAINWINDOW_H

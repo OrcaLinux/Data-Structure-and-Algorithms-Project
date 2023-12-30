@@ -1,5 +1,6 @@
 DS_Project_autogen/timestamp: \
   C:/Qt/6.3.0/mingw_64/include/QtCore/QDebug \
+  C:/Qt/6.3.0/mingw_64/include/QtCore/QString \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qalgorithms.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qanystringview.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qarraydata.h \
@@ -510,7 +511,9 @@ DS_Project_autogen/timestamp: \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/Tree.h \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TreeNode.cpp \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TreeNode.h \
-  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmelToJson_private.h \
+  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.cpp \
+  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.h \
+  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_private.h \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/images/resources.qrc \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/main.cpp \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.cpp \
@@ -520,8 +523,6 @@ DS_Project_autogen/timestamp: \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.h \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.cpp \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.h \
-  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/xmlToJson_interface.cpp \
-  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/xmlToJson_interface.h \
   .qtc/package-manager/auto-setup.cmake \
   CMakeFiles/3.27.7/CMakeCXXCompiler.cmake \
   CMakeFiles/3.27.7/CMakeRCCompiler.cmake \
