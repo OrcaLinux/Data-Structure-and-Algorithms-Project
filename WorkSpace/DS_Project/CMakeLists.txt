@@ -65,6 +65,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         XmlToJson_private.h
         post.cpp post.h user.cpp user.h xmlparser.cpp xmlparser.h
         error_detect.cpp error_detect.h
+        edge.h graphicswidget.h node.h
+        edge.cpp graphicswidget.cpp node.cpp
 
     )
 # Define target properties for Android with Qt 6 as:
