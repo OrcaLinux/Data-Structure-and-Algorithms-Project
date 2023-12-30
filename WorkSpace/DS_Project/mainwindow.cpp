@@ -258,7 +258,7 @@ void MainWindow::createNewTab() {
     });
 
     connect(ui->actionSave, &QAction::triggered, this, [=]() {
-        saveAs();
+        saveAs(textEdit);
     });
 
 
@@ -664,8 +664,8 @@ void MainWindow::saveChangesToFile(const QString& filePath, QTextEdit* textEdit)
     }
 }
 
-void MainWindow::saveAs() {
-    QTextEdit *textEdit = getTheCurrentTextEdit();
+void MainWindow::saveAs(QTextEdit *textEdit) {
+    QTextEdit *currentTextEdit = getTheCurrentTextEdit();
 
     // Check the flag to allow saveAs only if called from createNewTab
     if (!isNewTabCreated) {
@@ -674,13 +674,17 @@ void MainWindow::saveAs() {
         return; // Exit the function without performing any action
     }
 
+    if(textEdit != currentTextEdit) {
+        return;
+    }
+
     QString filePath = QFileDialog::getSaveFileName(this, tr("Save File"), QDir::homePath(), tr("Text Files (*.txt);;All Files (*)"));
 
     if (!filePath.isEmpty()) {
         QFile file(filePath);
         if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QTextStream out(&file);
-            out << textEdit->toPlainText();
+            out << currentTextEdit->toPlainText();
             file.close();
 
             QMessageBox::StandardButton reply;
@@ -709,7 +713,6 @@ void MainWindow::saveAs() {
         }
     } else {
         QMessageBox::information(this, "Save Canceled", "Save process was canceled.");
-        return;
     }
 }
 /********************************************< For Buttons Action ********************************************/
