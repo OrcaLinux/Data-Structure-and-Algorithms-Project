@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "qdom.h"
+#include <QFileSystemWatcher>
 #include "qtextedit.h"
 #include "tabmanager.h"
 #include <QMainWindow>
@@ -29,6 +30,8 @@ public:
 
     void setTextEditProperties(QTextEdit *textEdit);
 
+signals:
+    void closePreviousTab();
 
 private slots:
     void openNewTabHandler();
@@ -58,6 +61,10 @@ private slots:
     void compressFile(const QString& fileName, QTextEdit* textEdit);
     QString decompressFile(const QString& filePath);
     void searchButtonClicked(QTextEdit *textEdit);
+    /********************************************< save the chnages in the opened file ********************************************/
+    void saveChangesToFile(const QString &path, QTextEdit *textEdit);
+    void saveAs(QTextEdit *textEdit);
+
 
 
 
@@ -66,6 +73,8 @@ private:
     TabManager *tabManager; // Manages the tabs
     TextEditManager *textEditManager; // Manages the text edit properties
     QTextEdit *currentTextEdit; // Declare a member variable to keep track of the current QTextEdit
+    QFileSystemWatcher *fileWatcher;
+    bool isNewTabCreated = false;
 
     void initializeCloseButton();
     void connectTextEditActions(QTextEdit *textEdit);
@@ -82,5 +91,6 @@ private:
     QString changeFileExtension(const QString& filePath);
     void createNewTab(const QString &content, const QString &filename);
     void correct(QTextEdit *textEdit);
+
 };
 #endif // MAINWINDOW_H

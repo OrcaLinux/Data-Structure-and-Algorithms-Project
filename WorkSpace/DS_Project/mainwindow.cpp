@@ -73,10 +73,20 @@ void MainWindow::initializeCloseButton() {
 
     // Connect the close button's clicked signal to close the default tab
     connect(closeButton, &QPushButton::clicked, this, [=]() {
-        closeTab(tabIndex);
+        QWidget* tabItem = ui->tabWidget->widget(tabIndex);
+        if (tabItem) {
+            QWidget* textEditWidget = ui->tabWidget->widget(tabIndex)->findChild<QTextEdit *>();
+            if (textEditWidget) {
+                delete textEditWidget; // Delete the text editor widget
+            }
+
+            ui->tabWidget->removeTab(tabIndex);
+            delete tabItem; // Delete the tab
+        }
+
+        createNewTab();
     });
 }
-
 /********************************************< Tab Bar Action ********************************************/
 void MainWindow::closeTab(int index)
 {
@@ -99,11 +109,16 @@ void MainWindow::closeTab(int index)
 }
 
 void MainWindow::createNewTab() {
+    // Set flag to indicate tab creation
+    isNewTabCreated = true;
+
     // Create a new QTextEdit for the tab content
     QTextEdit *textEdit = new QTextEdit;
 
     // Set properties for the new QTextEdit
     setTextEditProperties(textEdit);
+
+    QString FileName =  "New Tab";
 
     // Create a close button for the tab
     QPushButton *closeButton = new QPushButton("X");
@@ -184,7 +199,7 @@ void MainWindow::createNewTab() {
     tabWidget->setLayout(tabLayout);
 
     // Set the tab widget as the content for the new tab
-    int tabIndex = ui->tabWidget->addTab(tabWidget, "New Tab");
+    int tabIndex = ui->tabWidget->addTab(tabWidget, FileName);
     ui->tabWidget->tabBar()->setTabButton(tabIndex, QTabBar::RightSide, closeButton);
     ui->tabWidget->setCurrentIndex(tabIndex); // Set the current tab to the newly created one
 
@@ -235,11 +250,31 @@ void MainWindow::createNewTab() {
     //Added for compress
     // Connect button4's clicked signal to compressFile
     connect(button4, &QPushButton::clicked, this, [=](){
-        compressFile("New Tab", textEdit);
+        compressFile(FileName, textEdit);
     });
 
     connect(button5, &QPushButton::clicked, this, [=](){
-        minify("New Tab", textEdit);
+        minify(FileName, textEdit);
+    });
+
+    connect(ui->actionSave, &QAction::triggered, this, [=]() {
+        saveAs(textEdit);
+    });
+
+    // Connect the closePreviousTab signal to close the tab
+    connect(this, &MainWindow::closePreviousTab, this, [=]() {
+        // Check for the total number of tabs
+        int totalTabs = ui->tabWidget->count();
+        if (totalTabs == 1) {
+            // Do nothing when there's only one tab left
+            return;
+        }
+
+        int closeIndex = ui->tabWidget->indexOf(tabWidget);
+        if (closeIndex != -1) {
+            ui->tabWidget->removeTab(closeIndex);
+            delete tabWidget;
+        }
     });
 
     // Trigger an initial update of line numbers upon tab creation
@@ -250,13 +285,19 @@ void MainWindow::createNewTab() {
         block = block.next();
     }
     lineNumberArea->setText(numbers);
+
+
 }
 
 void MainWindow::createNewTab(const QString& content, const QString& fileName) {
     // Create a new QTextEdit for the tab content and set its properties
     QTextEdit *textEdit = new QTextEdit;
+
+    // Set properties for the new QTextEdit
     setTextEditProperties(textEdit);
-    textEdit->setText(content); // Set the provided content to the textEdit
+
+    // Set the provided content to the textEdit
+    textEdit->setText(content);
     QFileInfo fileInfo(fileName);
     QString extractedFileName = fileInfo.fileName();
 
@@ -424,6 +465,7 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
         block = block.next();
     }
     lineNumberArea->setText(numbers);
+
 }
 
 void MainWindow::openNewTabHandler()
@@ -445,6 +487,10 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
         QTextStream in(&file);
         QString fileContent = in.readAll();
         file.close();
+
+        // // Extract the file Name form the file path
+        // QFileInfo fileInfo(fileName);
+        // QString fileName_ = fileInfo.fileName();
 
         // Create a QTextEdit widget to display file content
         QTextEdit *textEdit = new QTextEdit;
@@ -617,10 +663,53 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
             }
         });
 
+        connect(ui->actionSave, &QAction::triggered, this, [=]() {
+            saveChangesToFile(fileName, textEdit); // Assuming filePath and textEdit are available here
+        });
 
     }
 }
 
+void MainWindow::saveChangesToFile(const QString& filePath, QTextEdit* textEdit) {
+    qDebug() << "Hello from saveChangesToFile";
+    QFile file(filePath);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream out(&file);
+        out << textEdit->toPlainText();
+        file.close();
+    }
+}
+
+void MainWindow::saveAs(QTextEdit *textEdit) {
+    // Check the flag to allow saveAs only if called from createNewTab
+    if (!isNewTabCreated) {
+        // Reset flag for future calls
+        isNewTabCreated = false;
+        return; // Exit the function without performing any action
+    }
+
+    QString filePath = QFileDialog::getSaveFileName(this, tr("Save File"), QDir::homePath(), tr("Text Files (*.txt);;All Files (*)"));
+
+    if (!filePath.isEmpty()) {
+        QFile file(filePath);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream out(&file);
+            out << textEdit->toPlainText();
+            file.close();
+
+            QMessageBox::StandardButton reply;
+            reply = QMessageBox::question(this, "File Saved", "File saved successfully. Do you want to open it?", QMessageBox::Yes|QMessageBox::No);
+            if (reply == QMessageBox::Yes) {
+                setOpenNewTabProperties(filePath);
+                // Opened the file successfully, emit the signal to close the previously created tab
+                emit closePreviousTab();
+                // Reset flag for future calls
+                isNewTabCreated = false;
+            }
+        }
+    }
+}
+/********************************************< For Buttons Action ********************************************/
 QString MainWindow::changeFileExtension(const QString& filePath) {
     QString newFilePath = filePath;
 
@@ -1273,7 +1362,7 @@ void MainWindow::searchButtonClicked(QTextEdit *textEdit)
 /********************************************< tabBar Actions ********************************************/
 void MainWindow::on_actionExit_triggered()
 {
-    statusBar()->showMessage("App will be killed in 3 seconds...", 3000);
+    statusBar()->showMessage("App will be Exit in 3 seconds...", 3000);
     QTimer::singleShot(3000, this , SLOT(quitApp()));
 }
 
