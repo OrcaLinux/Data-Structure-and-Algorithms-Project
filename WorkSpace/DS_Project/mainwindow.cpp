@@ -1388,47 +1388,102 @@ void MainWindow::quitApp() {
 }
 
 void MainWindow::on_actionCopy_triggered() {
-    if (ui->tabWidget->currentWidget()) {
-        QClipboard *clipboard = QGuiApplication::clipboard();
-        clipboard->setText(currentTextEdit->textCursor().selectedText());
-    } else {
-        return;
+    int currentIndex = ui->tabWidget->currentIndex();
+    if (currentIndex != -1) {
+        QWidget* currentTabWidget = ui->tabWidget->widget(currentIndex);
+        if (currentTabWidget) {
+            QVBoxLayout* tabLayout = qobject_cast<QVBoxLayout*>(currentTabWidget->layout());
+            if (tabLayout && tabLayout->count() > 0) {
+                QHBoxLayout* textEditLayout = qobject_cast<QHBoxLayout*>(tabLayout->itemAt(0)->layout());
+                if (textEditLayout && textEditLayout->count() > 1) {
+                    QTextEdit* currentTextEdit = qobject_cast<QTextEdit*>(textEditLayout->itemAt(1)->widget());
+                    if (currentTextEdit) {
+                        QClipboard *clipboard = QGuiApplication::clipboard();
+                        clipboard->setText(currentTextEdit->textCursor().selectedText());
+                    }
+                }
+            }
+        }
     }
 }
 
 void MainWindow::on_actionCut_triggered() {
-    if (ui->tabWidget->currentWidget()) {
-        QClipboard *clipboard = QGuiApplication::clipboard();
-        clipboard->setText(currentTextEdit->textCursor().selectedText());
-        currentTextEdit->textCursor().removeSelectedText();
-    } else {
-        return;
+    int currentIndex = ui->tabWidget->currentIndex();
+    if (currentIndex != -1) {
+        QWidget* currentTabWidget = ui->tabWidget->widget(currentIndex);
+        if (currentTabWidget) {
+            QVBoxLayout* tabLayout = qobject_cast<QVBoxLayout*>(currentTabWidget->layout());
+            if (tabLayout && tabLayout->count() > 0) {
+                QHBoxLayout* textEditLayout = qobject_cast<QHBoxLayout*>(tabLayout->itemAt(0)->layout());
+                if (textEditLayout && textEditLayout->count() > 1) {
+                    QTextEdit* currentTextEdit = qobject_cast<QTextEdit*>(textEditLayout->itemAt(1)->widget());
+                    if (currentTextEdit) {
+                        QClipboard *clipboard = QGuiApplication::clipboard();
+                        clipboard->setText(currentTextEdit->textCursor().selectedText());
+                        currentTextEdit->textCursor().removeSelectedText();
+                    }
+                }
+            }
+        }
     }
 }
 
-void MainWindow::PastTriggered(QTextEdit *textEdit) {
-    if (ui->tabWidget->currentWidget()) {
-        qDebug() << "Paste clicked";
-        QClipboard *clipboard = QGuiApplication::clipboard();
-        textEdit->insertPlainText(clipboard->text());
-    } else {
-        return;
+void MainWindow::on_actionPast_triggered() {
+    int currentIndex = ui->tabWidget->currentIndex();
+    if (currentIndex != -1) {
+        QWidget* currentTabWidget = ui->tabWidget->widget(currentIndex);
+        if (currentTabWidget) {
+            QVBoxLayout* tabLayout = qobject_cast<QVBoxLayout*>(currentTabWidget->layout());
+            if (tabLayout && tabLayout->count() > 0) {
+                QHBoxLayout* textEditLayout = qobject_cast<QHBoxLayout*>(tabLayout->itemAt(0)->layout());
+                if (textEditLayout && textEditLayout->count() > 1) {
+                    QTextEdit* textEdit = qobject_cast<QTextEdit*>(textEditLayout->itemAt(1)->widget());
+                    if (textEdit) {
+                        qDebug() << "Paste clicked";
+                        QClipboard* clipboard = QGuiApplication::clipboard();
+                        textEdit->insertPlainText(clipboard->text());
+                    }
+                }
+            }
+        }
     }
 }
 
 void MainWindow::on_actionUndo_triggered() {
-    if (currentTextEdit) {
-        currentTextEdit->undo();
-    } else {
-        return;
+    int currentIndex = ui->tabWidget->currentIndex();
+    if (currentIndex != -1) {
+        QWidget* currentTabWidget = ui->tabWidget->widget(currentIndex);
+        if (currentTabWidget) {
+            QVBoxLayout* tabLayout = qobject_cast<QVBoxLayout*>(currentTabWidget->layout());
+            if (tabLayout && tabLayout->count() > 0) {
+                QHBoxLayout* textEditLayout = qobject_cast<QHBoxLayout*>(tabLayout->itemAt(0)->layout());
+                if (textEditLayout && textEditLayout->count() > 1) {
+                    QTextEdit* currentTextEdit = qobject_cast<QTextEdit*>(textEditLayout->itemAt(1)->widget());
+                    if (currentTextEdit) {
+                        currentTextEdit->undo();
+                    }
+                }
+            }
+        }
     }
 }
 
 void MainWindow::on_actionRedo_triggered() {
-    if (currentTextEdit) {
-        currentTextEdit->redo();
-    } else {
-        return;
+    int currentIndex = ui->tabWidget->currentIndex();
+    if (currentIndex != -1) {
+        QWidget* currentTabWidget = ui->tabWidget->widget(currentIndex);
+        if (currentTabWidget) {
+            QVBoxLayout* tabLayout = qobject_cast<QVBoxLayout*>(currentTabWidget->layout());
+            if (tabLayout && tabLayout->count() > 0) {
+                QHBoxLayout* textEditLayout = qobject_cast<QHBoxLayout*>(tabLayout->itemAt(0)->layout());
+                if (textEditLayout && textEditLayout->count() > 1) {
+                    QTextEdit* currentTextEdit = qobject_cast<QTextEdit*>(textEditLayout->itemAt(1)->widget());
+                    if (currentTextEdit) {
+                        currentTextEdit->redo();
+                    }
+                }
+            }
+        }
     }
 }
 
