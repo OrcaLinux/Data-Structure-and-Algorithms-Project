@@ -258,24 +258,9 @@ void MainWindow::createNewTab() {
     });
 
     connect(ui->actionSave, &QAction::triggered, this, [=]() {
-        saveAs(textEdit);
+        saveAs();
     });
 
-    // Connect the closePreviousTab signal to close the tab
-    connect(this, &MainWindow::closePreviousTab, this, [=]() {
-        // Check for the total number of tabs
-        int totalTabs = ui->tabWidget->count();
-        if (totalTabs == 1) {
-            // Do nothing when there's only one tab left
-            return;
-        }
-
-        int closeIndex = ui->tabWidget->indexOf(tabWidget);
-        if (closeIndex != -1) {
-            ui->tabWidget->removeTab(closeIndex);
-            delete tabWidget;
-        }
-    });
 
     // Trigger an initial update of line numbers upon tab creation
     QTextBlock block = textEdit->document()->firstBlock();
@@ -285,13 +270,6 @@ void MainWindow::createNewTab() {
         block = block.next();
     }
     lineNumberArea->setText(numbers);
-
-
-
-    connect(ui->actionPast, &QAction::triggered, this, [=](){
-        PastTriggered(textEdit);
-    });
-
 
 }
 
@@ -471,10 +449,6 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
         block = block.next();
     }
     lineNumberArea->setText(numbers);
-
-    connect(ui->actionPast, &QAction::triggered, this, [=](){
-        PastTriggered(textEdit);
-    });
 
 }
 
@@ -677,12 +651,6 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
             saveChangesToFile(fileName, textEdit); // Assuming filePath and textEdit are available here
         });
 
-
-
-        connect(ui->actionPast, &QAction::triggered, this, [=](){
-            PastTriggered(textEdit);
-        });
-
     }
 }
 
@@ -696,7 +664,9 @@ void MainWindow::saveChangesToFile(const QString& filePath, QTextEdit* textEdit)
     }
 }
 
-void MainWindow::saveAs(QTextEdit *textEdit) {
+void MainWindow::saveAs() {
+    QTextEdit *textEdit = getTheCurrentTextEdit();
+
     // Check the flag to allow saveAs only if called from createNewTab
     if (!isNewTabCreated) {
         // Reset flag for future calls
@@ -716,13 +686,30 @@ void MainWindow::saveAs(QTextEdit *textEdit) {
             QMessageBox::StandardButton reply;
             reply = QMessageBox::question(this, "File Saved", "File saved successfully. Do you want to open it?", QMessageBox::Yes|QMessageBox::No);
             if (reply == QMessageBox::Yes) {
+
+                // Check for the total number of tabs
+                int totalTabs = ui->tabWidget->count();
+                if (totalTabs == 1) {
+                    // Do nothing when there's only one tab left
+                    return;
+                }
+
+                int currentIndex = ui->tabWidget->currentIndex();
+                if (currentIndex != -1) {
+                    QWidget* currentTabWidget = ui->tabWidget->widget(currentIndex);
+                    ui->tabWidget->removeTab(currentIndex);
+                    delete currentTabWidget;
+                }
+
                 setOpenNewTabProperties(filePath);
-                // Opened the file successfully, emit the signal to close the previously created tab
-                emit closePreviousTab();
+
                 // Reset flag for future calls
                 isNewTabCreated = false;
             }
         }
+    } else {
+        QMessageBox::information(this, "Save Canceled", "Save process was canceled.");
+        return;
     }
 }
 /********************************************< For Buttons Action ********************************************/
@@ -1132,7 +1119,6 @@ void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int inden
 }
 
 /********************************************< compression Actions ********************************************/
-
 void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit){
     std::string fileText = textEdit->toPlainText().toStdString();
 
@@ -1490,6 +1476,28 @@ void MainWindow::on_actionRedo_triggered() {
 void MainWindow::on_actionAbout_Qt_triggered()
 {
     QApplication::aboutQt();
+}
+
+QTextEdit *MainWindow::getTheCurrentTextEdit(){
+    QTextEdit * textEdit = nullptr;
+    int currentIndex = ui->tabWidget->currentIndex();
+    if (currentIndex != -1) {
+        QWidget* currentTabWidget = ui->tabWidget->widget(currentIndex);
+        if (currentTabWidget) {
+            QVBoxLayout* tabLayout = qobject_cast<QVBoxLayout*>(currentTabWidget->layout());
+            if (tabLayout && tabLayout->count() > 0) {
+                QHBoxLayout* textEditLayout = qobject_cast<QHBoxLayout*>(tabLayout->itemAt(0)->layout());
+                if (textEditLayout && textEditLayout->count() > 1) {
+                    QTextEdit* currentTextEdit = qobject_cast<QTextEdit*>(textEditLayout->itemAt(1)->widget());
+                    if (currentTextEdit) {
+                        textEdit = currentTextEdit;
+                    }
+                }
+            }
+        }
+    }
+
+    return textEdit;
 }
 /********************************************< End of tabBar Actions ********************************************/
 

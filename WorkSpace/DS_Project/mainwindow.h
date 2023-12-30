@@ -30,15 +30,12 @@ public:
 
     void setTextEditProperties(QTextEdit *textEdit);
 
-signals:
-    void closePreviousTab();
-
 private slots:
     void openNewTabHandler();
     void on_actionCut_triggered();
     void on_actionExit_triggered();
     void on_actionCopy_triggered();
-    void PastTriggered(QTextEdit *textEdit);
+    void on_actionPast_triggered();
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();
     void on_actionAbout_Qt_triggered();
@@ -63,7 +60,7 @@ private slots:
     void searchButtonClicked(QTextEdit *textEdit);
     /********************************************< save the chnages in the opened file ********************************************/
     void saveChangesToFile(const QString &path, QTextEdit *textEdit);
-    void saveAs(QTextEdit *textEdit);
+    void saveAs();
 
 
 
@@ -91,6 +88,6 @@ private:
     QString changeFileExtension(const QString& filePath);
     void createNewTab(const QString &content, const QString &filename);
     void correct(QTextEdit *textEdit);
-
+    QTextEdit *getTheCurrentTextEdit();
 };
 #endif // MAINWINDOW_H
