@@ -12,8 +12,8 @@ XMLparser::XMLparser(QString _file) :file(_file) {}
 
 
 
-    // /passing the file to a xml stream reader object/
-        QXmlStreamReader stream(file);
+    // passing the file to a xml stream reader object/
+    QXmlStreamReader stream(file);
     QString currentId, currentName,currentBody;
     QList <post*> currentPost;
     QList<QString> currentFollowers;

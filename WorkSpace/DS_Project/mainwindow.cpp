@@ -235,7 +235,7 @@ void MainWindow::createNewTab() {
     //Added for compress
     // Connect button4's clicked signal to compressFile
     connect(button4, &QPushButton::clicked, this, [=](){
-        compressFile("New Tab", textEdit, 17000);
+        compressFile("New Tab", textEdit);
     });
 
     connect(button5, &QPushButton::clicked, this, [=](){
@@ -380,7 +380,7 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
     // Connect button4's clicked signal to compressFile
     //TODO: add the size.
     connect(button4, &QPushButton::clicked, this, [=](){
-        compressFile(fileName, textEdit, 17000);
+        compressFile(fileName, textEdit);
     });
 
     connect(button8, &QPushButton::clicked, this, [=](){
@@ -576,7 +576,7 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
         // Connect button4's clicked signal to compressFile
         //TODO: add the size.
         connect(button4, &QPushButton::clicked, this, [=](){
-            compressFile(fileName, textEdit, 17000);
+            compressFile(fileName, textEdit);
         });
 
         connect(button5, &QPushButton::clicked, this, [=](){
@@ -782,7 +782,7 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     // Connect button4's clicked signal to compressFile
     //TODO: add the size.
     connect(button4, &QPushButton::clicked, this, [=](){
-        compressFile("XML->JSON.json", textEdit, 17000);
+        compressFile("XML->JSON.json", textEdit);
     });
 
     connect(button5, &QPushButton::clicked, this, [=](){
@@ -1018,13 +1018,8 @@ void MainWindow::formatNode(const QDomNode &node, QTextStream &stream, int inden
 }
 
 /********************************************< compression Actions ********************************************/
-//TODO: implement this function
-void MainWindow::compressFile(){
-    //TODO: get the file, check if xml then send to the overloaded method.
-}
 
-// TODO: Add the default parameter
-void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint64 fileSize){
+void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit){
     std::string fileText = textEdit->toPlainText().toStdString();
 
     std::string extension;
@@ -1050,7 +1045,7 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint
             //check the data
             XMLparser parser = XMLparser(QString::fromStdString(fileText));
             QList<User*> users = parser.parse();
-            bool parsableFile = users.empty();
+            bool parsableFile = !users.empty();
             if(parsableFile){
                 //social network data.
                 //open a dialog box with the sncxml extension, and get the path.
@@ -1102,20 +1097,26 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint
     }
 
     if(completed){
-        //get the size of the file after compressing
+        qint64 originalSize = QFileInfo(fileName).size();
         qint64 compressedSize = QFileInfo(QString::fromStdString(newFilePath)).size();
-        //message to show
+
+        double compressionPercentage = 100.0 * (1.0 - (static_cast<double>(compressedSize) / static_cast<double>(originalSize)));
+
         QString message = QString("Compression completed.\n\n"
                                   "Original file size: %1 bytes\n"
                                   "Compressed file size: %2 bytes\n"
-                                  "New file path: %3\n\n"
-                                  "Do you want to open the file in a new tab?").arg(fileSize).arg(compressedSize)
-                                  .arg(QString::fromStdString(newFilePath));
+                                  "Compression percentage: %3%\n"
+                                  "New file path: %4\n\n"
+                                  "Do you want to open the file in a new tab?")
+                              .arg(originalSize)
+                              .arg(compressedSize)
+                              .arg(QString::number(compressionPercentage, 'f', 2)) // Limit to 2 decimal places
+                              .arg(QString::fromStdString(newFilePath));
+
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(nullptr, "Compression Completed", message, QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::Yes) {
             //open the file in a new tab for the compressed file using the newFilePath.
-            //TODO: create a function for opennig tabs for the compressed files.
             setOpenNewTabProperties(QString::fromStdString(newFilePath));
 
         }

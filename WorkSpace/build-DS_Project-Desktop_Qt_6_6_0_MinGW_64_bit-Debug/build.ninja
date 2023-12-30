@@ -369,7 +369,7 @@ build DS_Project_autogen/4UGIYD6VGQ/qrc_resources.cpp | ${cmake_ninja_workdir}DS
 #############################################
 # Phony custom command for CMakeFiles\DS_Project_autogen_timestamp_deps
 
-build CMakeFiles/DS_Project_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/DS_Project_autogen_timestamp_deps: phony D$:/Programming/Qt/6.6.0/mingw_64/./bin/moc.exe D$:/Programming/Qt/6.6.0/mingw_64/./bin/uic.exe D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Core.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Xml.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Widgets.a
+build CMakeFiles/DS_Project_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/DS_Project_autogen_timestamp_deps: phony D$:/Programming/Qt/6.6.0/mingw_64/./bin/moc.exe D$:/Programming/Qt/6.6.0/mingw_64/./bin/uic.exe D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Widgets.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Core.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Xml.a
 
 
 #############################################

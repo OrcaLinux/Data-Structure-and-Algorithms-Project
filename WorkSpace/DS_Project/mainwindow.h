@@ -44,7 +44,6 @@ private slots:
     void createNewTab();
     void closeTab(int index);
     void handleFormatTheFileRequest(QTextEdit *textEdit);
-    void compressFile();
     bool eventFilter(QObject *obj, QEvent *event);
     /********************************************< Save dialog box ********************************************/
 
@@ -56,7 +55,7 @@ private slots:
     QString saveDialogBox(const std::vector<QString>& expectedExtensions);
     /********************************************< Button Actions ********************************************/
     void handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit);
-    void compressFile(const QString& fileName, QTextEdit* textEdit, qint64 fileSize);
+    void compressFile(const QString& fileName, QTextEdit* textEdit);
     QString decompressFile(const QString& filePath);
     void searchButtonClicked(QTextEdit *textEdit);
 
