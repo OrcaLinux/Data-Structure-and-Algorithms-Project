@@ -23,6 +23,7 @@
 #include <QTextBlock>
 #include "qjsondocument.h"
 #include "XmlToJson_interface.h"
+#include "error_detect.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -150,20 +151,19 @@ void MainWindow::createNewTab() {
     textEditLayout->addWidget(lineNumberArea);
     textEditLayout->addWidget(textEdit);
 
-    // Create four push buttons for the tab
+    QHBoxLayout *buttonLayout = new QHBoxLayout;
     QPushButton *button1 = new QPushButton("Prettify");
     QPushButton *button2 = new QPushButton("Correct");
     QPushButton *button3 = new QPushButton("XML -> JSON");
     QPushButton *button4 = new QPushButton("Compress");
     QPushButton *button5 = new QPushButton("Minify");
-
-    // Create a layout for the buttons and add them to it
-    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    QPushButton *button6 = new QPushButton("Decompress");
     buttonLayout->addWidget(button1);
+    buttonLayout->addWidget(button5);
     buttonLayout->addWidget(button2);
     buttonLayout->addWidget(button3);
     buttonLayout->addWidget(button4);
-    buttonLayout->addWidget(button5);
+    buttonLayout->addWidget(button6);
 
     // Create a layout for the entire tab's content
     QVBoxLayout *tabLayout = new QVBoxLayout;
@@ -198,6 +198,10 @@ void MainWindow::createNewTab() {
     // Connect button1's clicked signal to handleFormatTheFileRequest
     connect(button1, &QPushButton::clicked, this, [=](){
         handleFormatTheFileRequest(textEdit);
+    });
+
+    connect(button2, &QPushButton::clicked, this, [=](){
+        correct(textEdit);
     });
 
     // Connect button3's clicked signal to displayTextEditTab and perform XML to JSON conversion
@@ -285,20 +289,18 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
     textEditLayout->addWidget(textEdit);
 
     // Create four push buttons for the tab
+    QHBoxLayout *buttonLayout = new QHBoxLayout;
     QPushButton *button1 = new QPushButton("Prettify");
     QPushButton *button2 = new QPushButton("Correct");
     QPushButton *button3 = new QPushButton("XML -> JSON");
     QPushButton *button4 = new QPushButton("Compress");
     QPushButton *button5 = new QPushButton("Minify");
     QPushButton *button6 = new QPushButton("Decompress");
-
-    // Create a layout for the buttons and add them to it
-    QHBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->addWidget(button1);
+    buttonLayout->addWidget(button5);
     buttonLayout->addWidget(button2);
     buttonLayout->addWidget(button3);
     buttonLayout->addWidget(button4);
-    buttonLayout->addWidget(button5);
     buttonLayout->addWidget(button6);
 
     // Set the tab name using the extracted filename
@@ -332,6 +334,10 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
     // Pass file type information to the function for processing
     connect(button1, &QPushButton::clicked, this, [=](){
         handleFormatTheFileRequest(fileName, textEdit);
+    });
+
+    connect(button2, &QPushButton::clicked, this, [=](){
+        correct(textEdit);
     });
 
     // Connect button3's clicked signal to displayTextEditTab and perform XML to JSON conversion
@@ -447,21 +453,18 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
         }
         lineNumberArea->setText(numbers);
 
-        // Create four push buttons for the tab
+        QHBoxLayout *buttonLayout = new QHBoxLayout;
         QPushButton *button1 = new QPushButton("Prettify");
         QPushButton *button2 = new QPushButton("Correct");
         QPushButton *button3 = new QPushButton("XML -> JSON");
         QPushButton *button4 = new QPushButton("Compress");
         QPushButton *button5 = new QPushButton("Minify");
         QPushButton *button6 = new QPushButton("Decompress");
-
-        // Layout setup for buttons
-        QHBoxLayout *buttonLayout = new QHBoxLayout;
         buttonLayout->addWidget(button1);
+        buttonLayout->addWidget(button5);
         buttonLayout->addWidget(button2);
         buttonLayout->addWidget(button3);
         buttonLayout->addWidget(button4);
-        buttonLayout->addWidget(button5);
         buttonLayout->addWidget(button6);
 
         // Main layout for the tab's content including textEdit and lineNumberArea
@@ -501,6 +504,10 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
         // Pass file type information to the function for processing
         connect(button1, &QPushButton::clicked, this, [=](){
             handleFormatTheFileRequest(fileName, textEdit);
+        });
+
+        connect(button2, &QPushButton::clicked, this, [=](){
+            correct(textEdit);
         });
 
         // Connect button3's clicked signal to displayTextEditTab and perform XML to JSON conversion
@@ -641,11 +648,13 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     QPushButton *button3 = new QPushButton("XML -> JSON");
     QPushButton *button4 = new QPushButton("Compress");
     QPushButton *button5 = new QPushButton("Minify");
+    QPushButton *button6 = new QPushButton("Decompress");
     buttonLayout->addWidget(button1);
+    buttonLayout->addWidget(button5);
     buttonLayout->addWidget(button2);
     buttonLayout->addWidget(button3);
     buttonLayout->addWidget(button4);
-    buttonLayout->addWidget(button5);
+    buttonLayout->addWidget(button6);
 
     QVBoxLayout *tabLayout = new QVBoxLayout;
     tabLayout->addLayout(textEditLayout);
@@ -672,6 +681,10 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
 
     connect(button1, &QPushButton::clicked, this, [=](){
         handleFormatTheFileRequest(textEdit);
+    });
+
+    connect(button2, &QPushButton::clicked, this, [=](){
+        correct(textEdit);
     });
 
     // Connect button3's clicked signal to check if the text is already in JSON format
@@ -848,6 +861,34 @@ bool MainWindow::checkIfValidXML(QTextEdit *textEdit) {
     }
 
     return true;
+}
+
+void MainWindow::correct(QTextEdit *textEdit) {
+
+    if (ui->tabWidget->currentWidget()) {
+        if (textEdit) {
+            QString xmlContent = textEdit->toPlainText(); // Get XML content and trim whitespace
+            string input = xmlContent.toStdString();
+            vector<string> tok = tokenizeFileFromTextInput(input);
+            if (!bool_errorDetection(tok)){
+                vector<error_detect> errors = int_errorDetection(tok,input);
+                string corrected = input;
+                for ( auto &error : errors) {
+                    corrected = errorCorrect(error,corrected,errors);
+                }
+                textEdit->clear();
+                QString Corrected = QString::fromStdString(corrected);
+                //Corrected = "<s>somaya</s>";
+                textEdit->setPlainText(Corrected);
+                //qDebug () << "Hello After Fomrmat the xml";
+            }
+            else {
+                QMessageBox::warning(this, tr("Correct!"),
+                                     tr("Your file is correct"));
+            }
+        }
+    }
+
 }
 
 QString MainWindow::formatXml(const QString &xmlContent) {
