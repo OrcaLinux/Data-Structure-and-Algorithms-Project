@@ -290,3 +290,17 @@ void closingBracketHandler_Minified(QDomElement& currentElement, std::stack<QDom
         }
     }
 }
+
+QString formatJSONToSingleLine(const QString &jsonString) {
+    // Parse the JSON string
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonString.toUtf8());
+    if (jsonDocument.isNull() || !jsonDocument.isObject()) {
+        qDebug() << "Invalid JSON document";
+        return QString();
+    }
+
+    // Convert the JSON document to a single line
+    QString result = QString(jsonDocument.toJson(QJsonDocument::Compact));
+
+    return result;
+}
