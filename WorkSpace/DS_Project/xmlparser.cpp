@@ -7,38 +7,35 @@
 
 /* a constructor that assigns the path of the file to a string called file*/
 XMLparser::XMLparser(QString _file) :file(_file) {}
-/*a function parses the given file and stores the data*/
-const QList <User*> XMLparser::parse(){
+    // /a function parses the given file and stores the data/
+            const QList <User*> XMLparser::parse(){
 
 
-    /*creating an object from a QFile class and passing the file as a parameter*/
-    QFile newFile(file);
-    /*the file is opened in a read only mode */
-    newFile.open(QIODevice::ReadOnly);
-    /*passing the file to a xml stream reader object*/
-    QXmlStreamReader stream(&newFile);
+
+    // /passing the file to a xml stream reader object/
+        QXmlStreamReader stream(file);
     QString currentId, currentName,currentBody;
     QList <post*> currentPost;
     QList<QString> currentFollowers;
     QList<QString> currentTopics;
-    /*traversing the file*/
-    while(!stream.isEndDocument() &&!stream.hasError())
+    // /traversing the file/
+        while(!stream.isEndDocument() &&!stream.hasError())
     {
-        /*creating a token to read tags*/
-        QXmlStreamReader ::TokenType token = stream.readNext();
-        /*checking if the token equals the start element in the stream reader*/
+        // /creating a token to read tags/
+            QXmlStreamReader ::TokenType token = stream.readNext();
+        // /checking if the token equals the start element in the stream reader/
 
-        if(token==QXmlStreamReader::StartElement)
+            if(token==QXmlStreamReader::StartElement)
         {
-            /*storing the tag in a string*/
-            QString tagName = stream.name().toString();
+            // /storing the tag in a string/
+                QString tagName = stream.name().toString();
             if(tagName=="user")
             {
 
                 while (!stream.atEnd() && !stream.hasError())
                 {
-                    /*forcing the stream to read the start of the line*/
-                    stream.readNextStartElement();
+                    // /forcing the stream to read the start of the line/
+                        stream.readNextStartElement();
                     if (stream.name().toString() == "id")
                     {
                         currentId = stream.readElementText().simplified();
@@ -66,8 +63,8 @@ const QList <User*> XMLparser::parse(){
             {
 
 
-                /*forcing the stream to read the start of the line*/
-                while (!stream.atEnd() && !stream.hasError())
+                // /forcing the stream to read the start of the line/
+                    while (!stream.atEnd() && !stream.hasError())
                 {
                     stream.readNextStartElement();
                     if (stream.name().toString() == "id")

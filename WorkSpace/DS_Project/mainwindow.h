@@ -7,6 +7,7 @@
 #include <QMainWindow>
 
 #include <QDebug>
+#include "searchtopicwindow.h"
 #include "CompressionSystem.h"
 #include "DecompressSystem.h"
 #include "xmlparser.h"
@@ -57,6 +58,8 @@ private slots:
     void handleFormatTheFileRequest(const QString& fileName, QTextEdit* textEdit);
     void compressFile(const QString& fileName, QTextEdit* textEdit, qint64 fileSize);
     QString decompressFile(const QString& filePath);
+    void searchButtonClicked(QTextEdit *textEdit);
+
 
 
 private:

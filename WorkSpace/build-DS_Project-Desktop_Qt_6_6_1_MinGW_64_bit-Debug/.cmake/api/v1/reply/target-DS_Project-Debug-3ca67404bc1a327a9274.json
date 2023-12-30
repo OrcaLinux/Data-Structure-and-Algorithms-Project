@@ -75,13 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 108,
+				"line" : 105,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 91,
+				"line" : 88,
 				"parent" : 0
 			},
 			{
@@ -394,21 +394,18 @@
 				42,
 				44,
 				46,
-				51,
-				52,
-				53,
-				57
+				50
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"id" : "DS_Project_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "DS_Project_autogen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "DS_Project_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "DS_Project::@6890427a1f51a3e7e1df",
@@ -546,10 +543,7 @@
 				42,
 				44,
 				46,
-				51,
-				52,
-				53,
-				57
+				50
 			]
 		},
 		{
@@ -579,11 +573,7 @@
 				43,
 				45,
 				47,
-				48,
-				49,
-				50,
-				54,
-				55
+				48
 			]
 		},
 		{
@@ -592,15 +582,15 @@
 			[
 				4,
 				34,
-				56
+				49
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				58,
-				59
+				51,
+				52
 			]
 		}
 	],
@@ -868,44 +858,6 @@
 		{
 			"backtrace" : 4,
 			"path" : "error_detect.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 4,
-			"path" : "edge.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 4,
-			"path" : "graphicswidget.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 4,
-			"path" : "node.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 4,
-			"compileGroupIndex" : 0,
-			"path" : "edge.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 4,
-			"compileGroupIndex" : 0,
-			"path" : "graphicswidget.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 4,
-			"compileGroupIndex" : 0,
-			"path" : "node.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 4,
-			"path" : "graph.h",
 			"sourceGroupIndex" : 1
 		},
 		{

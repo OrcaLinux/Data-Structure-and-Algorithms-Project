@@ -39,6 +39,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionNew, &QAction::triggered, this, [=](){
         createNewTab();
     });
+
     connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::openNewTabHandler);
 }
 
@@ -151,24 +152,32 @@ void MainWindow::createNewTab() {
     textEditLayout->addWidget(lineNumberArea);
     textEditLayout->addWidget(textEdit);
 
-    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    QHBoxLayout *buttonLayout1 = new QHBoxLayout;
+    QHBoxLayout *buttonLayout2 = new QHBoxLayout;
     QPushButton *button1 = new QPushButton("Prettify");
     QPushButton *button2 = new QPushButton("Correct");
     QPushButton *button3 = new QPushButton("XML -> JSON");
     QPushButton *button4 = new QPushButton("Compress");
     QPushButton *button5 = new QPushButton("Minify");
     QPushButton *button6 = new QPushButton("Decompress");
-    buttonLayout->addWidget(button1);
-    buttonLayout->addWidget(button5);
-    buttonLayout->addWidget(button2);
-    buttonLayout->addWidget(button3);
-    buttonLayout->addWidget(button4);
-    buttonLayout->addWidget(button6);
+    QPushButton *button7 = new QPushButton("Visualize");
+    QPushButton *button8 = new QPushButton("Search");
+    buttonLayout1->addWidget(button1);
+    buttonLayout1->addWidget(button5);
+    buttonLayout1->addWidget(button2);
+    buttonLayout1->addWidget(button3);
+    buttonLayout1->addWidget(button4);
+    buttonLayout1->addWidget(button6);
+
+    buttonLayout2->addWidget(button7);
+    buttonLayout2->addWidget(button8);
+
 
     // Create a layout for the entire tab's content
     QVBoxLayout *tabLayout = new QVBoxLayout;
     tabLayout->addLayout(textEditLayout); // Add the text edit layout to the tab layout
-    tabLayout->addLayout(buttonLayout); // Add the button layout to the tab layout
+    tabLayout->addLayout(buttonLayout1); // Add the button layout to the tab layout
+    tabLayout->addLayout(buttonLayout2); // Add the button layout to the tab layout
 
     // Create a widget to hold the layout
     QWidget *tabWidget = new QWidget;
@@ -289,24 +298,32 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
     textEditLayout->addWidget(textEdit);
 
     // Create four push buttons for the tab
-    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    QHBoxLayout *buttonLayout1 = new QHBoxLayout;
+    QHBoxLayout *buttonLayout2 = new QHBoxLayout;
     QPushButton *button1 = new QPushButton("Prettify");
     QPushButton *button2 = new QPushButton("Correct");
     QPushButton *button3 = new QPushButton("XML -> JSON");
     QPushButton *button4 = new QPushButton("Compress");
     QPushButton *button5 = new QPushButton("Minify");
     QPushButton *button6 = new QPushButton("Decompress");
-    buttonLayout->addWidget(button1);
-    buttonLayout->addWidget(button5);
-    buttonLayout->addWidget(button2);
-    buttonLayout->addWidget(button3);
-    buttonLayout->addWidget(button4);
-    buttonLayout->addWidget(button6);
+    QPushButton *button7 = new QPushButton("Visualize");
+    QPushButton *button8 = new QPushButton("Search");
+    buttonLayout1->addWidget(button1);
+    buttonLayout1->addWidget(button5);
+    buttonLayout1->addWidget(button2);
+    buttonLayout1->addWidget(button3);
+    buttonLayout1->addWidget(button4);
+    buttonLayout1->addWidget(button6);
 
-    // Set the tab name using the extracted filename
+    buttonLayout2->addWidget(button7);
+    buttonLayout2->addWidget(button8);
+
+
+    // Create a layout for the entire tab's content
     QVBoxLayout *tabLayout = new QVBoxLayout;
-    tabLayout->addLayout(textEditLayout);
-    tabLayout->addLayout(buttonLayout);
+    tabLayout->addLayout(textEditLayout); // Add the text edit layout to the tab layout
+    tabLayout->addLayout(buttonLayout1); // Add the button layout to the tab layout
+    tabLayout->addLayout(buttonLayout2); // Add the button layout to the tab layout
 
     QWidget *tabWidget = new QWidget;
     tabWidget->setLayout(tabLayout);
@@ -364,6 +381,10 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
     //TODO: add the size.
     connect(button4, &QPushButton::clicked, this, [=](){
         compressFile(fileName, textEdit, 17000);
+    });
+
+    connect(button8, &QPushButton::clicked, this, [=](){
+        searchButtonClicked(textEdit);
     });
 
     connect(button5, &QPushButton::clicked, this, [=](){
@@ -453,19 +474,26 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
         }
         lineNumberArea->setText(numbers);
 
-        QHBoxLayout *buttonLayout = new QHBoxLayout;
+        QHBoxLayout *buttonLayout1 = new QHBoxLayout;
+        QHBoxLayout *buttonLayout2 = new QHBoxLayout;
         QPushButton *button1 = new QPushButton("Prettify");
         QPushButton *button2 = new QPushButton("Correct");
         QPushButton *button3 = new QPushButton("XML -> JSON");
         QPushButton *button4 = new QPushButton("Compress");
         QPushButton *button5 = new QPushButton("Minify");
         QPushButton *button6 = new QPushButton("Decompress");
-        buttonLayout->addWidget(button1);
-        buttonLayout->addWidget(button5);
-        buttonLayout->addWidget(button2);
-        buttonLayout->addWidget(button3);
-        buttonLayout->addWidget(button4);
-        buttonLayout->addWidget(button6);
+        QPushButton *button7 = new QPushButton("Visualize");
+        QPushButton *button8 = new QPushButton("Search");
+        buttonLayout1->addWidget(button1);
+        buttonLayout1->addWidget(button5);
+        buttonLayout1->addWidget(button2);
+        buttonLayout1->addWidget(button3);
+        buttonLayout1->addWidget(button4);
+        buttonLayout1->addWidget(button6);
+
+        buttonLayout2->addWidget(button7);
+        buttonLayout2->addWidget(button8);
+
 
         // Main layout for the tab's content including textEdit and lineNumberArea
         QVBoxLayout *tabLayout = new QVBoxLayout;
@@ -473,7 +501,8 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
         textEditLayout->addWidget(lineNumberArea);
         textEditLayout->addWidget(textEdit);
         tabLayout->addLayout(textEditLayout);
-        tabLayout->addLayout(buttonLayout);
+        tabLayout->addLayout(buttonLayout1);
+        tabLayout->addLayout(buttonLayout2); // Add the button layout to the tab layout
 
         // Create a widget to hold the layout
         QWidget *tabWidget = new QWidget;
@@ -545,6 +574,10 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
             QString newFilePath = changeFileExtension(fileName); // Change the extension based on conditions
 
             createNewTab(decompressedFile, newFilePath);
+        });
+
+        connect(button8, &QPushButton::clicked, this, [=](){
+            searchButtonClicked(textEdit);
         });
 
 
@@ -642,23 +675,33 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     textEditLayout->addWidget(lineNumberArea);
     textEditLayout->addWidget(textEdit);
 
-    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    // Create four push buttons for the tab
+    QHBoxLayout *buttonLayout1 = new QHBoxLayout;
+    QHBoxLayout *buttonLayout2 = new QHBoxLayout;
     QPushButton *button1 = new QPushButton("Prettify");
     QPushButton *button2 = new QPushButton("Correct");
     QPushButton *button3 = new QPushButton("XML -> JSON");
     QPushButton *button4 = new QPushButton("Compress");
     QPushButton *button5 = new QPushButton("Minify");
     QPushButton *button6 = new QPushButton("Decompress");
-    buttonLayout->addWidget(button1);
-    buttonLayout->addWidget(button5);
-    buttonLayout->addWidget(button2);
-    buttonLayout->addWidget(button3);
-    buttonLayout->addWidget(button4);
-    buttonLayout->addWidget(button6);
+    QPushButton *button7 = new QPushButton("Visualize");
+    QPushButton *button8 = new QPushButton("Search");
+    buttonLayout1->addWidget(button1);
+    buttonLayout1->addWidget(button5);
+    buttonLayout1->addWidget(button2);
+    buttonLayout1->addWidget(button3);
+    buttonLayout1->addWidget(button4);
+    buttonLayout1->addWidget(button6);
 
+    buttonLayout2->addWidget(button7);
+    buttonLayout2->addWidget(button8);
+
+
+    // Create a layout for the entire tab's content
     QVBoxLayout *tabLayout = new QVBoxLayout;
-    tabLayout->addLayout(textEditLayout);
-    tabLayout->addLayout(buttonLayout);
+    tabLayout->addLayout(textEditLayout); // Add the text edit layout to the tab layout
+    tabLayout->addLayout(buttonLayout1); // Add the button layout to the tab layout
+    tabLayout->addLayout(buttonLayout2); // Add the button layout to the tab layout
 
     QWidget *tabWidget = new QWidget;
     tabWidget->setLayout(tabLayout);
@@ -1171,6 +1214,27 @@ QString MainWindow::decompressFile(const QString& filePath){
         return QString();
     }
     return result;
+}
+
+void MainWindow::searchButtonClicked(QTextEdit *textEdit)
+{
+    checkIfValidXML(textEdit);
+    XMLparser *newParse = new XMLparser(textEdit->toPlainText());
+    if(newParse->isValidFile())
+    {
+        const QList <User*> users = newParse->parse();
+        //new window for search
+        SearchTopicWindow s;
+        s.setUsers(users);
+        s.exec();
+        for(User* u : users){
+            delete u;
+        }
+    }
+    else
+    {
+        delete newParse;
+    }
 }
 
 /********************************************< tabBar Actions ********************************************/
