@@ -63,6 +63,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         tabmanager.h tabmanager.cpp
         texteditmanager.h texteditmanager.cpp
         XmlToJson_private.h
+        post.cpp post.h user.cpp user.h xmlparser.cpp xmlparser.h
 
     )
 # Define target properties for Android with Qt 6 as:

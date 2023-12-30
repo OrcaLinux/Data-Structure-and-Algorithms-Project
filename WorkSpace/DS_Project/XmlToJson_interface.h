@@ -21,4 +21,15 @@ QString XML_2_JSON(QString xmlText);
  */
 QString XML_2_JSON_Minified(QString xmlText);
 
+/**
+ * @brief Formats a JSON string into a single line.
+ *
+ * This function takes a JSON string as input and formats it into a single line,
+ * removing unnecessary whitespaces and newlines between JSON elements while preserving spaces inside values.
+ *
+ * @param jsonString The input JSON string to be formatted.
+ * @return A QString containing the formatted JSON string in a single line.
+ */
+QString formatJSONToSingleLine(const QString &jsonString);
+
 #endif // XML_TO_JSON

@@ -636,7 +636,7 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     textEditLayout->addWidget(textEdit);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout;
-    QPushButton *button1 = new QPushButton("Visualize");
+    QPushButton *button1 = new QPushButton("Prettify");
     QPushButton *button2 = new QPushButton("Correct");
     QPushButton *button3 = new QPushButton("XML -> JSON");
     QPushButton *button4 = new QPushButton("Compress");
@@ -699,6 +699,10 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     //TODO: add the size.
     connect(button4, &QPushButton::clicked, this, [=](){
         compressFile("XML->JSON.json", textEdit, 17000);
+    });
+
+    connect(button5, &QPushButton::clicked, this, [=](){
+        minify("XML->JSON.json", textEdit);
     });
 
     QTextBlock block = textEdit->document()->firstBlock();
@@ -932,8 +936,9 @@ void MainWindow::compressFile(const QString& fileName, QTextEdit* textEdit, qint
 
         if(correctFile){
             //check the data
-            //TODO: if parsable is true, then the opened file holds social network data.
-            bool parsableFile = true;
+            XMLparser parser = XMLparser(QString::fromStdString(fileText));
+            QList<User*> users = parser.parse();
+            bool parsableFile = users.empty();
             if(parsableFile){
                 //social network data.
                 //open a dialog box with the sncxml extension, and get the path.

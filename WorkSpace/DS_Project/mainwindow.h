@@ -9,6 +9,7 @@
 #include <QDebug>
 #include "CompressionSystem.h"
 #include "DecompressSystem.h"
+#include "xmlparser.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

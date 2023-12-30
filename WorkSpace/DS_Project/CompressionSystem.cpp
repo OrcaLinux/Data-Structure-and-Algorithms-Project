@@ -96,14 +96,14 @@ bool CompressionSystem::compress_JSON(std::string& file, const std::string& path
 {
     //Minify JSON
     //TODO: ask abdo
-    std::string afterMinifying = XML_2_JSON_Minified(QString::fromStdString(file)).toStdString();
+    std::string afterMinifying = formatJSONToSingleLine(QString::fromStdString(file)).toStdString();
 
 //    delete minifyObj;
 //    minifyObj = nullptr;
 
 
     //Huffman
-    HuffmanComp* huffmanObj = new HuffmanComp(&file);
+    HuffmanComp* huffmanObj = new HuffmanComp(&afterMinifying);
     std::string* afterHuffman = huffmanObj->compress();
 
 
@@ -219,5 +219,5 @@ QString CompressionSystem::minifyXML(const QString &file)
 
 QString CompressionSystem::minifyJSON(const QString &file)
 {
-    //TODO:
+    return formatJSONToSingleLine(file);
 }
