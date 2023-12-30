@@ -384,7 +384,21 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
     });
 
     connect(button8, &QPushButton::clicked, this, [=](){
-        searchButtonClicked(textEdit);
+        //chack the extension
+        std::string extension;
+        int dotIndex = fileName.lastIndexOf('.');
+        if(dotIndex== -1){
+            //show an error.
+            QMessageBox::critical(nullptr, "Defected file name.", "Please rectify the errors in the file to proceed.");
+            return;
+        }
+        //extract the extension excluding the dot.
+        extension = fileName.mid(dotIndex + 1).toStdString();
+        if(extension == "xml"){
+            searchButtonClicked(textEdit);
+        } else{
+            //TODO:???
+        }
     });
 
     connect(button5, &QPushButton::clicked, this, [=](){
@@ -577,7 +591,21 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
         });
 
         connect(button8, &QPushButton::clicked, this, [=](){
-            searchButtonClicked(textEdit);
+            //chack the extension
+            std::string extension;
+            int dotIndex = fileName.lastIndexOf('.');
+            if(dotIndex== -1){
+                //show an error.
+                QMessageBox::critical(nullptr, "Defected file name.", "Please rectify the errors in the file to proceed.");
+                return;
+            }
+            //extract the extension excluding the dot.
+            extension = fileName.mid(dotIndex + 1).toStdString();
+            if(extension == "xml"){
+                searchButtonClicked(textEdit);
+            } else{
+                //TODO:???
+            }
         });
 
 
@@ -1220,8 +1248,7 @@ void MainWindow::searchButtonClicked(QTextEdit *textEdit)
 {
     checkIfValidXML(textEdit);
     XMLparser *newParse = new XMLparser(textEdit->toPlainText());
-    if(newParse->isValidFile())
-    {
+
         const QList <User*> users = newParse->parse();
         //new window for search
         SearchTopicWindow s;
@@ -1230,11 +1257,7 @@ void MainWindow::searchButtonClicked(QTextEdit *textEdit)
         for(User* u : users){
             delete u;
         }
-    }
-    else
-    {
-        delete newParse;
-    }
+
 }
 
 /********************************************< tabBar Actions ********************************************/

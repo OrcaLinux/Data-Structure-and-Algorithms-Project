@@ -361,9 +361,27 @@
 			null
 		],
 		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/error_detect.h",
+			"MU",
+			"EWIEGA46WW/moc_error_detect.cpp",
+			null
+		],
+		[
 			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
+			null
+		],
+		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.h",
+			"MU",
+			"EWIEGA46WW/moc_post.cpp",
+			null
+		],
+		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.h",
+			"MU",
+			"EWIEGA46WW/moc_searchtopicwindow.cpp",
 			null
 		],
 		[
@@ -376,6 +394,18 @@
 			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.h",
 			"MU",
 			"EWIEGA46WW/moc_texteditmanager.cpp",
+			null
+		],
+		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/user.h",
+			"MU",
+			"EWIEGA46WW/moc_user.cpp",
+			null
+		],
+		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/xmlparser.h",
+			"MU",
+			"EWIEGA46WW/moc_xmlparser.cpp",
 			null
 		]
 	],
@@ -515,6 +545,11 @@
 			null
 		],
 		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/error_detect.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/main.cpp",
 			"MU",
 			null
@@ -525,12 +560,32 @@
 			null
 		],
 		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.cpp",
 			"MU",
 			null
 		],
 		[
 			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/user.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/xmlparser.cpp",
 			"MU",
 			null
 		]

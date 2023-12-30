@@ -27,24 +27,43 @@ DS_Project_autogen/timestamp: \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/Tree.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TreeNode.cpp \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/TreeNode.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.cpp \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_private.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/error_detect.cpp \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/error_detect.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/images/resources.qrc \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/main.cpp \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.cpp \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.cpp \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.cpp \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.cpp \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.cpp \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/user.cpp \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/user.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/xmlparser.cpp \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/xmlparser.h \
   .qtc/package-manager/auto-setup.cmake \
   CMakeFiles/3.24.2/CMakeCXXCompiler.cmake \
   CMakeFiles/3.24.2/CMakeRCCompiler.cmake \
   CMakeFiles/3.24.2/CMakeSystem.cmake \
   DS_Project_autogen/moc_predefs.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QDebug \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QFile \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QList \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QString \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QTimer \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QXmlStreamReader \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20functional.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20memory.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q20type_traits.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/q23utility.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qabstractitemmodel.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qalgorithms.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qanystringview.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qarraydata.h \
@@ -54,6 +73,7 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qatomic.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qatomic_cxx11.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qbasicatomic.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qbasictimer.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qbindingstorage.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qbytearray.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -73,6 +93,8 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qdatastream.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qdebug.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qexceptionhandling.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfile.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfiledevice.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qflags.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfloat16.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qforeach.h \
@@ -83,6 +105,7 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qglobalstatic.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qhash.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qhashfunctions.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qiodevice.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qiodevicebase.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qiterable.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qiterator.h \
@@ -139,6 +162,7 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qtdeprecationmarkers.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qtextstream.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qtimer.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qtmetamacros.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qtnoop.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -154,6 +178,7 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qvariant.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qvarlengtharray.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qversiontagging.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qxmlstream.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qxptype_traits.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qaction.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qbitmap.h \
@@ -185,13 +210,20 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qtransform.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qwindowdefs.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QCompleter \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QDialog \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QMainWindow \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QScrollBar \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QTabWidget \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QTextEdit \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QWidget \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qabstractslider.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qcompleter.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qdialog.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qframe.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qmainwindow.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qscrollbar.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qsizepolicy.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qtabwidget.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qtextedit.h \
@@ -376,4 +408,5 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/Tools/CMake_64/share/cmake-3.24/Modules/Platform/Windows.cmake \
   D:/Programming/Qt/Tools/CMake_64/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.ui \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.ui \
   D:/Programming/Qt/Tools/CMake_64/bin/cmake.exe
