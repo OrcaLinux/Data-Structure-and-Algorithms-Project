@@ -38,7 +38,7 @@ private slots:
     void on_actionCut_triggered();
     void on_actionExit_triggered();
     void on_actionCopy_triggered();
-    void on_actionPast_triggered();
+    void PastTriggered(QTextEdit *textEdit);
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();
     void on_actionAbout_Qt_triggered();

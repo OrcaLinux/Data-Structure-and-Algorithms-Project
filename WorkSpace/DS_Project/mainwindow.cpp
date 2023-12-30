@@ -287,6 +287,12 @@ void MainWindow::createNewTab() {
     lineNumberArea->setText(numbers);
 
 
+
+    connect(ui->actionPast, &QAction::triggered, this, [=](){
+        PastTriggered(textEdit);
+    });
+
+
 }
 
 void MainWindow::createNewTab(const QString& content, const QString& fileName) {
@@ -465,6 +471,10 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
         block = block.next();
     }
     lineNumberArea->setText(numbers);
+
+    connect(ui->actionPast, &QAction::triggered, this, [=](){
+        PastTriggered(textEdit);
+    });
 
 }
 
@@ -665,6 +675,12 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
 
         connect(ui->actionSave, &QAction::triggered, this, [=]() {
             saveChangesToFile(fileName, textEdit); // Assuming filePath and textEdit are available here
+        });
+
+
+
+        connect(ui->actionPast, &QAction::triggered, this, [=](){
+            PastTriggered(textEdit);
         });
 
     }
@@ -1390,11 +1406,11 @@ void MainWindow::on_actionCut_triggered() {
     }
 }
 
-void MainWindow::on_actionPast_triggered() {
+void MainWindow::PastTriggered(QTextEdit *textEdit) {
     if (ui->tabWidget->currentWidget()) {
         qDebug() << "Paste clicked";
         QClipboard *clipboard = QGuiApplication::clipboard();
-        currentTextEdit->insertPlainText(clipboard->text());
+        textEdit->insertPlainText(clipboard->text());
     } else {
         return;
     }
