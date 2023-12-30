@@ -378,7 +378,6 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
 
     //Added for compress
     // Connect button4's clicked signal to compressFile
-    //TODO: add the size.
     connect(button4, &QPushButton::clicked, this, [=](){
         compressFile(fileName, textEdit);
     });
@@ -395,7 +394,12 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
         //extract the extension excluding the dot.
         extension = fileName.mid(dotIndex + 1).toStdString();
         if(extension == "xml"){
+            //TODO: make it return from this function if it contains errors
+            bool correct = checkIfValidXML(textEdit);
+            //show search dialog
+            if(correct){
             searchButtonClicked(textEdit);
+            }
         } else{
             //TODO:???
         }
@@ -602,7 +606,12 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
             //extract the extension excluding the dot.
             extension = fileName.mid(dotIndex + 1).toStdString();
             if(extension == "xml"){
-                searchButtonClicked(textEdit);
+                //TODO: make it return from this function if it contains errors
+                bool correct = checkIfValidXML(textEdit);
+                //show search dialog
+                if(correct){
+                    searchButtonClicked(textEdit);
+                }
             } else{
                 //TODO:???
             }
