@@ -1,9 +1,12 @@
 DS_Project_autogen/timestamp: \
   C:/Qt/6.3.0/mingw_64/include/QtCore/QDebug \
   C:/Qt/6.3.0/mingw_64/include/QtCore/QFile \
+  C:/Qt/6.3.0/mingw_64/include/QtCore/QFileSystemWatcher \
   C:/Qt/6.3.0/mingw_64/include/QtCore/QList \
   C:/Qt/6.3.0/mingw_64/include/QtCore/QString \
+  C:/Qt/6.3.0/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.3.0/mingw_64/include/QtCore/QXmlStreamReader \
+  C:/Qt/6.3.0/mingw_64/include/QtCore/qabstractitemmodel.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qalgorithms.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qanystringview.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qarraydata.h \
@@ -12,6 +15,7 @@ DS_Project_autogen/timestamp: \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qatomic.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qatomic_cxx11.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qbasicatomic.h \
+  C:/Qt/6.3.0/mingw_64/include/QtCore/qbasictimer.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qbindingstorage.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qbytearray.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -30,6 +34,7 @@ DS_Project_autogen/timestamp: \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qdebug.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qfile.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qfiledevice.h \
+  C:/Qt/6.3.0/mingw_64/include/QtCore/qfilesystemwatcher.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qflags.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qgenericatomic.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qglobal.h \
@@ -81,6 +86,7 @@ DS_Project_autogen/timestamp: \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qtcore-config.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qtcoreexports.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qtextstream.h \
+  C:/Qt/6.3.0/mingw_64/include/QtCore/qtimer.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qtypeinfo.h \
   C:/Qt/6.3.0/mingw_64/include/QtCore/qurl.h \
@@ -119,13 +125,20 @@ DS_Project_autogen/timestamp: \
   C:/Qt/6.3.0/mingw_64/include/QtGui/qtransform.h \
   C:/Qt/6.3.0/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.3.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+  C:/Qt/6.3.0/mingw_64/include/QtWidgets/QCompleter \
+  C:/Qt/6.3.0/mingw_64/include/QtWidgets/QDialog \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.3.0/mingw_64/include/QtWidgets/QScrollBar \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/QTabWidget \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/QTextEdit \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/QWidget \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+  C:/Qt/6.3.0/mingw_64/include/QtWidgets/qabstractslider.h \
+  C:/Qt/6.3.0/mingw_64/include/QtWidgets/qcompleter.h \
+  C:/Qt/6.3.0/mingw_64/include/QtWidgets/qdialog.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qframe.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qmainwindow.h \
+  C:/Qt/6.3.0/mingw_64/include/QtWidgets/qscrollbar.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.3.0/mingw_64/include/QtWidgets/qtextedit.h \
@@ -538,6 +551,8 @@ DS_Project_autogen/timestamp: \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.cpp \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.h \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_private.h \
+  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/error_detect.cpp \
+  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/error_detect.h \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/images/resources.qrc \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/main.cpp \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.cpp \
@@ -545,6 +560,9 @@ DS_Project_autogen/timestamp: \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.ui \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.cpp \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.h \
+  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.cpp \
+  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.h \
+  D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.ui \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.cpp \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.h \
   D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.cpp \
