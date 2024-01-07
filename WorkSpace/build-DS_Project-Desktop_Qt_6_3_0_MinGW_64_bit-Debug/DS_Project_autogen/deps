@@ -107,6 +107,7 @@ DS_Project_autogen/timestamp: \
 	C:/Qt/6.3.0/mingw_64/include/QtGui/qimage.h \
 	C:/Qt/6.3.0/mingw_64/include/QtGui/qkeysequence.h \
 	C:/Qt/6.3.0/mingw_64/include/QtGui/qpaintdevice.h \
+	C:/Qt/6.3.0/mingw_64/include/QtGui/qpainter.h \
 	C:/Qt/6.3.0/mingw_64/include/QtGui/qpalette.h \
 	C:/Qt/6.3.0/mingw_64/include/QtGui/qpen.h \
 	C:/Qt/6.3.0/mingw_64/include/QtGui/qpixelformat.h \
@@ -127,6 +128,7 @@ DS_Project_autogen/timestamp: \
 	C:/Qt/6.3.0/mingw_64/include/QtGui/qwindowdefs_win.h \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/QCompleter \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/QDialog \
+	C:/Qt/6.3.0/mingw_64/include/QtWidgets/QGraphicsView \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/QMainWindow \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/QScrollBar \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/QTabWidget \
@@ -137,7 +139,10 @@ DS_Project_autogen/timestamp: \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qcompleter.h \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qdialog.h \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qframe.h \
+	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qgraphicsscene.h \
+	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qgraphicsview.h \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qmainwindow.h \
+	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qscrollarea.h \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qscrollbar.h \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qsizepolicy.h \
 	C:/Qt/6.3.0/mingw_64/include/QtWidgets/qtabwidget.h \
@@ -550,12 +555,20 @@ DS_Project_autogen/timestamp: \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.cpp \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.h \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_private.h \
+	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/edge.cpp \
+	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/edge.h \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/error_detect.cpp \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/error_detect.h \
+	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/graph.cpp \
+	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/graph.h \
+	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/graphicswidget.cpp \
+	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/graphicswidget.h \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/images/resources.qrc \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/main.cpp \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.cpp \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.h \
+	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/node.cpp \
+	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/node.h \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.cpp \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.h \
 	D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.cpp \

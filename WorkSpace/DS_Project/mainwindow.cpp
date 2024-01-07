@@ -1037,6 +1037,7 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     // Create four push buttons for the tab
     QHBoxLayout *buttonLayout1 = new QHBoxLayout;
     QHBoxLayout *buttonLayout2 = new QHBoxLayout;
+    QHBoxLayout *buttonLayout3 = new QHBoxLayout;
     QPushButton *button1 = new QPushButton("Prettify");
     QPushButton *button2 = new QPushButton("Correct");
     QPushButton *button3 = new QPushButton("XML -> JSON");
@@ -1045,6 +1046,7 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     QPushButton *button6 = new QPushButton("Decompress");
     QPushButton *button7 = new QPushButton("Visualize");
     QPushButton *button8 = new QPushButton("Search");
+    QPushButton *button9 = new QPushButton("Network Analysis");
     buttonLayout1->addWidget(button1);
     buttonLayout1->addWidget(button5);
     buttonLayout1->addWidget(button2);
@@ -1055,12 +1057,15 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
     buttonLayout2->addWidget(button7);
     buttonLayout2->addWidget(button8);
 
+    buttonLayout3->addWidget(button9);
+
 
     // Create a layout for the entire tab's content
     QVBoxLayout *tabLayout = new QVBoxLayout;
     tabLayout->addLayout(textEditLayout); // Add the text edit layout to the tab layout
     tabLayout->addLayout(buttonLayout1); // Add the button layout to the tab layout
     tabLayout->addLayout(buttonLayout2); // Add the button layout to the tab layout
+    tabLayout->addLayout(buttonLayout3); // Add the button layout to the tab layout
 
     QWidget *tabWidget = new QWidget;
     tabWidget->setLayout(tabLayout);
@@ -1118,6 +1123,12 @@ void MainWindow::displayTextEditTab(QTextEdit* textEdit) {
 
     connect(button5, &QPushButton::clicked, this, [=](){
         minify("XML->JSON.json", textEdit);
+    });
+
+    connect(button9, &QPushButton::clicked, this, [=](){
+        if(checkIfValidXML(textEdit)) {
+            networkAnalysisClicked(textEdit->toPlainText());
+        }
     });
 
     QTextBlock block = textEdit->document()->firstBlock();
