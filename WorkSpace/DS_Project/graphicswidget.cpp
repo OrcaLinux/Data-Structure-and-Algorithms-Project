@@ -60,7 +60,7 @@ void drawNodes(Graph graph, QList<User*> nodes, GraphWidget *graphWidget, QGraph
 }
 
 //! [0]
-GraphWidget::GraphWidget(QWidget *parent, QString &filePath)
+GraphWidget::GraphWidget(QString filePath, QWidget *parent)
     : QGraphicsView(parent)
 {
     QGraphicsScene *scene = new QGraphicsScene(this);
@@ -81,7 +81,7 @@ GraphWidget::GraphWidget(QWidget *parent, QString &filePath)
 
     // Initialize Graph
     XMLparser *newParse = new XMLparser(filePath);
-    if(newParse->isValidFile())
+    if(newParse != nullptr)
     {
         const QList <User*> users = newParse->parse();
         for(int i = 0; i < users.size();i++)

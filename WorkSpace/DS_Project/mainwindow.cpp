@@ -22,6 +22,7 @@
 #include <QScrollBar>
 #include <QTextBlock>
 #include "graph.h"
+#include "graphicswidget.h"
 #include "qjsondocument.h"
 #include "XmlToJson_interface.h"
 #include "error_detect.h"
@@ -264,6 +265,13 @@ void MainWindow::createNewTab() {
         minify(FileName, textEdit);
     });
 
+    connect(button7, &QPushButton::clicked, this, [=](){
+        if(checkIfValidXML(textEdit)) {
+            GraphWidget *widget = new GraphWidget(textEdit->toPlainText());
+            widget->show();
+        }
+    });
+
     connect(ui->actionSave, &QAction::triggered, this, [=]() {
         saveAs(textEdit);
     });
@@ -423,6 +431,13 @@ void MainWindow::createNewTab(const QString& content, const QString& fileName) {
     // Connect button4's clicked signal to compressFile
     connect(button4, &QPushButton::clicked, this, [=](){
         compressFile(fileName, textEdit);
+    });
+
+    connect(button7, &QPushButton::clicked, this, [=](){
+        if(checkIfValidXML(textEdit)) {
+            GraphWidget *widget = new GraphWidget(textEdit->toPlainText());
+            widget->show();
+        }
     });
 
     connect(button8, &QPushButton::clicked, this, [=](){
@@ -652,6 +667,13 @@ void MainWindow::setOpenNewTabProperties(QString fileName) {
             QString newFilePath = changeFileExtension(fileName); // Change the extension based on conditions
 
             createNewTab(decompressedFile, newFilePath);
+        });
+
+        connect(button7, &QPushButton::clicked, this, [=](){
+            if(checkIfValidXML(textEdit)) {
+                GraphWidget *widget = new GraphWidget(textEdit->toPlainText());
+                widget->show();
+            }
         });
 
         connect(button8, &QPushButton::clicked, this, [=](){
