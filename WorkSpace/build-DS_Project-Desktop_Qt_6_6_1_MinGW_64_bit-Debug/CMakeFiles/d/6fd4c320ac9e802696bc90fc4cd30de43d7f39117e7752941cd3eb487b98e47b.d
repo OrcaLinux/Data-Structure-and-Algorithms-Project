@@ -47,6 +47,9 @@ DS_Project_autogen/timestamp: \
   C:/Users/User/UniLabs/Qt_DSA/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/node.h \
   C:/Users/User/UniLabs/Qt_DSA/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.cpp \
   C:/Users/User/UniLabs/Qt_DSA/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.h \
+  C:/Users/User/UniLabs/Qt_DSA/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.cpp \
+  C:/Users/User/UniLabs/Qt_DSA/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.h \
+  C:/Users/User/UniLabs/Qt_DSA/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.ui \
   C:/Users/User/UniLabs/Qt_DSA/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.cpp \
   C:/Users/User/UniLabs/Qt_DSA/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/tabmanager.h \
   C:/Users/User/UniLabs/Qt_DSA/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/texteditmanager.cpp \
@@ -62,13 +65,16 @@ DS_Project_autogen/timestamp: \
   DS_Project_autogen/moc_predefs.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/QDebug \
   D:/Qt/6.6.1/mingw_64/include/QtCore/QFile \
+  D:/Qt/6.6.1/mingw_64/include/QtCore/QFileSystemWatcher \
   D:/Qt/6.6.1/mingw_64/include/QtCore/QList \
   D:/Qt/6.6.1/mingw_64/include/QtCore/QString \
+  D:/Qt/6.6.1/mingw_64/include/QtCore/QTimer \
   D:/Qt/6.6.1/mingw_64/include/QtCore/QXmlStreamReader \
   D:/Qt/6.6.1/mingw_64/include/QtCore/q20functional.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/q20memory.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/q20type_traits.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/q23utility.h \
+  D:/Qt/6.6.1/mingw_64/include/QtCore/qabstractitemmodel.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qalgorithms.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qanystringview.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qarraydata.h \
@@ -78,6 +84,7 @@ DS_Project_autogen/timestamp: \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qatomic.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qatomic_cxx11.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qbasicatomic.h \
+  D:/Qt/6.6.1/mingw_64/include/QtCore/qbasictimer.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qbindingstorage.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qbytearray.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -99,6 +106,7 @@ DS_Project_autogen/timestamp: \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qexceptionhandling.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qfile.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qfiledevice.h \
+  D:/Qt/6.6.1/mingw_64/include/QtCore/qfilesystemwatcher.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qflags.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qfloat16.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qforeach.h \
@@ -166,6 +174,7 @@ DS_Project_autogen/timestamp: \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qtdeprecationmarkers.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qtenvironmentvariables.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qtextstream.h \
+  D:/Qt/6.6.1/mingw_64/include/QtCore/qtimer.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qtmetamacros.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qtnoop.h \
   D:/Qt/6.6.1/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -214,17 +223,24 @@ DS_Project_autogen/timestamp: \
   D:/Qt/6.6.1/mingw_64/include/QtGui/qtransform.h \
   D:/Qt/6.6.1/mingw_64/include/QtGui/qwindowdefs.h \
   D:/Qt/6.6.1/mingw_64/include/QtGui/qwindowdefs_win.h \
+  D:/Qt/6.6.1/mingw_64/include/QtWidgets/QCompleter \
+  D:/Qt/6.6.1/mingw_64/include/QtWidgets/QDialog \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/QGraphicsView \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/QMainWindow \
+  D:/Qt/6.6.1/mingw_64/include/QtWidgets/QScrollBar \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/QTabWidget \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/QTextEdit \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/QWidget \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+  D:/Qt/6.6.1/mingw_64/include/QtWidgets/qabstractslider.h \
+  D:/Qt/6.6.1/mingw_64/include/QtWidgets/qcompleter.h \
+  D:/Qt/6.6.1/mingw_64/include/QtWidgets/qdialog.h \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/qframe.h \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/qgraphicsscene.h \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/qgraphicsview.h \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/qmainwindow.h \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/qscrollarea.h \
+  D:/Qt/6.6.1/mingw_64/include/QtWidgets/qscrollbar.h \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/qsizepolicy.h \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/qtabwidget.h \
   D:/Qt/6.6.1/mingw_64/include/QtWidgets/qtextedit.h \
