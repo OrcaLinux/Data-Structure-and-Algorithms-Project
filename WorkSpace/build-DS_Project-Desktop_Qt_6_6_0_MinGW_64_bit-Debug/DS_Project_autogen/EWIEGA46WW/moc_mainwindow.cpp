@@ -69,11 +69,16 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "compressFile",
     "decompressFile",
     "filePath",
-    "searchButtonClicked"
+    "searchButtonClicked",
+    "saveChangesToFile",
+    "path",
+    "saveAs",
+    "networkAnalysisClicked",
+    "fileString"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
-    uint offsetsAndSizes[62];
+    uint offsetsAndSizes[72];
     char stringdata0[11];
     char stringdata1[18];
     char stringdata2[1];
@@ -105,6 +110,11 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata28[15];
     char stringdata29[9];
     char stringdata30[20];
+    char stringdata31[18];
+    char stringdata32[5];
+    char stringdata33[7];
+    char stringdata34[23];
+    char stringdata35[11];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -140,7 +150,12 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(410, 12),  // "compressFile"
         QT_MOC_LITERAL(423, 14),  // "decompressFile"
         QT_MOC_LITERAL(438, 8),  // "filePath"
-        QT_MOC_LITERAL(447, 19)   // "searchButtonClicked"
+        QT_MOC_LITERAL(447, 19),  // "searchButtonClicked"
+        QT_MOC_LITERAL(467, 17),  // "saveChangesToFile"
+        QT_MOC_LITERAL(485, 4),  // "path"
+        QT_MOC_LITERAL(490, 6),  // "saveAs"
+        QT_MOC_LITERAL(497, 22),  // "networkAnalysisClicked"
+        QT_MOC_LITERAL(520, 10)   // "fileString"
     },
     "MainWindow",
     "openNewTabHandler",
@@ -172,7 +187,12 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "compressFile",
     "decompressFile",
     "filePath",
-    "searchButtonClicked"
+    "searchButtonClicked",
+    "saveChangesToFile",
+    "path",
+    "saveAs",
+    "networkAnalysisClicked",
+    "fileString"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -184,7 +204,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      20,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -192,26 +212,29 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  134,    2, 0x08,    1 /* Private */,
-       3,    0,  135,    2, 0x08,    2 /* Private */,
-       4,    0,  136,    2, 0x08,    3 /* Private */,
-       5,    0,  137,    2, 0x08,    4 /* Private */,
-       6,    0,  138,    2, 0x08,    5 /* Private */,
-       7,    0,  139,    2, 0x08,    6 /* Private */,
-       8,    0,  140,    2, 0x08,    7 /* Private */,
-       9,    0,  141,    2, 0x08,    8 /* Private */,
-      10,    0,  142,    2, 0x08,    9 /* Private */,
-      11,    0,  143,    2, 0x08,   10 /* Private */,
-      12,    1,  144,    2, 0x08,   11 /* Private */,
-      14,    1,  147,    2, 0x08,   13 /* Private */,
-      17,    2,  150,    2, 0x08,   15 /* Private */,
-      21,    1,  155,    2, 0x08,   18 /* Private */,
-      23,    1,  158,    2, 0x08,   20 /* Private */,
-      23,    1,  161,    2, 0x08,   22 /* Private */,
-      14,    2,  164,    2, 0x08,   24 /* Private */,
-      27,    2,  169,    2, 0x08,   27 /* Private */,
-      28,    1,  174,    2, 0x08,   30 /* Private */,
-      30,    1,  177,    2, 0x08,   32 /* Private */,
+       1,    0,  152,    2, 0x08,    1 /* Private */,
+       3,    0,  153,    2, 0x08,    2 /* Private */,
+       4,    0,  154,    2, 0x08,    3 /* Private */,
+       5,    0,  155,    2, 0x08,    4 /* Private */,
+       6,    0,  156,    2, 0x08,    5 /* Private */,
+       7,    0,  157,    2, 0x08,    6 /* Private */,
+       8,    0,  158,    2, 0x08,    7 /* Private */,
+       9,    0,  159,    2, 0x08,    8 /* Private */,
+      10,    0,  160,    2, 0x08,    9 /* Private */,
+      11,    0,  161,    2, 0x08,   10 /* Private */,
+      12,    1,  162,    2, 0x08,   11 /* Private */,
+      14,    1,  165,    2, 0x08,   13 /* Private */,
+      17,    2,  168,    2, 0x08,   15 /* Private */,
+      21,    1,  173,    2, 0x08,   18 /* Private */,
+      23,    1,  176,    2, 0x08,   20 /* Private */,
+      23,    1,  179,    2, 0x08,   22 /* Private */,
+      14,    2,  182,    2, 0x08,   24 /* Private */,
+      27,    2,  187,    2, 0x08,   27 /* Private */,
+      28,    1,  192,    2, 0x08,   30 /* Private */,
+      30,    1,  195,    2, 0x08,   32 /* Private */,
+      31,    2,  198,    2, 0x08,   34 /* Private */,
+      33,    1,  203,    2, 0x08,   37 /* Private */,
+      34,    1,  206,    2, 0x08,   39 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -234,6 +257,9 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void, QMetaType::QString, 0x80000000 | 15,   26,   16,
     QMetaType::QString, QMetaType::QString,   29,
     QMetaType::Void, 0x80000000 | 15,   16,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 15,   32,   16,
+    QMetaType::Void, 0x80000000 | 15,   16,
+    QMetaType::Void, QMetaType::QString,   35,
 
        0        // eod
 };
@@ -299,7 +325,17 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'searchButtonClicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>
+        QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>,
+        // method 'saveChangesToFile'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>,
+        // method 'saveAs'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QTextEdit *, std::false_type>,
+        // method 'networkAnalysisClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>
     >,
     nullptr
 } };
@@ -335,6 +371,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 18: { QString _r = _t->decompressFile((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         case 19: _t->searchButtonClicked((*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[1]))); break;
+        case 20: _t->saveChangesToFile((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[2]))); break;
+        case 21: _t->saveAs((*reinterpret_cast< std::add_pointer_t<QTextEdit*>>(_a[1]))); break;
+        case 22: _t->networkAnalysisClicked((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -368,6 +407,20 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTextEdit* >(); break;
             }
             break;
+        case 20:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 1:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTextEdit* >(); break;
+            }
+            break;
+        case 21:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTextEdit* >(); break;
+            }
+            break;
         }
     }
 }
@@ -391,13 +444,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 20)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 20)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 23;
     }
     return _id;
 }

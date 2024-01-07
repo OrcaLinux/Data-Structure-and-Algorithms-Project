@@ -30,12 +30,20 @@ DS_Project_autogen/timestamp: \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.cpp \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_interface.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/XmlToJson_private.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/edge.cpp \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/edge.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/error_detect.cpp \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/error_detect.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/graph.cpp \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/graph.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/graphicswidget.cpp \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/graphicswidget.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/images/resources.qrc \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/main.cpp \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.cpp \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/mainwindow.h \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/node.cpp \
+  D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/node.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.cpp \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/post.h \
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/searchtopicwindow.cpp \
@@ -55,6 +63,7 @@ DS_Project_autogen/timestamp: \
   DS_Project_autogen/moc_predefs.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QDebug \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QFile \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QFileSystemWatcher \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QList \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QString \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QTimer \
@@ -95,6 +104,7 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qexceptionhandling.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfile.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfiledevice.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfilesystemwatcher.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qflags.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfloat16.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qforeach.h \
@@ -192,6 +202,7 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qimage.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qkeysequence.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qpaintdevice.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qpainter.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qpalette.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qpen.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qpixelformat.h \
@@ -212,6 +223,7 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtGui/qwindowdefs_win.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QCompleter \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QDialog \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QGraphicsView \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QMainWindow \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QScrollBar \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/QTabWidget \
@@ -222,7 +234,10 @@ DS_Project_autogen/timestamp: \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qcompleter.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qdialog.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qframe.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qgraphicsscene.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qgraphicsview.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qmainwindow.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qscrollarea.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qscrollbar.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qsizepolicy.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets/qtabwidget.h \
