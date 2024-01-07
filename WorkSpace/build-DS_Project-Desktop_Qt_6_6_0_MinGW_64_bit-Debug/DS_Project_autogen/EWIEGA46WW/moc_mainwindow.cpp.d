@@ -22,6 +22,7 @@ D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331
   D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/xmlparser.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QDebug \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QFile \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QFileSystemWatcher \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QList \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QString \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/QTimer \
@@ -62,6 +63,7 @@ D:/Engineering/Senior\ 1/Fall/Data\ structure/Project/Full\ project\ repo/CSE331
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qexceptionhandling.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfile.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfiledevice.h \
+  D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfilesystemwatcher.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qflags.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qfloat16.h \
   D:/Programming/Qt/6.6.0/mingw_64/include/QtCore/qforeach.h \

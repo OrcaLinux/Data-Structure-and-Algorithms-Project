@@ -4,11 +4,12 @@
  *
  * The file contains many static functions, use the one you need for the task.
  * 
- * @author eslam 
+ * @author eslam
  * @date   December 2023
  *********************************************************************/
-#include "pch.h"
 #include "CompressionSystem.h"
+#include "XmlToJson_interface.h"
+#include <QString>
 
 bool CompressionSystem::compress_SocialNetworkXML(const std::string& file, const std::string& path)
 {
@@ -43,19 +44,98 @@ bool CompressionSystem::compress_SocialNetworkXML(const std::string& file, const
 
 	delete huffmanObj;
 	huffmanObj = nullptr;
-	/*delete afterMapping;
-	afterMapping = nullptr;*/
+    delete afterMapping;
+    afterMapping = nullptr;
 
-	std::cout << *afterHuffman << std::endl;
 
 	bool result = saveFile(*afterHuffman, path);
 
 	delete afterHuffman;
 	afterHuffman = nullptr;
 
-	std::cout << result;
-
 	return result;
+}
+
+bool CompressionSystem::compress_XML(const std::string& file, const std::string& path)
+{
+    //Minify
+    MinifyingXML* minifyObj = new MinifyingXML(&file);
+    std::string* afterMinifying = minifyObj->minifyString();
+
+    delete minifyObj;
+    minifyObj = nullptr;
+
+    //Tag Mapping
+    TagsMapComp* mappingObj = new TagsMapComp(afterMinifying);
+    std::string* afterMapping = mappingObj->compress(true);
+
+    delete mappingObj;
+    mappingObj = nullptr;
+    delete afterMinifying;
+    afterMinifying = nullptr;
+
+    //Huffman
+    HuffmanComp* huffmanObj = new HuffmanComp(afterMapping);
+    std::string* afterHuffman = huffmanObj->compress();
+
+    delete huffmanObj;
+    huffmanObj = nullptr;
+    delete afterMapping;
+    afterMapping = nullptr;
+
+
+    bool result = saveFile(*afterHuffman, path);
+
+    delete afterHuffman;
+    afterHuffman = nullptr;
+
+    return result;
+}
+
+bool CompressionSystem::compress_JSON(std::string& file, const std::string& path)
+{
+    //Minify JSON
+    //TODO: ask abdo
+    std::string afterMinifying = formatJSONToSingleLine(QString::fromStdString(file)).toStdString();
+
+//    delete minifyObj;
+//    minifyObj = nullptr;
+
+
+    //Huffman
+    HuffmanComp* huffmanObj = new HuffmanComp(&afterMinifying);
+    std::string* afterHuffman = huffmanObj->compress();
+
+
+    delete huffmanObj;
+    huffmanObj = nullptr;
+
+    bool result = saveFile(*afterHuffman, path);
+
+    delete afterHuffman;
+    afterHuffman = nullptr;
+
+    return result;
+}
+
+bool CompressionSystem::compress_File(const std::string& file, const std::string& path)
+{
+    std::string* f = new std::string(file);
+    //Huffman
+    HuffmanComp* huffmanObj = new HuffmanComp(f);
+    std::string* afterHuffman = huffmanObj->compress();
+
+    delete f;
+    f = nullptr;
+    delete huffmanObj;
+    huffmanObj = nullptr;
+
+    bool result = saveFile(*afterHuffman, path);
+
+    delete afterHuffman;
+    afterHuffman = nullptr;
+
+    return result;
 }
 
 //TODO: the contain binary = false part.
@@ -116,6 +196,28 @@ bool CompressionSystem::saveFile(const std::string& fileComp, const std::string&
 	}
 	catch (const std::exception& e) {
 		return false;
-	}
-	return result;
+    }
+    return result;
+}
+
+QString CompressionSystem::minifyXML(const QString &file)
+{
+    std::string fileStr = file.toStdString();
+    //Minify
+    MinifyingXML* minifyObj = new MinifyingXML(&fileStr);
+    std::string* afterMinifying = minifyObj->minifyString();
+
+    delete minifyObj;
+    minifyObj = nullptr;
+
+    QString result = QString::fromStdString(*afterMinifying);
+
+    delete afterMinifying;
+    afterMinifying = nullptr;
+    return result;
+}
+
+QString CompressionSystem::minifyJSON(const QString &file)
+{
+    return formatJSONToSingleLine(file);
 }

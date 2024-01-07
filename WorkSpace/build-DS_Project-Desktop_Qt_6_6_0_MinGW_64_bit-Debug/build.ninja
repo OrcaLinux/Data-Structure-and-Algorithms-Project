@@ -241,6 +241,38 @@ build CMakeFiles/DS_Project.dir/searchtopicwindow.cpp.obj: CXX_COMPILER__DS_Proj
   OBJECT_DIR = CMakeFiles\DS_Project.dir
   OBJECT_FILE_DIR = CMakeFiles\DS_Project.dir
 
+build CMakeFiles/DS_Project.dir/edge.cpp.obj: CXX_COMPILER__DS_Project_Debug D$:/Engineering/Senior$ 1/Fall/Data$ structure/Project/Full$ project$ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/edge.cpp || cmake_object_order_depends_target_DS_Project
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DQT_XML_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\DS_Project.dir\edge.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -I"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/include" -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtCore -isystem D:/Programming/Qt/6.6.0/mingw_64/include -isystem D:/Programming/Qt/6.6.0/mingw_64/mkspecs/win32-g++ -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtGui -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtXml
+  OBJECT_DIR = CMakeFiles\DS_Project.dir
+  OBJECT_FILE_DIR = CMakeFiles\DS_Project.dir
+
+build CMakeFiles/DS_Project.dir/graphicswidget.cpp.obj: CXX_COMPILER__DS_Project_Debug D$:/Engineering/Senior$ 1/Fall/Data$ structure/Project/Full$ project$ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/graphicswidget.cpp || cmake_object_order_depends_target_DS_Project
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DQT_XML_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\DS_Project.dir\graphicswidget.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -I"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/include" -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtCore -isystem D:/Programming/Qt/6.6.0/mingw_64/include -isystem D:/Programming/Qt/6.6.0/mingw_64/mkspecs/win32-g++ -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtGui -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtXml
+  OBJECT_DIR = CMakeFiles\DS_Project.dir
+  OBJECT_FILE_DIR = CMakeFiles\DS_Project.dir
+
+build CMakeFiles/DS_Project.dir/node.cpp.obj: CXX_COMPILER__DS_Project_Debug D$:/Engineering/Senior$ 1/Fall/Data$ structure/Project/Full$ project$ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/node.cpp || cmake_object_order_depends_target_DS_Project
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DQT_XML_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\DS_Project.dir\node.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -I"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/include" -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtCore -isystem D:/Programming/Qt/6.6.0/mingw_64/include -isystem D:/Programming/Qt/6.6.0/mingw_64/mkspecs/win32-g++ -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtGui -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtXml
+  OBJECT_DIR = CMakeFiles\DS_Project.dir
+  OBJECT_FILE_DIR = CMakeFiles\DS_Project.dir
+
+build CMakeFiles/DS_Project.dir/graph.cpp.obj: CXX_COMPILER__DS_Project_Debug D$:/Engineering/Senior$ 1/Fall/Data$ structure/Project/Full$ project$ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/DS_Project/graph.cpp || cmake_object_order_depends_target_DS_Project
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DQT_XML_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\DS_Project.dir\graph.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -I"D:/Engineering/Senior 1/Fall/Data structure/Project/Full project repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/include" -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtCore -isystem D:/Programming/Qt/6.6.0/mingw_64/include -isystem D:/Programming/Qt/6.6.0/mingw_64/mkspecs/win32-g++ -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtWidgets -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtGui -isystem D:/Programming/Qt/6.6.0/mingw_64/include/QtXml
+  OBJECT_DIR = CMakeFiles\DS_Project.dir
+  OBJECT_FILE_DIR = CMakeFiles\DS_Project.dir
+
 build CMakeFiles/DS_Project.dir/DS_Project_autogen/4UGIYD6VGQ/qrc_resources.cpp.obj: CXX_COMPILER__DS_Project_Debug D$:/Engineering/Senior$ 1/Fall/Data$ structure/Project/Full$ project$ repo/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/build-DS_Project-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/DS_Project_autogen/4UGIYD6VGQ/qrc_resources.cpp || cmake_object_order_depends_target_DS_Project
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DQT_XML_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\DS_Project.dir\DS_Project_autogen\4UGIYD6VGQ\qrc_resources.cpp.obj.d
@@ -257,7 +289,7 @@ build CMakeFiles/DS_Project.dir/DS_Project_autogen/4UGIYD6VGQ/qrc_resources.cpp.
 #############################################
 # Link the executable DS_Project.exe
 
-build DS_Project.exe: CXX_EXECUTABLE_LINKER__DS_Project_Debug CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj CMakeFiles/DS_Project.dir/main.cpp.obj CMakeFiles/DS_Project.dir/mainwindow.cpp.obj CMakeFiles/DS_Project.dir/CompressionSystem.cpp.obj CMakeFiles/DS_Project.dir/DecompressSystem.cpp.obj CMakeFiles/DS_Project.dir/HuffmanComp.cpp.obj CMakeFiles/DS_Project.dir/HuffmanDec.cpp.obj CMakeFiles/DS_Project.dir/HuffmanTree.cpp.obj CMakeFiles/DS_Project.dir/ClearClosingTagsComp.cpp.obj CMakeFiles/DS_Project.dir/ClearClosingTagsDec.cpp.obj CMakeFiles/DS_Project.dir/Tree.cpp.obj CMakeFiles/DS_Project.dir/TreeNode.cpp.obj CMakeFiles/DS_Project.dir/MinifyingXML.cpp.obj CMakeFiles/DS_Project.dir/TagsMapComp.cpp.obj CMakeFiles/DS_Project.dir/TagsMapDec.cpp.obj CMakeFiles/DS_Project.dir/Map.cpp.obj CMakeFiles/DS_Project.dir/XmlToJson_interface.cpp.obj CMakeFiles/DS_Project.dir/tabmanager.cpp.obj CMakeFiles/DS_Project.dir/texteditmanager.cpp.obj CMakeFiles/DS_Project.dir/post.cpp.obj CMakeFiles/DS_Project.dir/user.cpp.obj CMakeFiles/DS_Project.dir/xmlparser.cpp.obj CMakeFiles/DS_Project.dir/error_detect.cpp.obj CMakeFiles/DS_Project.dir/searchtopicwindow.cpp.obj CMakeFiles/DS_Project.dir/DS_Project_autogen/4UGIYD6VGQ/qrc_resources.cpp.obj | D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Widgets.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Xml.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Gui.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Core.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6EntryPoint.a || DS_Project_autogen DS_Project_autogen_timestamp_deps
+build DS_Project.exe: CXX_EXECUTABLE_LINKER__DS_Project_Debug CMakeFiles/DS_Project.dir/DS_Project_autogen/mocs_compilation.cpp.obj CMakeFiles/DS_Project.dir/main.cpp.obj CMakeFiles/DS_Project.dir/mainwindow.cpp.obj CMakeFiles/DS_Project.dir/CompressionSystem.cpp.obj CMakeFiles/DS_Project.dir/DecompressSystem.cpp.obj CMakeFiles/DS_Project.dir/HuffmanComp.cpp.obj CMakeFiles/DS_Project.dir/HuffmanDec.cpp.obj CMakeFiles/DS_Project.dir/HuffmanTree.cpp.obj CMakeFiles/DS_Project.dir/ClearClosingTagsComp.cpp.obj CMakeFiles/DS_Project.dir/ClearClosingTagsDec.cpp.obj CMakeFiles/DS_Project.dir/Tree.cpp.obj CMakeFiles/DS_Project.dir/TreeNode.cpp.obj CMakeFiles/DS_Project.dir/MinifyingXML.cpp.obj CMakeFiles/DS_Project.dir/TagsMapComp.cpp.obj CMakeFiles/DS_Project.dir/TagsMapDec.cpp.obj CMakeFiles/DS_Project.dir/Map.cpp.obj CMakeFiles/DS_Project.dir/XmlToJson_interface.cpp.obj CMakeFiles/DS_Project.dir/tabmanager.cpp.obj CMakeFiles/DS_Project.dir/texteditmanager.cpp.obj CMakeFiles/DS_Project.dir/post.cpp.obj CMakeFiles/DS_Project.dir/user.cpp.obj CMakeFiles/DS_Project.dir/xmlparser.cpp.obj CMakeFiles/DS_Project.dir/error_detect.cpp.obj CMakeFiles/DS_Project.dir/searchtopicwindow.cpp.obj CMakeFiles/DS_Project.dir/edge.cpp.obj CMakeFiles/DS_Project.dir/graphicswidget.cpp.obj CMakeFiles/DS_Project.dir/node.cpp.obj CMakeFiles/DS_Project.dir/graph.cpp.obj CMakeFiles/DS_Project.dir/DS_Project_autogen/4UGIYD6VGQ/qrc_resources.cpp.obj | D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Widgets.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Xml.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Gui.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Core.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6EntryPoint.a || DS_Project_autogen DS_Project_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = D:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Widgets.a  D:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Xml.a  D:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Gui.a  -ld3d11  -ldxgi  -ldxguid  -ld3d12  D:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  D:/Programming/Qt/6.6.0/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -369,7 +401,7 @@ build DS_Project_autogen/4UGIYD6VGQ/qrc_resources.cpp | ${cmake_ninja_workdir}DS
 #############################################
 # Phony custom command for CMakeFiles\DS_Project_autogen_timestamp_deps
 
-build CMakeFiles/DS_Project_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/DS_Project_autogen_timestamp_deps: phony D$:/Programming/Qt/6.6.0/mingw_64/./bin/moc.exe D$:/Programming/Qt/6.6.0/mingw_64/./bin/uic.exe D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Widgets.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Core.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Xml.a
+build CMakeFiles/DS_Project_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/DS_Project_autogen_timestamp_deps: phony D$:/Programming/Qt/6.6.0/mingw_64/./bin/moc.exe D$:/Programming/Qt/6.6.0/mingw_64/./bin/uic.exe D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Widgets.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Xml.a D$:/Programming/Qt/6.6.0/mingw_64/lib/libQt6Core.a
 
 
 #############################################
