@@ -66,6 +66,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         post.cpp post.h user.cpp user.h xmlparser.cpp xmlparser.h
         error_detect.cpp error_detect.h
         searchtopicwindow.cpp searchtopicwindow.h searchtopicwindow.ui
+        graph.cpp graph.h
+        edge.cpp edge.h graphicswidget.cpp graphicswidget.h node.cpp node.h
 
     )
 # Define target properties for Android with Qt 6 as:

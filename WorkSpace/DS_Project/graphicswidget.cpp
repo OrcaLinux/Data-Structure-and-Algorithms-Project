@@ -5,7 +5,7 @@
 #include "xmlparser.h"
 
 #include <math.h>
-#include<vector>
+#include <vector>
 
 #include <QKeyEvent>
 #include <QRandomGenerator>

@@ -61,8 +61,7 @@ private slots:
     /********************************************< save the chnages in the opened file ********************************************/
     void saveChangesToFile(const QString &path, QTextEdit *textEdit);
     void saveAs(QTextEdit *textEdit);
-
-
+    void networkAnalysisClicked(QString fileString);
 
 
 private:
