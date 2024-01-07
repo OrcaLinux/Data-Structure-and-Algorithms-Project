@@ -14,7 +14,7 @@ class GraphWidget : public QGraphicsView
     Q_OBJECT
 
 public:
-    GraphWidget(QWidget *parent = nullptr);
+    GraphWidget(QWidget *parent = nullptr, QString &filePath);
 
     void itemMoved();
 

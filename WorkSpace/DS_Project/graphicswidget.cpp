@@ -60,7 +60,7 @@ void drawNodes(Graph graph, QList<User*> nodes, GraphWidget *graphWidget, QGraph
 }
 
 //! [0]
-GraphWidget::GraphWidget(QWidget *parent)
+GraphWidget::GraphWidget(QWidget *parent, QString &filePath)
     : QGraphicsView(parent)
 {
     QGraphicsScene *scene = new QGraphicsScene(this);
@@ -80,7 +80,6 @@ GraphWidget::GraphWidget(QWidget *parent)
 
 
     // Initialize Graph
-    QString filePath = "C:\\Users\\User\\UniLabs\\Qt_DSA\\GraphVisualisation\\sample.xml";
     XMLparser *newParse = new XMLparser(filePath);
     if(newParse->isValidFile())
     {
@@ -105,7 +104,7 @@ GraphWidget::GraphWidget(QWidget *parent)
         for(int j = 0; j < users.size();j++){
             ids.push_back(users.at(j)->getId());
         }
-/////////////////
+
         Graph graph(users.size(),ids);
         QList<QString> followers;
         for(int j = 0; j <users.size();j++){
@@ -115,25 +114,6 @@ GraphWidget::GraphWidget(QWidget *parent)
 
         }
         drawNodes(graph, users, this, scene);
-////////////////
-
-        std::cout<<std::endl;
-        graph.printGraph();
-        QString mostInfluential = graph.findMostInfluentialUser();
-        std::cout<<std::endl<< "Most Influential User "<< mostInfluential.toStdString();
-        QString MostActiveUser = graph.findMostActiveUser();
-        std::cout<<std::endl<< "Most Active User "<< MostActiveUser.toStdString();
-        QList<QString> MutualFollowers;
-        MutualFollowers = graph.findMutualFollowers("3","2");
-        for(int j = 0; j <MutualFollowers.size();j++){
-            std::cout<<std::endl<< "MutualFollowers: "<< MutualFollowers.at(j).toStdString()<<" "<<std::endl;
-        }
-        QList<QString> SuggestFollowers;
-        SuggestFollowers = graph.suggestUsersToFollow("2");
-        for(int j = 0; j <SuggestFollowers.size();j++){
-            std::cout<<std::endl<< "SuggestFollowers: "<< SuggestFollowers.at(j).toStdString()<<" "<<std::endl;
-        }
-
     }
     else
     {
