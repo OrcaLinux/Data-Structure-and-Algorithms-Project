@@ -18,6 +18,15 @@ Node* getNodeByID(QList<Node*> graphNodes, int id){
     return nullptr;
 }
 
+QList<Node*> getNodeByID_List(QList<Node*> graphNodes, int id){
+    QList<Node*> nodes;
+    for(Node* node : graphNodes){
+        if(node->getUniqueID() == id)
+            nodes.push_back(node);
+    }
+    return nodes;
+}
+
 void drawNodes(Graph graph, QList<User*> nodes, GraphWidget *graphWidget, QGraphicsScene* scene){
     QList<Node*> graphNodes; // store all vertices
     QList<Edge*> graphEdges;
@@ -32,8 +41,11 @@ void drawNodes(Graph graph, QList<User*> nodes, GraphWidget *graphWidget, QGraph
         QList<QString> nodeFollowersList = graph.getAdjacencyList().at(i);
         // Connect nodes in graphNodes list
         for(QString id : nodeFollowersList){
-            Node* adjacentNode = getNodeByID(graphNodes,id.toInt());
-            graphEdges.push_back(new Edge(node, adjacentNode));
+            QList<Node*> adjacentNode = getNodeByID_List(graphNodes,id.toInt());
+            while(!adjacentNode.empty()){
+                graphEdges.push_back(new Edge(node, adjacentNode.first()));
+                adjacentNode.pop_front();
+            }
         }
         i++;
     }
