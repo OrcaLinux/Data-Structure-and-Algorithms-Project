@@ -1,21 +1,32 @@
+Here's the updated README reflecting the changes and indicating that the project is under development:
+
+---
+
 # XML Visualization and Analysis Tool
 
-This project aims to develop a GUI-based program to parse, visualize, and analyze XML files representing users in a social network. The tool performs various operations on XML data, ensuring consistency, formatting, conversion to JSON, compression, and graph-based network analysis.
+This project aims to develop a GUI-based program to parse, visualize, and analyze XML files representing users in a social network. The tool is currently under refactoring, and the current implementation may not fully align with the intended functionality. We appreciate your understanding as we work to enhance the tool's features and reliability.
 
 ## Table of Contents
 - [Introduction](#introduction)
+- [Current Status](#current-status)
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Requirements](#requirements)
 - [Usage](#usage)
-- [Dependencies](#dependencies)
-- [Installation](#installation)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
 
 XML (Extensible Markup Language) serves as a fundamental format for data exchange among devices. This project targets the development of a robust GUI program capable of handling XML files representing social network users. By parsing and visualizing this data, the tool offers insights into network structures and supports various transformations of the XML content.
+
+## Current Status
+
+**This project is under active development and refactoring.**  
+- The current implementation might not fully meet the described features and requirements.
+- We are actively reorganizing the project structure, optimizing code, and ensuring feature alignment with the project's goals.
+
+If you wish to contribute during this phase, please refer to the [Contributing](#contributing) section.
 
 ## Features
 
@@ -35,7 +46,7 @@ XML (Extensible Markup Language) serves as a fundamental format for data exchang
 
 ## Project Structure
 
-The project is structured as follows:
+The project is structured as follows (subject to change during refactoring):
 - `/src`: Contains source code files for the program.
 - `/data`: Sample XML files for testing and development.
 - `/docs`: Documentation and diagrams describing implementation details and project insights.
@@ -46,36 +57,11 @@ The project requires the implementation of various data structures, including ar
 
 ## Usage
 
-To use the program:
-1. Clone the repository to your local machine.
-2. Install the necessary dependencies (outlined in the Installation section).
-3. Run the application and use the GUI to perform desired operations on XML files.
-
-## Dependencies
-
-The project relies on the following dependencies:
-- [Dependency 1](link): Description.
-- [Dependency 2](link): Description.
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/project-name.git
-   cd project-name
-   ```
-2. Install dependencies:
-   ```bash
-   # Instructions for installing dependencies (e.g., using pip, npm, etc.)
-   ```
-3. Run the program:
-   ```bash
-   # Instructions to run the program
-   ```
+Currently, the program may not function as expected due to ongoing development and refactoring. Once development stabilizes, detailed usage instructions will be provided.
 
 ## Contributing
 
-We welcome contributions to enhance this project. Feel free to submit issues or pull requests.
+We welcome contributions to enhance this project, especially during this development phase. Feel free to submit issues or pull requests, and ensure that they align with the ongoing reorganization.
 
 ## License
 
