@@ -1,7 +1,3 @@
-Here's the updated README reflecting the changes and indicating that the project is under development:
-
----
-
 # XML Visualization and Analysis Tool
 
 This project aims to develop a GUI-based program to parse, visualize, and analyze XML files representing users in a social network. The tool is currently under refactoring, and the current implementation may not fully align with the intended functionality. We appreciate your understanding as we work to enhance the tool's features and reliability.
