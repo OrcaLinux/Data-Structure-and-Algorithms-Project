@@ -1,9 +1,0 @@
-D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/CMakeFiles/DS_Project.dir
-D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/CMakeFiles/edit_cache.dir
-D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/CMakeFiles/rebuild_cache.dir
-D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/CMakeFiles/list_install_components.dir
-D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/CMakeFiles/install.dir
-D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/CMakeFiles/install/local.dir
-D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/CMakeFiles/install/strip.dir
-D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/CMakeFiles/DS_Project_autogen_timestamp_deps.dir
-D:/Projects/Software/CSE331-Data-Structure-and-Algorithms-Project/WorkSpace/CMakeFiles/DS_Project_autogen.dir
